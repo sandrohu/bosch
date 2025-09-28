@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import SplashScreen from '../views/SplashScreen.vue'
 import HomePage from '../views/HomePage.vue'
 import ExplorePage from '../views/ExplorePage.vue'
+import PdfViewerPage from '../views/PdfViewerPage.vue'
+import VideoSeriesPage from '../views/VideoSeriesPage.vue'
 
 const routes = [
   {
@@ -21,6 +23,18 @@ const routes = [
     name: 'Explore',
     component: ExplorePage,
     meta: { title: '全景探索 - BOSCH 招聘' }
+  },
+  {
+    path: '/pdf-viewer',
+    name: 'PdfViewer',
+    component: PdfViewerPage,
+    meta: { title: '博世整体介绍 - BOSCH 招聘' }
+  },
+  {
+    path: '/video-series',
+    name: 'VideoSeries',
+    component: VideoSeriesPage,
+    meta: { title: '博世系列视频 - BOSCH 招聘' }
   }
 ]
 

@@ -134,7 +134,7 @@
             </div>
 
             <div class="expanded-footer">
-              <div class="button-wrapper">
+              <div class="button-wrapper" @click="navigateToPdfViewer">
                 <img src="../assets/images/boshizhengtijieshao.png" alt="博世整体介绍" class="button-image" />
               </div>
               <div class="button-wrapper">
@@ -445,6 +445,11 @@ const nextGravitySlide = () => {
 
 const prevGravitySlide = () => {
   gravitySlide.value = gravitySlide.value === 0 ? 1 : 0
+}
+
+// Navigate to PDF viewer page
+const navigateToPdfViewer = () => {
+  router.push('/pdf-viewer')
 }
 
 // Auto-scroll animation

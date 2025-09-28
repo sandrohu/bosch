@@ -14,7 +14,19 @@
       "Read(//Users/hutianwei/Downloads/wechat_2025-08-10_010945_587 1/**)",
       "Read(//Users/hutianwei/Downloads/**)",
       "Bash(git init)",
-      "Bash(git add .)"
+      "Bash(git add .)",
+      "Bash(git commit -m \"Initial commit: Bosch frontend application with homepage and auto-scrolling features\")",
+      "Bash(git branch -M main)",
+      "Bash(git remote add origin https://github.com/sandrohu/bosch.git)",
+      "Bash(git push -u origin main)",
+      "Bash(tree -L 2 -I 'node_modules')",
+      "Bash(git add deploy.sh nginx.conf)",
+      "Bash(git commit -m \"Update deployment scripts for Aliyun server with Cloudflare support\")",
+      "Bash(git push)",
+      "Bash(git add frontend/vite.config.js)",
+      "Bash(git commit -m \"Fix: Allow all hosts in Vite config for domain access\")",
+      "Bash(npm install pdfjs-dist)",
+      "Bash(node --version)"
     ],
     "deny": [],
     "ask": []
