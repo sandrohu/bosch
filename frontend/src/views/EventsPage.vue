@@ -1,22 +1,5 @@
 <template>
   <div class="events-container">
-    <!-- Mobile Status Bar -->
-    <div class="status-bar mobile-only">
-      <span class="time">9:41</span>
-      <div class="status-icons">
-        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0H0V1H1V0Z" fill="black"/>
-        </svg>
-        <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
-          <path d="M0 0H15V11H0V0Z" fill="black" fill-opacity="0.35"/>
-        </svg>
-        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
-          <rect opacity="0.35" x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="black"/>
-          <path opacity="0.4" d="M22 4V8C22.8 7.66 23.5 6.5 23.5 6C23.5 5.5 22.8 4.34 22 4Z" fill="black"/>
-          <rect x="2" y="2" width="18" height="8" rx="1" fill="black"/>
-        </svg>
-      </div>
-    </div>
 
     <!-- Header with Rainbow Strip -->
     <header class="header">
@@ -175,26 +158,6 @@ export default {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* Mobile Status Bar */
-.status-bar {
-  display: none;
-  padding: 8px 20px;
-  background: white;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.status-bar.mobile-only {
-  display: flex;
-}
-
-.status-icons {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
 
 /* Header */
 .header {
@@ -205,7 +168,7 @@ export default {
 }
 
 .spacer {
-  height: 60px; /* 为logo留出空间 */
+  height: 45px; /* 为logo留出空间 */
 }
 
 .rainbow-strip {
@@ -227,7 +190,7 @@ export default {
 /* Main Content */
 .main-content {
   padding: 16px;
-  padding-bottom: 90px; /* 73px + some margin */
+  padding-bottom: 72px; /* 56px + some margin */
 }
 
 /* Recommendation Section */
@@ -453,47 +416,89 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
+  height: 56px;
   background: white;
-  border-top: 1px solid #eee;
   display: flex;
   justify-content: space-around;
-  padding: 10px 0;
-  z-index: 1000;
+  align-items: center;
+  padding: 0;
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08);
+  z-index: 100;
 }
 
 .nav-item {
+  background: none;
+  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 24px;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
   text-decoration: none;
-  color: #999;
-  transition: color 0.3s;
-  padding: 5px;
+  color: #B0B0B0;
 }
 
 .nav-item.active {
-  color: #DA291C;
+  color: #4A90E2;
+}
+
+/* Active indicator */
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: #4A90E2;
+  border-radius: 0 0 2px 2px;
 }
 
 .nav-item svg {
-  width: 24px;
-  height: 24px;
-  margin-bottom: 4px;
+  width: 28px;
+  height: 28px;
+  color: #B0B0B0;
+  transition: color 0.2s ease;
 }
 
 .nav-icon-wrapper {
-  width: 24px;
-  height: 24px;
-  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
 }
 
 .nav-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
+  color: #B0B0B0;
+  transition: color 0.2s ease;
 }
 
 .nav-item span {
-  font-size: 12px;
+  font-size: 10px;
+  color: #B0B0B0;
+  transition: color 0.2s ease;
+  margin-top: 2px;
+  font-weight: 400;
+}
+
+.nav-item.active svg,
+.nav-item.active .nav-icon {
+  color: #4A90E2;
+}
+
+.nav-item.active span {
+  color: #4A90E2;
+  font-weight: 500;
 }
 
 /* Mobile Responsive */
@@ -523,7 +528,7 @@ export default {
   }
 
   .spacer {
-    height: 80px; /* 桌面端为logo留更多空间 */
+    height: 60px; /* 桌面端为logo留更多空间 */
   }
 
   .main-content {

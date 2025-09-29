@@ -1,23 +1,5 @@
 <template>
   <div class="container">
-    <!-- Mobile Status Bar (only shown on mobile) -->
-    <div class="status-bar mobile-only">
-      <span class="time">9:41</span>
-      <div class="status-icons">
-        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0H0V1H1V0Z" fill="black"/>
-        </svg>
-        <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
-          <path d="M0 0H15V11H0V0Z" fill="black" fill-opacity="0.35"/>
-        </svg>
-        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
-          <rect opacity="0.35" x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="black"/>
-          <path opacity="0.4" d="M22 4V8C22.8 7.66 23.5 6.5 23.5 6C23.5 5.5 22.8 4.34 22 4Z" fill="black"/>
-          <rect x="2" y="2" width="18" height="8" rx="1" fill="black"/>
-        </svg>
-      </div>
-    </div>
-
     <!-- Header with Rainbow Strip -->
     <header class="header">
       <div class="spacer"></div> <!-- 为logo留出空间 -->
@@ -40,53 +22,17 @@
       <!-- Hero Video Section -->
       <div class="hero-section">
         <div class="hero-video-container">
-          <video
-            ref="heroVideo"
-            :src="heroVideoData.src"
-            :poster="heroVideoData.poster"
-            controls
+          <iframe
+            src="https://player.cloudinary.com/embed/?cloud_name=dcaq7lj8o&public_id=498_1759155296_raw_rstuum&profile=cld-default"
+            width="100%"
+            height="100%"
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            allowfullscreen
+            frameborder="0"
             class="hero-video"
-          >
-            您的浏览器不支持视频播放
-          </video>
-          <div class="video-overlay" v-if="!isPlaying" @click="playVideo">
-            <svg class="play-icon" width="60" height="60" viewBox="0 0 60 60" fill="white">
-              <circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.5)"/>
-              <path d="M24 20L40 30L24 40V20Z" fill="white"/>
-            </svg>
-          </div>
+          ></iframe>
         </div>
       </div>
-
-      <!-- Video List Section -->
-      <!-- <div class="video-list">
-        <div
-          v-for="video in videoList"
-          :key="video.id"
-          class="video-card"
-          @click="selectVideo(video)"
-        >
-          <div class="video-thumbnail-container">
-            <img :src="video.thumbnail" :alt="video.title" class="video-thumbnail" />
-            <div class="video-play-overlay">
-              <svg class="play-icon-small" width="40" height="40" viewBox="0 0 40 40" fill="white">
-                <circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.9)"/>
-                <path d="M16 13L28 20L16 27V13Z" fill="#007BC0"/>
-              </svg>
-            </div>
-            <span class="video-duration">{{ video.duration }}</span>
-            <span class="video-views">{{ video.views }}次播放</span>
-          </div>
-
-          <div class="video-info">
-            <h3 class="video-title">{{ video.title }}</h3>
-            <p class="video-description">{{ video.description }}</p>
-            <div class="video-meta">
-              <span class="video-date">时间：{{ video.date }}</span>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </main>
 
     <!-- Bottom Navigation (only shown on mobile) -->
@@ -130,64 +76,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const heroVideo = ref(null)
-const isPlaying = ref(false)
-
-// 主视频数据 - 暂时使用占位符，后续替换为实际视频
-const heroVideoData = ref({
-  src: '',  // 视频文件待上传
-  poster: '/src/assets/images/video-poster.jpg',
-  title: 'Why Bosch'
-})
-
-// 视频列表数据
-const videoList = ref([
-  {
-    id: 1,
-    title: '国际技术交流会上海站',
-    description: '博世集团董事会主席史蒂凡·哈通凡博世："中国是博世创新的重要市场和创新的关键驱动..."',
-    thumbnail: '/src/assets/images/video-thumb-1.jpg',
-    duration: '00:16',
-    views: '51',
-    date: '2025/06/12 09:00-17:00',
-    src: '/videos/video1.mp4'
-  },
-  {
-    id: 2,
-    title: '博世中国创新日',
-    description: '探索博世在中国的创新成果，了解最新的技术发展和未来战略...',
-    thumbnail: '/src/assets/images/video-thumb-2.jpg',
-    duration: '02:35',
-    views: '128',
-    date: '2025/05/20 14:00-16:00',
-    src: '/videos/video2.mp4'
-  }
-])
-
-// 播放视频
-const playVideo = () => {
-  if (heroVideo.value) {
-    heroVideo.value.play()
-    isPlaying.value = true
-  }
-}
-
-// 选择视频
-const selectVideo = (video) => {
-  heroVideoData.value = {
-    src: video.src,
-    poster: video.thumbnail,
-    title: video.title
-  }
-  isPlaying.value = false
-
-  // 滚动到顶部
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
 
 const goBack = () => {
   router.back()
@@ -199,6 +90,22 @@ const goHome = () => {
 </script>
 
 <style scoped>
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: #EDEDED;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile only elements */
+.mobile-only {
+  display: block;
+}
+
+
 /* Header */
 .header {
   background: white;
@@ -208,7 +115,7 @@ const goHome = () => {
 }
 
 .spacer {
-  height: 60px;
+  height: 45px;
 }
 
 .rainbow-strip {
@@ -226,49 +133,11 @@ const goHome = () => {
   width: 100%;
 }
 
-.container {
-  width: 100%;
-  min-height: 100vh;
-  background: #EDEDED;
-  position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Mobile only elements */
-.mobile-only {
-  display: block;
-}
-
-/* Status Bar (Mobile) */
-.status-bar {
-  height: 44px;
-  background: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 21px;
-}
-
-.time {
-  font-size: 15px;
-  font-weight: 600;
-  color: #000;
-  letter-spacing: -0.3px;
-}
-
-.status-icons {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
 
 /* Main Content */
 .main-content {
   flex: 1;
-  padding-bottom: 90px;
+  padding-bottom: 72px;
   padding-top: 0;
 }
 
@@ -328,137 +197,16 @@ const goHome = () => {
 .hero-video {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  border: none;
 }
 
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.play-icon {
-  transition: transform 0.2s;
-}
-
-.video-overlay:hover .play-icon {
-  transform: scale(1.1);
-}
-
-/* Video List */
-.video-list {
-  padding: 0 16px;
-}
-
-.video-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.video-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-.video-thumbnail-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-}
-
-.video-thumbnail {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.video-play-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
-}
-
-.video-card:hover .video-play-overlay {
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.play-icon-small {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.video-duration {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-.video-views {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-.video-info {
-  padding: 12px 16px;
-}
-
-.video-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-  margin: 0 0 8px 0;
-  line-height: 1.4;
-}
-
-.video-description {
-  font-size: 14px;
-  color: #666;
-  margin: 0 0 8px 0;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.video-meta {
-  font-size: 12px;
-  color: #999;
-}
-
-/* Bottom Navigation */
+/* Bottom Navigation (Mobile) */
 .bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 73px;
+  height: 56px;
   background: white;
   display: flex;
   justify-content: space-around;
@@ -482,6 +230,7 @@ const goHome = () => {
   height: 100%;
   cursor: pointer;
   transition: all 0.2s ease;
+  position: relative;
 }
 
 .nav-icon-wrapper {
@@ -496,13 +245,42 @@ const goHome = () => {
   width: 28px;
   height: 28px;
   color: #B0B0B0;
+  transition: color 0.2s ease;
 }
 
 .nav-label {
   font-size: 10px;
   color: #B0B0B0;
+  transition: color 0.2s ease;
   margin-top: 2px;
   font-weight: 400;
+}
+
+.nav-item:active {
+  opacity: 0.7;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .spacer {
+    height: 60px;
+  }
+
+  .main-content {
+    padding: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-section {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .headquarter-banner {
+    border-radius: 12px;
+  }
 }
 
 /* Desktop Styles */
@@ -511,18 +289,31 @@ const goHome = () => {
     display: none !important;
   }
 
+  .spacer {
+    height: 60px;
+  }
+
   .main-content {
+    padding: 40px;
     padding-bottom: 40px;
     max-width: 1200px;
-    margin: 0 auto;
   }
 
-  .video-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    padding: 0 24px;
+  .hero-section {
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
+  .headquarter-banner {
+    border-radius: 16px;
+    margin-bottom: 24px;
+  }
+
+  .back-button-overlay {
+    top: 24px;
+    left: 24px;
+    padding: 10px 16px;
+    font-size: 16px;
+  }
 }
 </style>

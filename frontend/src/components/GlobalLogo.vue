@@ -19,7 +19,7 @@ const hideLogo = computed(() => {
 <style scoped>
 .global-logo {
   position: fixed;
-  top: 3.25rem;  /* 状态栏高度 + 一些间距 */
+  top: 1rem;  /* 调整到彩虹线上方 */
   left: 1rem;
   width: 7.25rem;  /* 116px */
   height: 1.63rem; /* 26px */
@@ -37,7 +37,7 @@ const hideLogo = computed(() => {
 /* 移动端适配 */
 @media (max-width: 375px) {
   .global-logo {
-    top: 2.75rem;  /* 44px状态栏 + 间距 */
+    top: 0.75rem;  /* 调整到彩虹线上方 */
     left: 1rem;
     width: 7.25rem;
     height: 1.63rem;

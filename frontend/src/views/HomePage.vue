@@ -1,22 +1,5 @@
 <template>
   <div class="container">
-    <!-- Mobile Status Bar (only shown on mobile) -->
-    <div class="status-bar mobile-only">
-      <span class="time">9:41</span>
-      <div class="status-icons">
-        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0H0V1H1V0Z" fill="black"/>
-        </svg>
-        <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
-          <path d="M0 0H15V11H0V0Z" fill="black" fill-opacity="0.35"/>
-        </svg>
-        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
-          <rect opacity="0.35" x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="black"/>
-          <path opacity="0.4" d="M22 4V8C22.8 7.66 23.5 6.5 23.5 6C23.5 5.5 22.8 4.34 22 4Z" fill="black"/>
-          <rect x="2" y="2" width="18" height="8" rx="1" fill="black"/>
-        </svg>
-      </div>
-    </div>
 
     <!-- Header with Rainbow Strip -->
     <header class="header">
@@ -665,28 +648,6 @@ onUnmounted(() => {
   display: none;
 }
 
-/* Status Bar (Mobile) */
-.status-bar {
-  height: 44px;
-  background: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 21px;
-}
-
-.time {
-  font-size: 15px;
-  font-weight: 600;
-  color: #000;
-  letter-spacing: -0.3px;
-}
-
-.status-icons {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
 
 /* Header */
 .header {
@@ -697,7 +658,7 @@ onUnmounted(() => {
 }
 
 .spacer {
-  height: 60px; /* 为logo留出空间 */
+  height: 45px; /* 为logo留出空间 */
 }
 
 .rainbow-strip {
@@ -721,7 +682,7 @@ onUnmounted(() => {
 /* Main Content */
 .main-content {
   padding: 16px;
-  padding-bottom: 90px; /* 73px + some margin */
+  padding-bottom: 72px; /* 56px + some margin */
 }
 
 .content-wrapper {
@@ -1493,7 +1454,7 @@ onUnmounted(() => {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 73px;
+  height: 56px;
   background: white;
   display: flex;
   justify-content: center;
@@ -1572,7 +1533,7 @@ onUnmounted(() => {
 @media (min-width: 768px) {
   .main-content {
     padding: 24px;
-    padding-bottom: 90px; /* Account for mobile nav */
+    padding-bottom: 72px; /* Account for mobile nav */
   }
 
   .content-wrapper {
@@ -1626,7 +1587,7 @@ onUnmounted(() => {
   }
 
   .spacer {
-    height: 80px; /* 桌面端为logo留更多空间 */
+    height: 60px; /* 桌面端为logo留更多空间 */
   }
 
   /* Main content adjustments */
@@ -1701,7 +1662,7 @@ onUnmounted(() => {
 /* Large Desktop */
 @media (min-width: 1440px) {
   .spacer {
-    height: 90px; /* 大屏幕更多空间 */
+    height: 70px; /* 大屏幕更多空间 */
   }
 
   .main-content {

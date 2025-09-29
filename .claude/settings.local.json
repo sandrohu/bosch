@@ -46,7 +46,11 @@
       "Bash(rm \"/Users/hutianwei/Documents/bosch/frontend/src/assets/file/why bosch(3).m4v\")",
       "Bash(rm \"/Users/hutianwei/Documents/bosch/frontend/src/assets/file/whybosch.mp4\")",
       "Bash(git push origin main --force)",
-      "Bash(git stash pop)"
+      "Bash(git stash pop)",
+      "Bash(git add deploy-server.sh SERVER-DEPLOYMENT.md)",
+      "Bash(git commit -m \"添加服务器部署脚本和文档，解决git冲突问题\")",
+      "Bash(git add nginx-simple.conf deploy-simple.sh QUICK-DEPLOY.md)",
+      "Bash(git commit -m \"添加简化部署方案：支持直接IP访问，无需域名配置\")"
     ],
     "deny": [],
     "ask": []
