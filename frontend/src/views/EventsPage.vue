@@ -118,12 +118,12 @@
           </div>
           <span>博世活动</span>
         </a>
-        <a href="/jobs" class="nav-item">
+        <a href="/careers" class="nav-item">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <rect x="2" y="7" width="20" height="14" rx="2" ry="2" stroke-width="2"/>
             <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" stroke-width="2"/>
           </svg>
-          <span>职速博世</span>
+          <span>职通博世</span>
         </a>
       </nav>
     </main>

@@ -422,7 +422,7 @@
         <span class="nav-label">博世活动</span>
       </button>
 
-      <button class="nav-item">
+      <button class="nav-item" @click="navigateToCareers">
         <div class="nav-icon-wrapper">
           <svg class="nav-icon" width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
             <rect x="5" y="8" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -431,7 +431,7 @@
             <path d="M14 17v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
-        <span class="nav-label">职速博世</span>
+        <span class="nav-label">职通博世</span>
       </button>
     </nav>
   </div>
@@ -586,6 +586,11 @@ const navigateToVideoSeries = () => {
 // Navigate to events page
 const navigateToEvents = () => {
   router.push('/events')
+}
+
+// Navigate to careers page
+const navigateToCareers = () => {
+  router.push('/careers')
 }
 
 // Auto-scroll animation

@@ -7,6 +7,7 @@ import VideoSeriesPage from '../views/VideoSeriesPage.vue'
 import NewsListPage from '../views/NewsListPage.vue'
 import NewsDetailPage from '../views/NewsDetailPage.vue'
 import EventsPage from '../views/EventsPage.vue'
+import CareersPage from '../views/CareersPage.vue'
 
 const routes = [
   {
@@ -56,6 +57,12 @@ const routes = [
     name: 'Events',
     component: EventsPage,
     meta: { title: '博世活动 - BOSCH 招聘' }
+  },
+  {
+    path: '/careers',
+    name: 'Careers',
+    component: CareersPage,
+    meta: { title: '职通博世 - BOSCH 招聘' }
   }
 ]
 
