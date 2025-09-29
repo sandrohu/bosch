@@ -44,7 +44,9 @@
       "Bash(curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh)",
       "Bash(sudo bash)",
       "Bash(rm \"/Users/hutianwei/Documents/bosch/frontend/src/assets/file/why bosch(3).m4v\")",
-      "Bash(rm \"/Users/hutianwei/Documents/bosch/frontend/src/assets/file/whybosch.mp4\")"
+      "Bash(rm \"/Users/hutianwei/Documents/bosch/frontend/src/assets/file/whybosch.mp4\")",
+      "Bash(git push origin main --force)",
+      "Bash(git stash pop)"
     ],
     "deny": [],
     "ask": []
