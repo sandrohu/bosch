@@ -36,7 +36,9 @@
       "Bash(git commit -m \"优化首页底部导航：移除博世活动和职通博世按钮，只保留首页按钮居中显示\")",
       "Bash(git rm --cached frontend/src/assets/file/whybosch.mp4)",
       "Bash(git add .gitignore)",
-      "Bash(git commit -m \"移除大视频文件，添加到.gitignore以避免GitHub文件大小限制\")"
+      "Bash(git commit -m \"移除大视频文件，添加到.gitignore以避免GitHub文件大小限制\")",
+      "Bash(git push --force origin main)",
+      "Bash(git log --all --pretty=format:%H -- frontend/src/assets/file/whybosch.mp4)"
     ],
     "deny": [],
     "ask": []
