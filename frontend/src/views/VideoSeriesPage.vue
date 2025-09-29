@@ -137,9 +137,9 @@ const router = useRouter()
 const heroVideo = ref(null)
 const isPlaying = ref(false)
 
-// 主视频数据
+// 主视频数据 - 暂时使用占位符，后续替换为实际视频
 const heroVideoData = ref({
-  src: '/src/assets/file/whybosch.mp4',
+  src: '',  // 视频文件待上传
   poster: '/src/assets/images/video-poster.jpg',
   title: 'Why Bosch'
 })

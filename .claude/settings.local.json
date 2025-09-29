@@ -38,7 +38,13 @@
       "Bash(git add .gitignore)",
       "Bash(git commit -m \"移除大视频文件，添加到.gitignore以避免GitHub文件大小限制\")",
       "Bash(git push --force origin main)",
-      "Bash(git log --all --pretty=format:%H -- frontend/src/assets/file/whybosch.mp4)"
+      "Bash(git log --all --pretty=format:%H -- frontend/src/assets/file/whybosch.mp4)",
+      "Bash(git lfs version)",
+      "Bash(brew install git-lfs)",
+      "Bash(curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh)",
+      "Bash(sudo bash)",
+      "Bash(rm \"/Users/hutianwei/Documents/bosch/frontend/src/assets/file/why bosch(3).m4v\")",
+      "Bash(rm \"/Users/hutianwei/Documents/bosch/frontend/src/assets/file/whybosch.mp4\")"
     ],
     "deny": [],
     "ask": []
