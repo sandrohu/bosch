@@ -6,6 +6,7 @@ import PdfViewerPage from '../views/PdfViewerPage.vue'
 import VideoSeriesPage from '../views/VideoSeriesPage.vue'
 import NewsListPage from '../views/NewsListPage.vue'
 import NewsDetailPage from '../views/NewsDetailPage.vue'
+import EventsPage from '../views/EventsPage.vue'
 
 const routes = [
   {
@@ -49,6 +50,12 @@ const routes = [
     name: 'NewsDetail',
     component: NewsDetailPage,
     meta: { title: '新闻详情 - BOSCH 招聘' }
+  },
+  {
+    path: '/events',
+    name: 'Events',
+    component: EventsPage,
+    meta: { title: '博世活动 - BOSCH 招聘' }
   }
 ]
 

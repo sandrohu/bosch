@@ -27,7 +27,13 @@
       "Bash(git commit -m \"Fix: Allow all hosts in Vite config for domain access\")",
       "Bash(npm install pdfjs-dist)",
       "Bash(node --version)",
-      "Bash(grep -E \"\\.png$\")"
+      "Bash(grep -E \"\\.png$\")",
+      "Bash(ping -c 3 github.com)",
+      "Bash(git push origin main)",
+      "Bash(git config --global http.postBuffer 524288000)",
+      "Bash(git config --global http.version HTTP/1.1)",
+      "Bash(git add -A)",
+      "Bash(git commit -m \"优化首页底部导航：移除博世活动和职通博世按钮，只保留首页按钮居中显示\")"
     ],
     "deny": [],
     "ask": []
