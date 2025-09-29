@@ -43,3 +43,11 @@ dist-ssr
 .cache
 .parcel-cache
 .eslintcache
+
+# Large media files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+frontend/src/assets/file/whybosch.mp4
