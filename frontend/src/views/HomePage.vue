@@ -28,7 +28,7 @@
     <main class="main-content">
       <div class="content-wrapper">
         <!-- Hero Banner with Carousel -->
-        <div class="hero-banner" v-show="!showExploreDetail && !showGravityDetail">
+        <div class="hero-banner" v-show="!showExploreDetail && !showGravityDetail && !showNewsDetail">
           <div class="carousel-wrapper">
             <transition-group name="slide-fade" tag="div">
               <div
@@ -69,7 +69,7 @@
         </div>
 
         <!-- Feature Cards -->
-        <div class="feature-cards" v-show="!showExploreDetail && !showGravityDetail">
+        <div class="feature-cards" v-show="!showExploreDetail && !showGravityDetail && !showNewsDetail">
           <!-- Card 1: 全景探索 -->
           <div class="feature-card card-explore" @click="toggleExploreDetail">
             <div class="card-content">
@@ -95,7 +95,7 @@
           </div>
 
           <!-- Card 3: 热文追踪 -->
-          <div class="feature-card card-news">
+          <div class="feature-card card-news" @click="toggleNewsDetail">
             <div class="card-content">
               <h3 class="card-title">热文追踪，来个博世</h3>
               <p class="card-subtitle">博世新闻事件</p>
@@ -137,7 +137,7 @@
               <div class="button-wrapper" @click="navigateToPdfViewer">
                 <img src="../assets/images/boshizhengtijieshao.png" alt="博世整体介绍" class="button-image" />
               </div>
-              <div class="button-wrapper">
+              <div class="button-wrapper" @click="navigateToVideoSeries">
                 <img src="../assets/images/boshixilieshipin.png" alt="博世系列视频" class="button-image" />
               </div>
             </div>
@@ -311,10 +311,98 @@
               </button>
             </div>
 
-            <div class="feature-card card-news">
+            <div class="feature-card card-news" @click="toggleNewsDetail">
               <div class="card-content">
                 <h3 class="card-title">热文追踪，来个博世</h3>
                 <p class="card-subtitle">博世新闻事件</p>
+              </div>
+              <button class="card-button">
+                查看详情
+                <img src="../assets/images/click.png" alt="" class="card-click-icon" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Page Expanded News Card -->
+        <div v-if="showNewsDetail" class="full-page-expanded">
+          <div class="expanded-card card-news-expanded">
+            <div class="expanded-header">
+              <h2 class="expanded-title">热文追踪，来个博世</h2>
+              <div class="header-right">
+                <img src="../assets/images/zhedie-logo-3.png" alt="BOSCH" class="bosch-logo" />
+                <button class="collapse-button" @click="toggleNewsDetail">
+                  <span>收回</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
+                    <path d="M4 6L8 10L12 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- News Content Section -->
+            <div class="news-content-wrapper">
+              <!-- News Carousel -->
+              <div class="news-carousel">
+                <transition name="slide-fade" mode="out-in">
+                  <div class="news-slide" :key="currentNewsSlide">
+                    <div class="news-image-container">
+                      <img :src="newsSlides[currentNewsSlide].image" :alt="newsSlides[currentNewsSlide].title" class="news-image" />
+                    </div>
+                    <div class="news-info">
+                      <div class="news-meta">
+                        <span class="news-category">{{ newsSlides[currentNewsSlide].category }}</span>
+                        <span class="news-date">{{ newsSlides[currentNewsSlide].date }}</span>
+                      </div>
+                      <h3 class="news-title">{{ newsSlides[currentNewsSlide].title }}</h3>
+                      <p class="news-description" v-if="newsSlides[currentNewsSlide].content">{{ newsSlides[currentNewsSlide].content }}</p>
+                      <button class="read-more-btn" @click="readNewsDetail(currentNewsSlide)">
+                        了解详情
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                          <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </transition>
+
+                <!-- Carousel Dots -->
+                <div class="news-carousel-dots">
+                  <span
+                    v-for="(slide, index) in newsSlides"
+                    :key="index"
+                    :class="['dot', { active: currentNewsSlide === index }]"
+                    @click="currentNewsSlide = index"
+                  ></span>
+                </div>
+              </div>
+
+              <!-- More News Button -->
+              <div class="more-news-section">
+                <button class="more-news-btn" @click="viewMoreNews">
+                  查看更多新闻
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other feature cards shown below expanded view -->
+          <div class="other-cards">
+            <div class="feature-card card-explore" @click="toggleExploreDetail">
+              <div class="card-content">
+                <h3 class="card-title">全景探索，来个博世</h3>
+                <p class="card-subtitle">博世全景 了解博士</p>
+              </div>
+              <button class="card-button">
+                查看详情
+                <img src="../assets/images/click.png" alt="" class="card-click-icon" />
+              </button>
+            </div>
+
+            <div class="feature-card card-gravity" @click="toggleGravityDetail">
+              <div class="card-content">
+                <h3 class="card-title">引力解码，来个博世</h3>
+                <p class="card-subtitle">博世引力场 雇主价值主张</p>
               </div>
               <button class="card-button">
                 查看详情
@@ -374,9 +462,43 @@ const router = useRouter()
 const currentSlide = ref(0)
 const showExploreDetail = ref(false)
 const showGravityDetail = ref(false)
+const showNewsDetail = ref(false)
 const gravitySlide = ref(0)
 const scrollPosition1 = ref(0)
 const scrollPosition2 = ref(0)
+const currentNewsSlide = ref(0)
+const newsSlides = ref([
+  {
+    image: '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._0.png',
+    category: '企业荣誉',
+    date: '2025-09-28',
+    title: '2025福布斯中国最佳雇主，我们上榜啦！',
+    content: '博世荣获福布斯2025「中国年度最佳雇主」及「年度最佳ESG实践雇主」',
+    detailImages: [
+      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._1.png',
+      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._2.png',
+      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._3.png'
+    ]
+  },
+  {
+    image: '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._0.png',
+    category: '技术创新',
+    date: '2025-09-25',
+    title: '博世投入25亿欧元发力AI，事关你我未来生活',
+    content: '博世投入25亿欧元发力AI，1500+欧洲专利加持，改变你我生活！',
+    detailImages: [
+      '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._1.png',
+      '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._2.png'
+    ]
+  },
+  {
+    image: '/src/assets/images/bosch-cn-headquarter_res_1600x900.webp',
+    category: '可持续发展',
+    date: '2025-09-20',
+    title: '博世中国区实现碳中和目标，引领行业绿色转型',
+    content: '博世在中国的所有工厂已全面实现碳中和，成为行业绿色转型的典范'
+  }
+])
 const scrollItemsRow1 = ref([
   { title: '居家办公', logo: '/src/assets/images/100-reasons/logo1.png' },
   { title: '博世内部福利', logo: '/src/assets/images/100-reasons/logo2.png' },
@@ -427,6 +549,7 @@ const toggleExploreDetail = () => {
   showExploreDetail.value = !showExploreDetail.value
   if (showExploreDetail.value) {
     showGravityDetail.value = false
+    showNewsDetail.value = false
   }
 }
 
@@ -435,7 +558,27 @@ const toggleGravityDetail = () => {
   showGravityDetail.value = !showGravityDetail.value
   if (showGravityDetail.value) {
     showExploreDetail.value = false
+    showNewsDetail.value = false
   }
+}
+
+// Toggle news detail
+const toggleNewsDetail = () => {
+  showNewsDetail.value = !showNewsDetail.value
+  if (showNewsDetail.value) {
+    showExploreDetail.value = false
+    showGravityDetail.value = false
+  }
+}
+
+// Read news detail
+const readNewsDetail = (index) => {
+  router.push(`/news-detail/${index}`)
+}
+
+// View more news
+const viewMoreNews = () => {
+  router.push('/news-list')
 }
 
 // Gravity carousel navigation
@@ -450,6 +593,11 @@ const prevGravitySlide = () => {
 // Navigate to PDF viewer page
 const navigateToPdfViewer = () => {
   router.push('/pdf-viewer')
+}
+
+// Navigate to video series page
+const navigateToVideoSeries = () => {
+  router.push('/video-series')
 }
 
 // Auto-scroll animation
@@ -478,6 +626,10 @@ const startAutoScroll = () => {
 onMounted(() => {
   intervalId = setInterval(nextSlide, 5000)
   startAutoScroll()
+  // Auto-play news carousel
+  setInterval(() => {
+    currentNewsSlide.value = (currentNewsSlide.value + 1) % newsSlides.value.length
+  }, 4000)
 })
 
 onUnmounted(() => {
@@ -1149,6 +1301,186 @@ onUnmounted(() => {
   padding: 12px;
 }
 
+/* News Expanded Card Styles */
+.card-news-expanded {
+  background: linear-gradient(135deg, #5AA397 0%, #8BCFC5 100%);
+}
+
+.news-content-wrapper {
+  padding: 20px;
+}
+
+.news-carousel {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.news-slide {
+  position: relative;
+}
+
+.news-image-container {
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.news-category {
+  background: #F0F5F4;
+  color: #5AA397;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.news-date {
+  color: #999;
+  font-size: 12px;
+}
+
+.news-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.read-more-btn {
+  background: transparent;
+  border: 1px solid #5AA397;
+  color: #5AA397;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+  margin-top: auto;
+}
+
+.read-more-btn:hover {
+  background: #5AA397;
+  color: white;
+}
+
+.read-more-btn svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+}
+
+.news-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: white;
+}
+
+.more-news-section {
+  text-align: center;
+}
+
+.more-news-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 24px;
+  padding: 14px 32px;
+  color: #5AA397;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.more-news-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments for news module */
+@media (min-width: 768px) {
+  .news-image-container {
+    height: 280px;
+  }
+
+  .news-title {
+    font-size: 20px;
+  }
+
+  .news-info {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .news-content-wrapper {
+    padding: 30px;
+  }
+
+  .news-image-container {
+    height: 320px;
+  }
+
+  .news-title {
+    font-size: 22px;
+    -webkit-line-clamp: 3;
+  }
+
+  .news-carousel {
+    margin-bottom: 30px;
+  }
+
+  .more-news-btn {
+    max-width: 400px;
+  }
+}
 
 /* Bottom Navigation (Mobile) */
 .bottom-nav {

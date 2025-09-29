@@ -22,20 +22,21 @@
     <header class="header">
       <div class="spacer"></div> <!-- 为logo留出空间 -->
       <div class="rainbow-strip"></div>
-      <div class="header-content">
-        <button class="back-button" @click="goBack">
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Bosch Headquarter Banner with Back Button -->
+      <div class="headquarter-banner">
+        <img src="../assets/images/bosch-cn-headquarter_res_1600x900.webp" alt="博世中国总部" class="headquarter-image" />
+        <button class="back-button-overlay" @click="goBack">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
           </svg>
           <span>返回</span>
         </button>
-        <h1 class="page-title">博世系列视频</h1>
-        <div class="header-spacer"></div>
       </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
       <!-- Hero Video Section -->
       <div class="hero-section">
         <div class="hero-video-container">
@@ -55,18 +56,10 @@
             </svg>
           </div>
         </div>
-
-        <div class="hero-info">
-          <div class="hero-tags">
-            <span class="tag">Why Bosch ?</span>
-            <span class="subtitle">你的工作可以多有意义</span>
-            <span class="subtitle">过往视频汇总</span>
-          </div>
-        </div>
       </div>
 
       <!-- Video List Section -->
-      <div class="video-list">
+      <!-- <div class="video-list">
         <div
           v-for="video in videoList"
           :key="video.id"
@@ -93,7 +86,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </main>
 
     <!-- Bottom Navigation (only shown on mobile) -->
@@ -146,9 +139,9 @@ const isPlaying = ref(false)
 
 // 主视频数据
 const heroVideoData = ref({
-  src: '/videos/bosch-intro.mp4',
+  src: '/src/assets/file/whybosch.mp4',
   poster: '/src/assets/images/video-poster.jpg',
-  title: '博世系列视频'
+  title: 'Why Bosch'
 })
 
 // 视频列表数据
@@ -206,6 +199,33 @@ const goHome = () => {
 </script>
 
 <style scoped>
+/* Header */
+.header {
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.spacer {
+  height: 60px;
+}
+
+.rainbow-strip {
+  height: 4px;
+  background: linear-gradient(90deg,
+    #E60012 0%,
+    #F39800 14.28%,
+    #FFF100 28.57%,
+    #8FC31F 42.86%,
+    #00A0E9 57.14%,
+    #0068B7 71.43%,
+    #920783 85.71%,
+    #E4007F 100%
+  );
+  width: 100%;
+}
+
 .container {
   width: 100%;
   min-height: 100vh;
@@ -244,43 +264,35 @@ const goHome = () => {
   align-items: center;
 }
 
-/* Header */
-.header {
-  background: white;
-  position: sticky;
-  top: 0;
-  z-index: 50;
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding-bottom: 90px;
+  padding-top: 0;
 }
 
-.spacer {
-  height: 60px;
-}
-
-.rainbow-strip {
-  height: 4px;
-  background: linear-gradient(90deg,
-    #E60012 0%,
-    #F39800 14.28%,
-    #FFF100 28.57%,
-    #8FC31F 42.86%,
-    #00A0E9 57.14%,
-    #0068B7 71.43%,
-    #920783 85.71%,
-    #E4007F 100%
-  );
+/* Headquarter Banner */
+.headquarter-banner {
   width: 100%;
+  margin-bottom: 16px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.header-content {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  background: white;
+.headquarter-image {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.back-button {
+/* Back Button Overlay */
+.back-button-overlay {
+  position: absolute;
+  top: 16px;
+  left: 16px;
   background: transparent;
   border: none;
   padding: 8px 12px;
@@ -292,28 +304,12 @@ const goHome = () => {
   gap: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
+  z-index: 10;
 }
 
-.back-button:hover {
-  background: #f5f5f5;
+.back-button-overlay:hover {
+  background: rgba(245, 245, 245, 0.9);
   border-radius: 8px;
-}
-
-.page-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin: 0;
-}
-
-.header-spacer {
-  width: 80px;
-}
-
-/* Main Content */
-.main-content {
-  flex: 1;
-  padding-bottom: 90px;
 }
 
 /* Hero Section */
@@ -354,32 +350,6 @@ const goHome = () => {
 
 .video-overlay:hover .play-icon {
   transform: scale(1.1);
-}
-
-.hero-info {
-  padding: 16px;
-}
-
-.hero-tags {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  display: inline-block;
-  padding: 4px 12px;
-  background: #007BC0;
-  color: white;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.subtitle {
-  color: #666;
-  font-size: 14px;
 }
 
 /* Video List */
@@ -472,6 +442,7 @@ const goHome = () => {
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -553,13 +524,5 @@ const goHome = () => {
     padding: 0 24px;
   }
 
-  .header-content {
-    height: 80px;
-    padding: 0 40px;
-  }
-
-  .page-title {
-    font-size: 22px;
-  }
 }
 </style>

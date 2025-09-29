@@ -4,6 +4,8 @@ import HomePage from '../views/HomePage.vue'
 import ExplorePage from '../views/ExplorePage.vue'
 import PdfViewerPage from '../views/PdfViewerPage.vue'
 import VideoSeriesPage from '../views/VideoSeriesPage.vue'
+import NewsListPage from '../views/NewsListPage.vue'
+import NewsDetailPage from '../views/NewsDetailPage.vue'
 
 const routes = [
   {
@@ -35,6 +37,18 @@ const routes = [
     name: 'VideoSeries',
     component: VideoSeriesPage,
     meta: { title: '博世系列视频 - BOSCH 招聘' }
+  },
+  {
+    path: '/news-list',
+    name: 'NewsList',
+    component: NewsListPage,
+    meta: { title: '热文追踪 - BOSCH 招聘' }
+  },
+  {
+    path: '/news-detail/:id',
+    name: 'NewsDetail',
+    component: NewsDetailPage,
+    meta: { title: '新闻详情 - BOSCH 招聘' }
   }
 ]
 
