@@ -424,6 +424,32 @@
         </div>
         <span class="nav-label">首页</span>
       </button>
+
+      <button class="nav-item" @click="navigateToEvents">
+        <div class="nav-icon-wrapper">
+          <svg class="nav-icon" width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
+            <rect x="4" y="6" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="7" y="3" width="3" height="6" rx="1" fill="currentColor"/>
+            <rect x="18" y="3" width="3" height="6" rx="1" fill="currentColor"/>
+            <line x1="8" y1="11" x2="20" y2="11" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="8" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="8" y1="19" x2="16" y2="19" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="nav-label">博世活动</span>
+      </button>
+
+      <button class="nav-item">
+        <div class="nav-icon-wrapper">
+          <svg class="nav-icon" width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
+            <rect x="5" y="8" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 8V6a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="14" cy="15" r="2" fill="currentColor"/>
+            <path d="M14 17v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="nav-label">职速博世</span>
+      </button>
     </nav>
   </div>
 </template>
@@ -572,6 +598,11 @@ const navigateToPdfViewer = () => {
 // Navigate to video series page
 const navigateToVideoSeries = () => {
   router.push('/video-series')
+}
+
+// Navigate to events page
+const navigateToEvents = () => {
+  router.push('/events')
 }
 
 // Auto-scroll animation

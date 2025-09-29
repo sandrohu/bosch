@@ -18,15 +18,10 @@
       </div>
     </div>
 
-    <!-- Header -->
+    <!-- Header with Rainbow Strip -->
     <header class="header">
-      <div class="header-content">
-        <div class="title-section">
-          <h1 class="page-title">博世活动</h1>
-          <img src="../assets/images/logo.png" alt="BOSCH" class="bosch-logo" />
-        </div>
-        <div class="rainbow-strip"></div>
-      </div>
+      <div class="spacer"></div> <!-- 为logo留出空间 -->
+      <div class="rainbow-strip"></div>
     </header>
 
     <!-- Main Content -->
@@ -204,46 +199,35 @@ export default {
 /* Header */
 .header {
   background: white;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.title-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.page-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #333;
-  margin: 0;
-}
-
-.bosch-logo {
-  height: 30px;
-  width: auto;
+.spacer {
+  height: 60px; /* 为logo留出空间 */
 }
 
 .rainbow-strip {
   height: 4px;
-  background: linear-gradient(to right, #8B1538, #DA291C, #F27E00, #FFCD00, #6EBE44, #0077C0, #333F95);
-  border-radius: 2px;
+  background: linear-gradient(90deg,
+    #E60012 0%,
+    #F39800 14.28%,
+    #FFF100 28.57%,
+    #8FC31F 42.86%,
+    #00A0E9 57.14%,
+    #0068B7 71.43%,
+    #920783 85.71%,
+    #E4007F 100%
+  );
+  margin: 0;
+  width: 100%;
 }
 
 /* Main Content */
 .main-content {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  padding-bottom: 80px;
+  padding: 16px;
+  padding-bottom: 90px; /* 73px + some margin */
 }
 
 /* Recommendation Section */
@@ -534,15 +518,17 @@ export default {
   }
 
   .header {
-    padding: 30px 40px;
+    position: sticky;
+    top: 0;
   }
 
-  .page-title {
-    font-size: 32px;
+  .spacer {
+    height: 80px; /* 桌面端为logo留更多空间 */
   }
 
   .main-content {
     max-width: 1200px;
+    margin: 0 auto;
     padding: 40px;
   }
 
