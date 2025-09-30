@@ -23,7 +23,7 @@
             <div class="hero-content">
               <div class="hero-info">
                 <h3 class="hero-title">博士生论坛</h3>
-                <p class="hero-date">07-07-2025</p>
+                <p class="hero-date">07-09-2025</p>
               </div>
               <a href="#" class="view-details-link">查看详情 →</a>
             </div>
