@@ -49,36 +49,47 @@
         </div>
       </div>
 
-      <!-- Hero Video Section -->
-      <div class="hero-section">
-        <!-- Why Bosch 视频 -->
-        <div v-show="activeTab === 'why'" class="hero-video-container">
-          <video
-            controls
-            class="hero-video"
-            preload="metadata"
-            controlsList="nodownload"
-          >
-            <source src="/videos/whybosch.mp4" type="video/mp4">
-            <p>您的浏览器不支持HTML5视频。</p>
-          </video>
+      <!-- Video Cards Section -->
+      <div class="video-section">
+        <!-- Why Bosch 视频列表 -->
+        <div v-show="activeTab === 'why'" class="video-list">
+          <div class="video-card">
+            <div class="video-player-wrapper">
+              <video
+                controls
+                class="video-player"
+                preload="metadata"
+                controlsList="nodownload"
+              >
+                <source src="/videos/whybosch.mp4" type="video/mp4">
+                <p>您的浏览器不支持HTML5视频。</p>
+              </video>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">Why Bosch</h3>
+              <p class="video-description">
+                来个博世、没有难事，与博世来一场关于未来的邂逅"
+              </p>
+              <div class="video-meta">
+                <span class="video-date">时间：2025/06/12 09:00-17:00</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- 你的工作可以多有意义 视频 -->
-        <div v-show="activeTab === 'meaning'" class="hero-video-container">
-          <video
-            controls
-            class="hero-video"
-            preload="metadata"
-            controlsList="nodownload"
-          >
-            <source src="/videos/whybosch.mp4" type="video/mp4">
-            <p>您的浏览器不支持HTML5视频。</p>
-          </video>
-              <div class="video-info-overlay">
-                <span class="video-count">89次播放</span>
-                <span class="video-duration">00:16</span>
-              </div>
+        <!-- 你的工作可以多有意义 视频列表 -->
+        <div v-show="activeTab === 'meaning'" class="video-list">
+          <div class="video-card">
+            <div class="video-player-wrapper">
+              <video
+                controls
+                class="video-player"
+                preload="metadata"
+                controlsList="nodownload"
+              >
+                <source src="/videos/whybosch.mp4" type="video/mp4">
+                <p>您的浏览器不支持HTML5视频。</p>
+              </video>
             </div>
             <div class="video-info">
               <h3 class="video-title">博世创新与可持续发展</h3>
@@ -92,17 +103,54 @@
           </div>
         </div>
 
-        <!-- 过往视频汇总 -->
-        <div v-show="activeTab === 'history'" class="hero-video-container">
-          <video
-            controls
-            class="hero-video"
-            preload="metadata"
-            controlsList="nodownload"
-          >
-            <source src="/videos/whybosch.mp4" type="video/mp4">
-            <p>您的浏览器不支持HTML5视频。</p>
-          </video>
+        <!-- 过往视频汇总 列表 -->
+        <div v-show="activeTab === 'history'" class="video-list">
+          <div class="video-card">
+            <div class="video-player-wrapper">
+              <video
+                controls
+                class="video-player"
+                preload="metadata"
+                controlsList="nodownload"
+              >
+                <source src="/videos/whybosch.mp4" type="video/mp4">
+                <p>您的浏览器不支持HTML5视频。</p>
+              </video>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">2024年度回顾：博世在中国</h3>
+              <p class="video-description">
+                回顾博世在过去一年中的重要里程碑，展望未来发展方向，见证科技成就生活之美...
+              </p>
+              <div class="video-meta">
+                <span class="video-date">时间：2024/12/28 10:00-12:00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 可以添加第二个视频卡片 -->
+          <div class="video-card">
+            <div class="video-player-wrapper">
+              <video
+                controls
+                class="video-player"
+                preload="metadata"
+                controlsList="nodownload"
+              >
+                <source src="/videos/whybosch.mp4" type="video/mp4">
+                <p>您的浏览器不支持HTML5视频。</p>
+              </video>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">博世智能制造峰会精彩回顾</h3>
+              <p class="video-description">
+                汇聚行业精英，共同探讨智能制造的未来趋势，分享博世在工业4.0领域的创新实践...
+              </p>
+              <div class="video-meta">
+                <span class="video-date">时间：2024/10/15 09:00-18:00</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
@@ -189,7 +237,7 @@ const goHome = () => {
 }
 
 .spacer {
-  height: 45px;
+  height: 60px; /* 统一为logo留出空间，与首页保持一致 */
 }
 
 .rainbow-strip {
@@ -309,12 +357,109 @@ const goHome = () => {
   border-radius: 2px 2px 0 0;
 }
 
-/* Hero Section */
-.hero-section {
-  background: white;
-  margin-bottom: 16px;
+/* Video Section */
+.video-section {
+  background: transparent;
+  padding: 16px;
   margin-top: 0;
-  border-radius: 0 0 16px 16px;
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Video Card */
+.video-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Video Player Wrapper */
+.video-player-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  overflow: hidden;
+}
+
+.video-player {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Video Info Overlay (播放次数和时长) */
+.video-info-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.video-count,
+.video-duration {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Video Info Section */
+.video-info {
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+.video-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.video-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.video-date {
+  font-size: 13px;
+  color: #999;
+  display: flex;
+  align-items: center;
 }
 
 /* 视频标题叠加层 */
@@ -336,19 +481,6 @@ const goHome = () => {
   height: auto;
   display: block;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-}
-
-.hero-video-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: #000;
-}
-
-.hero-video {
-  width: 100%;
-  height: 100%;
-  border: none;
 }
 
 /* Bottom Navigation (Mobile) */
@@ -441,10 +573,33 @@ const goHome = () => {
     font-size: 17px;
   }
 
-  .hero-section {
-    border-radius: 0 0 12px 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  .video-section {
+    padding: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .video-list {
+    gap: 20px;
+  }
+
+  .video-card {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+  }
+
+  .video-player-wrapper {
+    flex: 0 0 50%;
+  }
+
+  .video-info {
+    flex: 1;
+    padding: 24px;
+  }
+
+  .video-title {
+    font-size: 20px;
   }
 
   .video-title-overlay {
@@ -491,9 +646,44 @@ const goHome = () => {
     font-size: 18px;
   }
 
-  .hero-section {
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  .video-section {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .video-list {
+    gap: 24px;
+  }
+
+  .video-card {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+  }
+
+  .video-player-wrapper {
+    flex: 0 0 45%;
+  }
+
+  .video-info {
+    flex: 1;
+    padding: 30px;
+  }
+
+  .video-title {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .video-description {
+    font-size: 15px;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  .video-date {
+    font-size: 14px;
   }
 
   .video-title-overlay {

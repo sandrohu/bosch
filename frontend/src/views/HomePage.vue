@@ -130,7 +130,7 @@
 
           <!-- Other feature cards shown below expanded view -->
           <div class="other-cards">
-            <div class="feature-card card-gravity">
+            <div class="feature-card card-gravity" @click="toggleGravityDetail">
               <div class="card-content">
                 <h3 class="card-title">引力解码，来个博世</h3>
                 <p class="card-subtitle">博世引力场 雇主价值主张</p>
@@ -141,7 +141,7 @@
               </button>
             </div>
 
-            <div class="feature-card card-news">
+            <div class="feature-card card-news" @click="toggleNewsDetail">
               <div class="card-content">
                 <h3 class="card-title">热文追踪，来个博世</h3>
                 <p class="card-subtitle">博世新闻事件</p>
@@ -285,7 +285,7 @@
 
           <!-- Other feature cards shown below expanded view -->
           <div class="other-cards">
-            <div class="feature-card card-explore">
+            <div class="feature-card card-explore" @click="toggleExploreDetail">
               <div class="card-content">
                 <h3 class="card-title">全景探索，来个博世</h3>
                 <p class="card-subtitle">博世全景 了解博士</p>
