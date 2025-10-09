@@ -75,6 +75,21 @@
             <source src="/videos/whybosch.mp4" type="video/mp4">
             <p>您的浏览器不支持HTML5视频。</p>
           </video>
+              <div class="video-info-overlay">
+                <span class="video-count">89次播放</span>
+                <span class="video-duration">00:16</span>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">博世创新与可持续发展</h3>
+              <p class="video-description">
+                探索博世如何通过创新技术改变世界，让每一份工作都充满意义，创造可持续的未来...
+              </p>
+              <div class="video-meta">
+                <span class="video-date">时间：2025/05/20 14:00-16:00</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- 过往视频汇总 -->
