@@ -401,35 +401,24 @@
     <nav class="bottom-nav mobile-only">
       <button class="nav-item active">
         <div class="nav-icon-wrapper">
-          <svg class="nav-icon" width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
-            <path d="M11.5 23v-7h5v7h6.25v-9.5H26L14 2.5 2 13.5h3.25v9.5z"/>
-          </svg>
+          <img src="../assets/images/daohang-1-click.png" alt="首页" class="nav-icon-active" />
+          <img src="../assets/images/daohang-1.png" alt="首页" class="nav-icon-default" />
         </div>
         <span class="nav-label">首页</span>
       </button>
 
       <button class="nav-item" @click="navigateToEvents">
         <div class="nav-icon-wrapper">
-          <svg class="nav-icon" width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
-            <rect x="4" y="6" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <rect x="7" y="3" width="3" height="6" rx="1" fill="currentColor"/>
-            <rect x="18" y="3" width="3" height="6" rx="1" fill="currentColor"/>
-            <line x1="8" y1="11" x2="20" y2="11" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="8" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="8" y1="19" x2="16" y2="19" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
+          <img src="../assets/images/daohang-2-click.png" alt="博世活动" class="nav-icon-active" />
+          <img src="../assets/images/daohang-2.png" alt="博世活动" class="nav-icon-default" />
         </div>
         <span class="nav-label">博世活动</span>
       </button>
 
       <button class="nav-item" @click="navigateToCareers">
         <div class="nav-icon-wrapper">
-          <svg class="nav-icon" width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
-            <rect x="5" y="8" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M9 8V6a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <circle cx="14" cy="15" r="2" fill="currentColor"/>
-            <path d="M14 17v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+          <img src="../assets/images/daohang-3-click.png" alt="职通博世" class="nav-icon-active" />
+          <img src="../assets/images/daohang-3.png" alt="职通博世" class="nav-icon-default" />
         </div>
         <span class="nav-label">职通博世</span>
       </button>
@@ -1501,13 +1490,35 @@ onUnmounted(() => {
   justify-content: center;
   width: 32px;
   height: 32px;
+  position: relative;
 }
 
-.nav-icon {
+.nav-icon-default,
+.nav-icon-active {
   width: 28px;
   height: 28px;
-  color: #B0B0B0;
-  transition: color 0.2s ease;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+}
+
+.nav-icon-active {
+  opacity: 0;
+}
+
+.nav-icon-default {
+  opacity: 1;
+}
+
+.nav-item.active .nav-icon-active {
+  opacity: 1;
+}
+
+.nav-item.active .nav-icon-default {
+  opacity: 0;
 }
 
 .nav-label {
@@ -1516,10 +1527,6 @@ onUnmounted(() => {
   transition: color 0.2s ease;
   margin-top: 2px;
   font-weight: 400;
-}
-
-.nav-item.active .nav-icon {
-  color: #4A90E2;
 }
 
 .nav-item.active .nav-label {

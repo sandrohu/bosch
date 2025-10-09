@@ -100,29 +100,24 @@
       <!-- Bottom Navigation -->
       <nav class="bottom-nav">
         <a href="/" class="nav-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke-width="2"/>
-          </svg>
+          <div class="nav-icon-wrapper">
+            <img src="../assets/images/daohang-1-click.png" alt="首页" class="nav-icon-active" />
+            <img src="../assets/images/daohang-1.png" alt="首页" class="nav-icon-default" />
+          </div>
           <span>首页</span>
         </a>
         <a href="/events" class="nav-item active">
           <div class="nav-icon-wrapper">
-            <svg class="nav-icon" width="24" height="24" viewBox="0 0 28 28" fill="currentColor">
-              <rect x="4" y="6" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-              <rect x="7" y="3" width="3" height="6" rx="1" fill="currentColor"/>
-              <rect x="18" y="3" width="3" height="6" rx="1" fill="currentColor"/>
-              <line x1="8" y1="11" x2="20" y2="11" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="8" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="8" y1="19" x2="16" y2="19" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
+            <img src="../assets/images/daohang-2-click.png" alt="博世活动" class="nav-icon-active" />
+            <img src="../assets/images/daohang-2.png" alt="博世活动" class="nav-icon-default" />
           </div>
           <span>博世活动</span>
         </a>
         <a href="/careers" class="nav-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" stroke-width="2"/>
-            <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" stroke-width="2"/>
-          </svg>
+          <div class="nav-icon-wrapper">
+            <img src="../assets/images/daohang-3-click.png" alt="职通博世" class="nav-icon-active" />
+            <img src="../assets/images/daohang-3.png" alt="职通博世" class="nav-icon-default" />
+          </div>
           <span>职通博世</span>
         </a>
       </nav>
@@ -453,26 +448,33 @@ export default {
   border-radius: 0 0 2px 2px;
 }
 
-.nav-item svg {
-  width: 28px;
-  height: 28px;
-  color: #B0B0B0;
-  transition: color 0.2s ease;
-}
-
 .nav-icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
+  position: relative;
 }
 
-.nav-icon {
+.nav-icon-default,
+.nav-icon-active {
   width: 28px;
   height: 28px;
-  color: #B0B0B0;
-  transition: color 0.2s ease;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+}
+
+.nav-icon-active {
+  opacity: 0;
+}
+
+.nav-icon-default {
+  opacity: 1;
 }
 
 .nav-item span {
@@ -483,9 +485,12 @@ export default {
   font-weight: 400;
 }
 
-.nav-item.active svg,
-.nav-item.active .nav-icon {
-  color: #4A90E2;
+.nav-item.active .nav-icon-active {
+  opacity: 1;
+}
+
+.nav-item.active .nav-icon-default {
+  opacity: 0;
 }
 
 .nav-item.active span {
