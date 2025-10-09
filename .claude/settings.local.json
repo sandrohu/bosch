@@ -51,7 +51,9 @@
       "Bash(git commit -m \"添加服务器部署脚本和文档，解决git冲突问题\")",
       "Bash(git add nginx-simple.conf deploy-simple.sh QUICK-DEPLOY.md)",
       "Bash(git commit -m \"添加简化部署方案：支持直接IP访问，无需域名配置\")",
-      "Bash(git commit -m \"修复轮播图路径问题：将开发路径改为正确的导入方式\n\n- 修改HomePage.vue和CareersPage.vue中的轮播图路径\n- 从''/src/assets/images/''路径改为使用import导入\n- 解决生产环境中图片404错误\")"
+      "Bash(git commit -m \"修复轮播图路径问题：将开发路径改为正确的导入方式\n\n- 修改HomePage.vue和CareersPage.vue中的轮播图路径\n- 从''/src/assets/images/''路径改为使用import导入\n- 解决生产环境中图片404错误\")",
+      "Bash(npm run build)",
+      "Bash(git commit -m \"修复所有图片路径问题，优化彩虹线显示\n\n- 修复轮播图使用import导入替代开发路径\n- 修复ExplorePage.vue中不存在的campus图片\n- 所有页面的彩虹线改用rainbow.png图片\n- 确保生产环境图片正常加载\")"
     ],
     "deny": [],
     "ask": []

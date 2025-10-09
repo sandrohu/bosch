@@ -4,7 +4,7 @@
     <!-- Header with Rainbow Strip -->
     <header class="header">
       <div class="spacer"></div> <!-- 为logo留出空间 -->
-      <div class="rainbow-strip"></div>
+      <img src="../assets/images/rainbow.png" alt="Rainbow strip" class="rainbow-strip" />
     </header>
 
     <!-- Main Content -->
@@ -673,18 +673,10 @@ onUnmounted(() => {
 
 .rainbow-strip {
   height: 4px;
-  background: linear-gradient(90deg,
-    #E60012 0%,
-    #F39800 14.28%,
-    #FFF100 28.57%,
-    #8FC31F 42.86%,
-    #00A0E9 57.14%,
-    #0068B7 71.43%,
-    #920783 85.71%,
-    #E4007F 100%
-  );
   margin: 0;
   width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* 移除桌面导航相关样式，因为不再需要 */
