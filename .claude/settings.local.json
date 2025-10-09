@@ -50,7 +50,8 @@
       "Bash(git add deploy-server.sh SERVER-DEPLOYMENT.md)",
       "Bash(git commit -m \"添加服务器部署脚本和文档，解决git冲突问题\")",
       "Bash(git add nginx-simple.conf deploy-simple.sh QUICK-DEPLOY.md)",
-      "Bash(git commit -m \"添加简化部署方案：支持直接IP访问，无需域名配置\")"
+      "Bash(git commit -m \"添加简化部署方案：支持直接IP访问，无需域名配置\")",
+      "Bash(git commit -m \"修复轮播图路径问题：将开发路径改为正确的导入方式\n\n- 修改HomePage.vue和CareersPage.vue中的轮播图路径\n- 从''/src/assets/images/''路径改为使用import导入\n- 解决生产环境中图片404错误\")"
     ],
     "deny": [],
     "ask": []

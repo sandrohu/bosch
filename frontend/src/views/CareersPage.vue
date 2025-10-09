@@ -147,18 +147,23 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const currentSlide = ref(0)
 
+// 导入轮播图图片
+import lunbo1 from '../assets/images/lunbo1.jpg'
+import lunbo2 from '../assets/images/lunbo2.jpg'
+import lunbo3 from '../assets/images/lunbo3.jpg'
+
 // 轮播图数据 - 使用与首页相同的图片
 const slides = ref([
   {
-    image: '/src/assets/images/lunbo1.jpg',
+    image: lunbo1,
     alt: 'BOSCH 招聘 - 科技成就生活之美'
   },
   {
-    image: '/src/assets/images/lunbo2.jpg',
+    image: lunbo2,
     alt: 'BOSCH 招聘 - 创新引领未来'
   },
   {
-    image: '/src/assets/images/lunbo3.jpg',
+    image: lunbo3,
     alt: 'BOSCH 招聘 - 加入我们'
   }
 ])

@@ -498,17 +498,22 @@ const scrollItemsRow2 = ref([
   { title: '弹性工作', logo: '/src/assets/images/100-reasons/logo2.png' },
   { title: '创新文化', logo: '/src/assets/images/100-reasons/logo3.png' }
 ])
+// 导入轮播图图片
+import lunbo1 from '../assets/images/lunbo1.jpg'
+import lunbo2 from '../assets/images/lunbo2.jpg'
+import lunbo3 from '../assets/images/lunbo3.jpg'
+
 const slides = ref([
   {
-    image: '/src/assets/images/lunbo1.jpg',
+    image: lunbo1,
     alt: 'BOSCH 招聘 - 科技成就生活之美'
   },
   {
-    image: '/src/assets/images/lunbo2.jpg',
+    image: lunbo2,
     alt: 'BOSCH 招聘 - 创新引领未来'
   },
   {
-    image: '/src/assets/images/lunbo3.jpg',
+    image: lunbo3,
     alt: 'BOSCH 招聘 - 加入我们'
   }
 ])
