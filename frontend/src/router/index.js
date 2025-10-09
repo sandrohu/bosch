@@ -8,6 +8,7 @@ import NewsListPage from '../views/NewsListPage.vue'
 import NewsDetailPage from '../views/NewsDetailPage.vue'
 import EventsPage from '../views/EventsPage.vue'
 import CareersPage from '../views/CareersPage.vue'
+import ReasonsDetailPage from '../views/ReasonsDetailPage.vue'
 
 const routes = [
   {
@@ -63,6 +64,12 @@ const routes = [
     name: 'Careers',
     component: CareersPage,
     meta: { title: '职通博世 - BOSCH 招聘' }
+  },
+  {
+    path: '/reasons-detail',
+    name: 'ReasonsDetail',
+    component: ReasonsDetailPage,
+    meta: { title: '爱上博世的100个理由 - BOSCH 招聘' }
   }
 ]
 

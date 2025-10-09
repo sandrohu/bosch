@@ -4,25 +4,7 @@
     <div class="background-image"></div>
 
     <!-- Rainbow Divider Line -->
-    <div class="rainbow-divider"></div>
-
-    <!-- Mobile Status Bar -->
-    <div class="status-bar mobile-only">
-      <span class="time">9:41</span>
-      <div class="status-icons">
-        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0H0V1H1V0Z" fill="white"/>
-        </svg>
-        <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
-          <path d="M0 0H15V11H0V0Z" fill="white" fill-opacity="0.8"/>
-        </svg>
-        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
-          <rect opacity="0.35" x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="white"/>
-          <path opacity="0.4" d="M22 4V8C22.8 7.66 23.5 6.5 23.5 6C23.5 5.5 22.8 4.34 22 4Z" fill="white"/>
-          <rect x="2" y="2" width="18" height="8" rx="1" fill="white"/>
-        </svg>
-      </div>
-    </div>
+    <img src="../assets/images/rainbow.png" alt="Rainbow strip" class="rainbow-strip" />
 
     <!-- Logo positioned same as other pages -->
     <div class="splash-logo">
@@ -103,38 +85,10 @@ onMounted(() => {
   z-index: 2;
 }
 
-/* Mobile Status Bar */
-.mobile-only {
-  display: block;
-}
-
-.status-bar {
-  height: 44px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 21px;
-  position: relative;
-  z-index: 10;
-}
-
-.time {
-  font-size: 15px;
-  font-weight: 600;
-  color: white;
-  letter-spacing: -0.3px;
-}
-
-.status-icons {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
 /* Splash Logo - same position as GlobalLogo */
 .splash-logo {
   position: fixed;
-  top: 3.25rem;  /* 状态栏高度 + 一些间距 */
+  top: 1.5rem;  /* 直接从顶部开始，不需要考虑状态栏 */
   left: 1rem;
   width: 7.25rem;  /* 116px */
   height: 1.63rem; /* 26px */
@@ -177,24 +131,17 @@ onMounted(() => {
   letter-spacing: 1px;
 }
 
-/* Rainbow Divider Line */
-.rainbow-divider {
+/* Rainbow Strip - same as other pages */
+.rainbow-strip {
   position: absolute;
   /* 背景图高度是42.94rem，精确定位在背景图底部 */
   top: calc(42.94rem - 4px);  /* 减去线条本身的高度 */
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg,
-    #E60012 0%,
-    #F39800 14.28%,
-    #FFF100 28.57%,
-    #8FC31F 42.86%,
-    #00A0E9 57.14%,
-    #0068B7 71.43%,
-    #920783 85.71%,
-    #E4007F 100%
-  );
+  width: 100%;
+  display: block;
+  object-fit: cover;
   z-index: 15;
 }
 
@@ -250,7 +197,7 @@ onMounted(() => {
 /* Responsive - convert rem to responsive units */
 @media (max-width: 375px) {
   .splash-logo {
-    top: 2.75rem;  /* 44px状态栏 + 间距 */
+    top: 1.5rem;  /* 直接从顶部开始 */
     left: 1rem;
     width: 7.25rem;
     height: 1.63rem;
@@ -267,7 +214,7 @@ onMounted(() => {
     font-size: 28px;
   }
 
-  .rainbow-divider {
+  .rainbow-strip {
     /* 移动端：背景图高度114.51vw */
     top: calc(114.51vw - 4px);  /* 精确对齐背景图底部 */
   }
@@ -318,7 +265,7 @@ onMounted(() => {
     font-size: 42px;
   }
 
-  .rainbow-divider {
+  .rainbow-strip {
     /* 桌面端：背景图高度687px */
     top: calc(687px - 4px);  /* 精确对齐背景图底部 */
   }
@@ -338,10 +285,6 @@ onMounted(() => {
 }
 
 @media (min-width: 1024px) {
-  .mobile-only {
-    display: none;
-  }
-
   .splash-logo {
     top: 1.5rem;
     left: 2.5rem;
