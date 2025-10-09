@@ -5,7 +5,7 @@
       <img
         v-for="page in totalPages"
         :key="page"
-        :src="`/src/assets/boshijieshao/boshijieshao_Page${page}.png`"
+        :src="getImageUrl(page)"
         :alt="`第${page}页`"
         class="page-image"
         loading="lazy"
@@ -18,6 +18,11 @@
 import { ref } from 'vue'
 
 const totalPages = ref(34)
+
+// 动态获取图片URL
+const getImageUrl = (page) => {
+  return new URL(`../assets/boshijieshao/boshijieshao_Page${page}.png`, import.meta.url).href
+}
 </script>
 
 <style scoped>
