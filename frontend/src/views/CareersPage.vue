@@ -231,7 +231,7 @@ const viewDetails = (type) => {
 }
 
 .spacer {
-  height: 45px; /* 为logo留出空间 */
+  height: 60px; /* 增加顶部留白高度，为logo留出更多空间 */
 }
 
 .rainbow-strip {
@@ -471,8 +471,23 @@ const viewDetails = (type) => {
   align-items: center;
   padding: 0;
   padding-bottom: env(safe-area-inset-bottom);
-  box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   z-index: 100;
+}
+
+/* 中间按钮上方的梯形 - 使用SVG创建更圆润的效果 */
+.bottom-nav::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% - 1px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 85 12'%3E%3Cpath d='M 0 12 C 0 12 8 2 20 0 L 65 0 C 77 2 85 12 85 12 Z' fill='white'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 -1px 3px rgba(0, 0, 0, 0.02));
 }
 
 .nav-item {

@@ -11,37 +11,39 @@
     <main class="main-content">
       <div class="content-wrapper">
         <!-- Hero Banner with Carousel -->
-        <div class="hero-banner" v-show="!showExploreDetail && !showGravityDetail && !showNewsDetail">
-          <div class="carousel-wrapper">
-            <transition-group name="slide-fade" tag="div">
-              <div
-                class="carousel-slide"
-                v-for="(slide, index) in slides"
-                :key="index"
-                v-show="currentSlide === index"
-              >
-                <img
-                  :src="slide.image"
-                  :alt="slide.alt"
-                  class="carousel-image"
-                />
-              </div>
-            </transition-group>
-            <!-- Navigation Arrows -->
-            <button class="carousel-prev" @click="prevSlide" aria-label="Previous slide">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-              </svg>
-            </button>
-            <button class="carousel-next" @click="nextSlide" aria-label="Next slide">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-              </svg>
-            </button>
+        <div class="carousel-section" v-show="!showExploreDetail && !showGravityDetail && !showNewsDetail">
+          <div class="hero-banner">
+            <div class="carousel-wrapper">
+              <transition-group name="slide-fade" tag="div">
+                <div
+                  class="carousel-slide"
+                  v-for="(slide, index) in slides"
+                  :key="index"
+                  v-show="currentSlide === index"
+                >
+                  <img
+                    :src="slide.image"
+                    :alt="slide.alt"
+                    class="carousel-image"
+                  />
+                </div>
+              </transition-group>
+              <!-- Navigation Arrows -->
+              <button class="carousel-prev" @click="prevSlide" aria-label="Previous slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                  <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+              </button>
+              <button class="carousel-next" @click="nextSlide" aria-label="Next slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+              </button>
+            </div>
           </div>
 
-          <!-- Carousel Dots -->
-          <div class="carousel-dots">
+          <!-- Carousel Dots - 独立在轮播图下方 -->
+          <div class="carousel-dots-wrapper">
             <span
               v-for="(slide, index) in slides"
               :key="index"
@@ -657,7 +659,7 @@ onUnmounted(() => {
 }
 
 .spacer {
-  height: 45px; /* 为logo留出空间 */
+  height: 60px; /* 增加顶部留白高度，为logo留出更多空间 */
 }
 
 .rainbow-strip {
@@ -674,11 +676,26 @@ onUnmounted(() => {
 .main-content {
   padding: 16px;
   padding-bottom: 72px; /* 56px + some margin */
+  min-height: calc(100vh - 64px); /* 确保内容区域填满屏幕(60px spacer + 4px rainbow) */
+  display: flex;
+  flex-direction: column;
 }
 
 .content-wrapper {
   max-width: 100%;
   margin: 0 auto;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px - 88px); /* 减去header、padding和底部导航 */
+}
+
+/* Carousel Section Container */
+.carousel-section {
+  margin-top: 20px; /* 往下移动轮播图 */
+  margin-bottom: 20px;
+  flex-shrink: 0; /* 防止被压缩 */
 }
 
 /* Hero Banner */
@@ -686,7 +703,6 @@ onUnmounted(() => {
   background: white;
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -754,15 +770,17 @@ onUnmounted(() => {
   opacity: 0;
 }
 
-.carousel-dots {
+/* Carousel Dots - 独立在轮播图下方 */
+.carousel-dots-wrapper {
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding: 12px;
-  background: white;
+  padding: 12px 0;
+  margin-top: 12px; /* 与轮播图保持间距 */
+  background: transparent; /* 透明背景 */
 }
 
-.dot {
+.carousel-dots-wrapper .dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -771,7 +789,7 @@ onUnmounted(() => {
   transition: all 0.3s ease;
 }
 
-.dot.active {
+.carousel-dots-wrapper .dot.active {
   width: 20px;
   border-radius: 4px;
   background: #333;
@@ -782,17 +800,25 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   gap: 0;
+  margin-top: auto; /* 使用margin-top:auto推到底部 */
+  margin-bottom: 10px; /* 与底部保持小间距 */
+  width: 100%;
+  z-index: 9;
+}
+
+.feature-cards .feature-card {
+  width: 100%; /* 确保卡片占满容器宽度 */
 }
 
 .feature-card {
   border-radius: 16px;
-  padding: 24px 20px;
+  padding: 28px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.2s ease;
   cursor: pointer;
-  height: 102px;
+  height: 120px; /* 增加高度 */
   position: relative;
   overflow: visible;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
@@ -808,7 +834,7 @@ onUnmounted(() => {
 /* 中间卡片 */
 .feature-card:nth-child(2) {
   border-radius: 16px;
-  padding-top: 32px;
+  padding-top: 36px; /* 适当增加padding */
   margin-bottom: -8px;
   z-index: 2;
 }
@@ -816,7 +842,7 @@ onUnmounted(() => {
 /* 最后一个卡片 */
 .feature-card:last-child {
   border-radius: 16px;
-  padding-top: 32px;
+  padding-top: 36px; /* 适当增加padding */
   z-index: 1;
 }
 
@@ -1044,13 +1070,13 @@ onUnmounted(() => {
 
 .other-cards .feature-card {
   border-radius: 16px;
-  padding: 24px 20px;
+  padding: 28px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.2s ease;
   cursor: pointer;
-  height: 102px;
+  height: 120px; /* 增加高度 */
   position: relative;
   overflow: visible;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
@@ -1256,6 +1282,22 @@ onUnmounted(() => {
   justify-content: center;
   gap: 8px;
   padding: 12px;
+  background: white;
+}
+
+.gravity-carousel .carousel-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #D0D0D0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gravity-carousel .carousel-dots .dot.active {
+  width: 20px;
+  border-radius: 4px;
+  background: #333;
 }
 
 /* News Expanded Card Styles */
@@ -1377,6 +1419,21 @@ onUnmounted(() => {
   background: white;
 }
 
+.news-carousel-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #D0D0D0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.news-carousel-dots .dot.active {
+  width: 20px;
+  border-radius: 4px;
+  background: #333;
+}
+
 .more-news-section {
   text-align: center;
 }
@@ -1448,15 +1505,31 @@ onUnmounted(() => {
   height: 56px;
   background: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 0;
   padding-bottom: env(safe-area-inset-bottom);
-  box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   z-index: 100;
 }
 
+/* 中间按钮上方的梯形 - 使用SVG创建更圆润的效果 */
+.bottom-nav::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% - 1px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 85 12'%3E%3Cpath d='M 0 12 C 0 12 8 2 20 0 L 65 0 C 77 2 85 12 85 12 Z' fill='white'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 -1px 3px rgba(0, 0, 0, 0.02));
+}
+
 .nav-item {
+  flex: 1;
   background: none;
   border: none;
   display: flex;
@@ -1464,7 +1537,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  padding: 8px 24px;
+  padding: 8px 0;
   height: 100%;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -1538,6 +1611,57 @@ onUnmounted(() => {
   opacity: 0.7;
 }
 
+/* 小屏幕高度设备特殊处理 (iPhone 12 Pro等) */
+@media (max-height: 850px) {
+  .carousel-section {
+    margin-top: 10px; /* 减少顶部间距 */
+    margin-bottom: 10px;
+  }
+
+  .carousel-wrapper {
+    height: 280px; /* 减少轮播图高度 */
+  }
+
+  .feature-card {
+    height: 100px; /* 减少卡片高度 */
+    padding: 20px 16px;
+  }
+
+  .feature-card:nth-child(2),
+  .feature-card:last-child {
+    padding-top: 28px; /* 减少层叠间距 */
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-subtitle {
+    font-size: 14px;
+  }
+}
+
+/* 超小屏幕高度设备 */
+@media (max-height: 700px) {
+  .spacer {
+    height: 45px; /* 减少顶部留白 */
+  }
+
+  .carousel-wrapper {
+    height: 240px; /* 进一步减少轮播图高度 */
+  }
+
+  .feature-card {
+    height: 90px; /* 进一步减少卡片高度 */
+    padding: 18px 16px;
+  }
+
+  .carousel-dots-wrapper {
+    padding: 8px 0;
+    margin-top: 8px;
+  }
+}
+
 /* Tablet Styles */
 @media (min-width: 768px) {
   .main-content {
@@ -1550,9 +1674,20 @@ onUnmounted(() => {
   }
 
   .feature-cards {
+    position: relative; /* 改回相对定位 */
+    margin-top: 20px; /* 正常的顶部间距 */
+    margin-bottom: 0;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+  }
+
+  .feature-cards .feature-card {
+    width: auto; /* 恢复自动宽度 */
+    height: auto; /* 恢复自动高度 */
+    margin-bottom: 0; /* 移除层叠效果 */
+    padding-top: 24px !important; /* 统一padding */
   }
 
   .carousel-wrapper {
