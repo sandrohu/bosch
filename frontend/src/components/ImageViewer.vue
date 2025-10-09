@@ -7,7 +7,7 @@
         :key="page"
         :src="getImageUrl(page)"
         :alt="`第${page}页`"
-        class="page-image"
+        :class="['page-image', { 'first-page': page === 1 }]"
         loading="lazy"
       />
     </div>
@@ -53,6 +53,13 @@ const getImageUrl = (page) => {
   margin: 0 auto 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background: white;
+}
+
+/* 裁剪第一张图片的顶部彩虹线 */
+.page-image.first-page {
+  position: relative;
+  margin-top: -20px; /* 向上移动以隐藏顶部彩虹线 */
+  clip-path: inset(20px 0 0 0); /* 裁剪掉顶部20px */
 }
 
 /* 移动端优化 */

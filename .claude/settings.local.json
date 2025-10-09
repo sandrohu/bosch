@@ -54,7 +54,8 @@
       "Bash(git commit -m \"修复轮播图路径问题：将开发路径改为正确的导入方式\n\n- 修改HomePage.vue和CareersPage.vue中的轮播图路径\n- 从''/src/assets/images/''路径改为使用import导入\n- 解决生产环境中图片404错误\")",
       "Bash(npm run build)",
       "Bash(git commit -m \"修复所有图片路径问题，优化彩虹线显示\n\n- 修复轮播图使用import导入替代开发路径\n- 修复ExplorePage.vue中不存在的campus图片\n- 所有页面的彩虹线改用rainbow.png图片\n- 确保生产环境图片正常加载\")",
-      "Bash(git commit -m \"优化底部导航栏：使用自定义图片图标替代SVG\n\n- HomePage、EventsPage、CareersPage的导航栏使用daohang系列图片\n- 每个按钮有默认和激活两种状态的图标\n- 使用CSS opacity切换实现平滑过渡效果\n- 保持原有的激活状态指示和样式\")"
+      "Bash(git commit -m \"优化底部导航栏：使用自定义图片图标替代SVG\n\n- HomePage、EventsPage、CareersPage的导航栏使用daohang系列图片\n- 每个按钮有默认和激活两种状态的图标\n- 使用CSS opacity切换实现平滑过渡效果\n- 保持原有的激活状态指示和样式\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\n修复博世整体介绍页面404错误\n\n- 修改ImageViewer.vue中的图片路径引用方式\n- 使用动态import.meta.url替代开发环境路径\n- 解决生产环境下boshijieshao图片无法加载的问题\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []

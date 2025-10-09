@@ -111,7 +111,7 @@ const goHome = () => {
 }
 
 .spacer {
-  height: 45px; /* 为logo留出空间 */
+  height: 60px; /* 统一为logo留出空间，与首页保持一致 */
 }
 
 .rainbow-strip {
@@ -248,7 +248,7 @@ const goHome = () => {
 /* Tablet Styles */
 @media (min-width: 768px) {
   .spacer {
-    height: 60px; /* 平板端为logo留更多空间 */
+    height: 60px; /* 统一高度 */
   }
 
   .main-content {
@@ -284,7 +284,7 @@ const goHome = () => {
 /* Desktop Styles */
 @media (min-width: 1024px) {
   .spacer {
-    height: 80px; /* 桌面端为logo留更多空间 */
+    height: 60px; /* 统一高度 */
   }
 
   /* Hide mobile elements */
