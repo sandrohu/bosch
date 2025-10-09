@@ -11,6 +11,12 @@
       <!-- Bosch Headquarter Banner with Back Button -->
       <div class="headquarter-banner">
         <img src="../assets/images/bosch-cn-headquarter_res_1600x900.webp" alt="博世中国总部" class="headquarter-image" />
+
+        <!-- 博世系列视频标题图片叠加在总部图片上 -->
+        <div class="video-title-overlay">
+          <img src="../assets/images/xilieshipin.png" alt="博世系列视频" class="video-title-image" />
+        </div>
+
         <button class="back-button-overlay" @click="goBack">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
@@ -19,16 +25,66 @@
         </button>
       </div>
 
+      <!-- Category Navigation Bar -->
+      <div class="category-nav">
+        <div class="nav-tabs">
+          <button
+            :class="['nav-tab', { active: activeTab === 'why' }]"
+            @click="activeTab = 'why'"
+          >
+            Why Bosch ?
+          </button>
+          <button
+            :class="['nav-tab', { active: activeTab === 'meaning' }]"
+            @click="activeTab = 'meaning'"
+          >
+            你的工作可以多有意义
+          </button>
+          <button
+            :class="['nav-tab', { active: activeTab === 'history' }]"
+            @click="activeTab = 'history'"
+          >
+            过往视频汇总
+          </button>
+        </div>
+      </div>
+
       <!-- Hero Video Section -->
       <div class="hero-section">
-        <div class="hero-video-container">
+        <!-- Why Bosch 视频 -->
+        <div v-show="activeTab === 'why'" class="hero-video-container">
           <video
             controls
             class="hero-video"
             preload="metadata"
             controlsList="nodownload"
           >
-            <!-- 视频文件在 public/videos 目录下 -->
+            <source src="/videos/whybosch.mp4" type="video/mp4">
+            <p>您的浏览器不支持HTML5视频。</p>
+          </video>
+        </div>
+
+        <!-- 你的工作可以多有意义 视频 -->
+        <div v-show="activeTab === 'meaning'" class="hero-video-container">
+          <video
+            controls
+            class="hero-video"
+            preload="metadata"
+            controlsList="nodownload"
+          >
+            <source src="/videos/whybosch.mp4" type="video/mp4">
+            <p>您的浏览器不支持HTML5视频。</p>
+          </video>
+        </div>
+
+        <!-- 过往视频汇总 -->
+        <div v-show="activeTab === 'history'" class="hero-video-container">
+          <video
+            controls
+            class="hero-video"
+            preload="metadata"
+            controlsList="nodownload"
+          >
             <source src="/videos/whybosch.mp4" type="video/mp4">
             <p>您的浏览器不支持HTML5视频。</p>
           </video>
@@ -77,9 +133,11 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const activeTab = ref('why')
 
 const goBack = () => {
   router.back()
@@ -138,9 +196,9 @@ const goHome = () => {
 /* Headquarter Banner */
 .headquarter-banner {
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 0;
   position: relative;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0; /* 上圆角，下直角 */
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -175,10 +233,94 @@ const goHome = () => {
   border-radius: 8px;
 }
 
+/* Category Navigation Bar */
+.category-nav {
+  background: white;
+  border-radius: 16px 16px 0 0;
+  margin-top: -30px; /* 重叠高度约为导航栏高度的一半 */
+  position: relative;
+  z-index: 3;
+  padding: 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+  min-height: 60px;
+}
+
+.nav-tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  height: 60px;
+}
+
+.nav-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 20px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.nav-tab:hover {
+  color: #333;
+}
+
+.nav-tab.active {
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* 添加底部指示条 */
+.nav-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+  background: #007BC0;
+  border-radius: 2px 2px 0 0;
+}
+
 /* Hero Section */
 .hero-section {
   background: white;
   margin-bottom: 16px;
+  margin-top: 0;
+  border-radius: 0 0 16px 16px;
+}
+
+/* 视频标题叠加层 */
+.video-title-overlay {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  width: 80%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-title-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
 .hero-video-container {
@@ -266,14 +408,36 @@ const goHome = () => {
     margin: 0 auto;
   }
 
+  .category-nav {
+    border-radius: 12px 12px 0 0;
+    margin-top: -35px;
+    min-height: 70px;
+  }
+
+  .nav-tabs {
+    height: 70px;
+  }
+
+  .nav-tab {
+    font-size: 15px;
+  }
+
+  .nav-tab.active {
+    font-size: 17px;
+  }
+
   .hero-section {
-    border-radius: 12px;
+    border-radius: 0 0 12px 12px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
+  .video-title-overlay {
+    max-width: 500px;
+  }
+
   .headquarter-banner {
-    border-radius: 12px;
+    border-radius: 12px 12px 0 0;
   }
 }
 
@@ -293,14 +457,37 @@ const goHome = () => {
     max-width: 1200px;
   }
 
+  .category-nav {
+    border-radius: 16px 16px 0 0;
+    margin-top: -40px;
+    min-height: 80px;
+  }
+
+  .nav-tabs {
+    height: 80px;
+  }
+
+  .nav-tab {
+    font-size: 16px;
+    padding: 25px 20px;
+  }
+
+  .nav-tab.active {
+    font-size: 18px;
+  }
+
   .hero-section {
-    border-radius: 16px;
+    border-radius: 0 0 16px 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
+  .video-title-overlay {
+    max-width: 600px;
+  }
+
   .headquarter-banner {
-    border-radius: 16px;
-    margin-bottom: 24px;
+    border-radius: 16px 16px 0 0;
+    margin-bottom: 0;
   }
 
   .back-button-overlay {
