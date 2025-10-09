@@ -22,15 +22,16 @@
       <!-- Hero Video Section -->
       <div class="hero-section">
         <div class="hero-video-container">
-          <iframe
-            src="https://player.cloudinary.com/embed/?cloud_name=dcaq7lj8o&public_id=498_1759155296_raw_rstuum&profile=cld-default"
-            width="100%"
-            height="100%"
-            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-            allowfullscreen
-            frameborder="0"
+          <video
+            controls
             class="hero-video"
-          ></iframe>
+            preload="metadata"
+            controlsList="nodownload"
+          >
+            <!-- 视频文件在 public/videos 目录下 -->
+            <source src="/videos/whybosch.mp4" type="video/mp4">
+            <p>您的浏览器不支持HTML5视频。</p>
+          </video>
         </div>
       </div>
     </main>
