@@ -157,37 +157,26 @@
 
     <!-- Bottom Navigation (only shown on mobile) -->
     <nav class="bottom-nav mobile-only">
-      <button class="nav-item" @click="goHome">
+      <button class="nav-item" @click="navigateToHome">
         <div class="nav-icon-wrapper">
-          <svg class="nav-icon" width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
-            <path d="M11.5 23v-7h5v7h6.25v-9.5H26L14 2.5 2 13.5h3.25v9.5z"/>
-          </svg>
+          <img src="../assets/images/daohang-1-click.png" alt="首页" class="nav-icon-active" />
+          <img src="../assets/images/daohang-1.png" alt="首页" class="nav-icon-default" />
         </div>
         <span class="nav-label">首页</span>
       </button>
 
-      <button class="nav-item">
+      <button class="nav-item" @click="navigateToEvents">
         <div class="nav-icon-wrapper">
-          <svg class="nav-icon" width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
-            <rect x="4" y="6" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <rect x="7" y="3" width="3" height="6" rx="1" fill="currentColor"/>
-            <rect x="18" y="3" width="3" height="6" rx="1" fill="currentColor"/>
-            <line x1="8" y1="11" x2="20" y2="11" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="8" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="8" y1="19" x2="16" y2="19" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
+          <img src="../assets/images/daohang-2-click.png" alt="博世活动" class="nav-icon-active" />
+          <img src="../assets/images/daohang-2.png" alt="博世活动" class="nav-icon-default" />
         </div>
         <span class="nav-label">博世活动</span>
       </button>
 
-      <button class="nav-item">
+      <button class="nav-item" @click="navigateToCareers">
         <div class="nav-icon-wrapper">
-          <svg class="nav-icon" width="28" height="28" viewBox="0 0 28 28" fill="currentColor">
-            <rect x="5" y="8" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M9 8V6a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <circle cx="14" cy="15" r="2" fill="currentColor"/>
-            <path d="M14 17v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+          <img src="../assets/images/daohang-3-click.png" alt="职通博世" class="nav-icon-active" />
+          <img src="../assets/images/daohang-3.png" alt="职通博世" class="nav-icon-default" />
         </div>
         <span class="nav-label">职通博世</span>
       </button>
@@ -206,8 +195,16 @@ const goBack = () => {
   router.back()
 }
 
-const goHome = () => {
+const navigateToHome = () => {
   router.push('/home')
+}
+
+const navigateToEvents = () => {
+  router.push('/events')
+}
+
+const navigateToCareers = () => {
+  router.push('/careers')
 }
 </script>
 
@@ -483,7 +480,7 @@ const goHome = () => {
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
-/* Bottom Navigation (Mobile) */
+/* Bottom Navigation (Mobile) - 与首页完全一致 */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -496,8 +493,23 @@ const goHome = () => {
   align-items: center;
   padding: 0;
   padding-bottom: env(safe-area-inset-bottom);
-  box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   z-index: 100;
+}
+
+/* 中间按钮上方的梯形 - 使用SVG创建更圆润的效果 */
+.bottom-nav::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% - 1px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 85 12'%3E%3Cpath d='M 0 12 C 0 12 8 2 20 0 L 65 0 C 77 2 85 12 85 12 Z' fill='white'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 -1px 3px rgba(0, 0, 0, 0.02));
 }
 
 .nav-item {
@@ -516,19 +528,54 @@ const goHome = () => {
   position: relative;
 }
 
+/* Active indicator */
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: #4A90E2;
+  border-radius: 0 0 2px 2px;
+}
+
 .nav-icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
+  position: relative;
 }
 
-.nav-icon {
+.nav-icon-default,
+.nav-icon-active {
   width: 28px;
   height: 28px;
-  color: #B0B0B0;
-  transition: color 0.2s ease;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+}
+
+.nav-icon-active {
+  opacity: 0;
+}
+
+.nav-icon-default {
+  opacity: 1;
+}
+
+.nav-item.active .nav-icon-active {
+  opacity: 1;
+}
+
+.nav-item.active .nav-icon-default {
+  opacity: 0;
 }
 
 .nav-label {
@@ -537,6 +584,11 @@ const goHome = () => {
   transition: color 0.2s ease;
   margin-top: 2px;
   font-weight: 400;
+}
+
+.nav-item.active .nav-label {
+  color: #4A90E2;
+  font-weight: 500;
 }
 
 .nav-item:active {

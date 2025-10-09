@@ -1,15 +1,41 @@
 <template>
   <div class="news-detail-container">
-    <!-- Header -->
+    <!-- Header with Rainbow Strip -->
     <header class="header">
-      <button class="back-btn" @click="goBack">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#333">
-          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-        </svg>
-      </button>
-      <h1 class="page-title">新闻详情</h1>
-      <div class="header-right"></div>
+      <div class="spacer"></div>
+      <img src="../assets/images/rainbow.png" alt="Rainbow strip" class="rainbow-strip" />
+      <div class="header-content">
+        <button class="back-button" @click="goBack">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+          </svg>
+          <span>返回</span>
+        </button>
+        <div class="action-buttons">
+          <button :class="['action-button', 'like-button', { 'liked': isLiked }]" @click="handleLike">
+            <svg width="20" height="20" viewBox="0 0 24 24" :fill="isLiked ? '#FF6B6B' : 'none'" :stroke="isLiked ? '#FF6B6B' : 'currentColor'">
+              <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span v-if="likeCount > 0" class="like-count">{{ likeCount }}</span>
+          </button>
+          <button class="action-button" @click="handleShare">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
     </header>
+
+    <!-- Copy Success Toast -->
+    <transition name="toast">
+      <div v-if="showToast" class="toast">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>链接已复制到剪贴板</span>
+      </div>
+    </transition>
 
     <!-- News Detail -->
     <main class="news-detail" v-if="currentNews">
@@ -146,28 +172,22 @@
           </div>
         </div>
 
-        <!-- Share Section -->
-        <div class="share-section">
-          <button class="share-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-            </svg>
-            分享
-          </button>
-        </div>
       </article>
     </main>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
 
 const newsId = computed(() => route.params.id)
+const showToast = ref(false)
+const isLiked = ref(false)
+const likeCount = ref(0)
 
 const newsData = ref([
   {
@@ -233,6 +253,56 @@ const currentNews = computed(() => {
 const goBack = () => {
   router.back()
 }
+
+const handleLike = () => {
+  // 切换点赞状态
+  isLiked.value = !isLiked.value
+
+  // 更新点赞数
+  if (isLiked.value) {
+    likeCount.value++
+  } else {
+    likeCount.value = Math.max(0, likeCount.value - 1)
+  }
+
+  // 这里可以添加发送到服务器的逻辑
+  console.log(isLiked.value ? '已点赞' : '取消点赞')
+}
+
+const handleShare = async () => {
+  try {
+    // 获取当前页面的完整URL
+    const currentUrl = window.location.href
+
+    // 尝试使用现代的 Clipboard API
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(currentUrl)
+    } else {
+      // 降级方案：使用传统的方法
+      const textArea = document.createElement('textarea')
+      textArea.value = currentUrl
+      textArea.style.position = 'fixed'
+      textArea.style.left = '-999999px'
+      textArea.style.top = '-999999px'
+      document.body.appendChild(textArea)
+      textArea.focus()
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+    }
+
+    // 显示提示
+    showToast.value = true
+
+    // 3秒后自动隐藏提示
+    setTimeout(() => {
+      showToast.value = false
+    }, 3000)
+  } catch (error) {
+    console.error('复制失败:', error)
+    alert('复制链接失败，请手动复制')
+  }
+}
 </script>
 
 <style scoped>
@@ -243,37 +313,155 @@ const goBack = () => {
 
 /* Header */
 .header {
+  background: white;
   position: sticky;
   top: 0;
-  background: white;
+  z-index: 50;
+}
+
+.spacer {
+  height: 60px;
+}
+
+.rainbow-strip {
+  height: 4px;
+  margin: 0;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Header Content */
+.header-content {
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  padding: 0 16px;
 }
 
-.back-btn {
-  background: none;
+.back-button {
+  background: transparent;
   border: none;
-  padding: 8px;
-  cursor: pointer;
+  padding: 8px 12px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.page-title {
-  font-size: 18px;
-  font-weight: 600;
+.back-button:hover {
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.back-button:active {
+  background: #ececec;
+  border-radius: 8px;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-button {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
   color: #333;
-  flex: 1;
-  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.header-right {
-  width: 40px;
+.action-button:hover {
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.action-button:active {
+  background: #ececec;
+  border-radius: 8px;
+}
+
+.action-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Like Button Styles */
+.like-button {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.like-button.liked {
+  background: #FFE5E5;
+  color: #FF6B6B;
+}
+
+.like-button.liked:hover {
+  background: #FFD5D5;
+}
+
+.like-button.liked:active {
+  background: #FFC5C5;
+}
+
+.like-count {
+  background: #FF6B6B;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 2px;
+  animation: countBounce 0.3s ease;
+}
+
+@keyframes countBounce {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Like button animation when clicked */
+.like-button:active svg {
+  animation: likeAnimation 0.4s ease;
+}
+
+@keyframes likeAnimation {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  75% {
+    transform: scale(1.15) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Hero Image */
@@ -446,39 +634,58 @@ const goBack = () => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Share Section */
-.share-section {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #e0e0e0;
-  text-align: center;
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.share-btn {
-  background: #5AA397;
-  color: white;
-  border: none;
-  padding: 12px 32px;
-  border-radius: 24px;
-  font-size: 16px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
+.toast svg {
+  flex-shrink: 0;
+}
+
+/* Toast transition animation */
+.toast-enter-active,
+.toast-leave-active {
   transition: all 0.3s ease;
 }
 
-.share-btn:hover {
-  background: #4A8A7D;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.toast-enter-from {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.toast-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
 /* Responsive Design */
 @media (min-width: 768px) {
-  .header {
-    padding: 20px 40px;
+  .header-content {
+    height: 70px;
+    padding: 0 24px;
+  }
+
+  .back-button,
+  .action-button {
+    padding: 10px 16px;
+    font-size: 15px;
   }
 
   .hero-image {
@@ -501,6 +708,11 @@ const goBack = () => {
 }
 
 @media (min-width: 1024px) {
+  .header-content {
+    height: 80px;
+    padding: 0 40px;
+  }
+
   .hero-image {
     height: 500px;
   }

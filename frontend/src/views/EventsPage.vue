@@ -61,39 +61,16 @@
         </div>
       </section>
 
-      <!-- Event Categories -->
-      <section class="categories-section">
-        <!-- 校园巡回宣讲会 -->
-        <div class="category-card campus-tour">
-          <div class="card-header">
-            <h3 class="card-title">校园巡回宣讲会</h3>
-            <p class="card-subtitle">即将开启 3 场宣讲会</p>
-          </div>
-          <div class="card-illustration">
-            <svg class="presenter-icon" width="120" height="120" viewBox="0 0 120 120">
-              <circle cx="60" cy="40" r="20" fill="#E0E7FF"/>
-              <path d="M30 70 Q30 60 60 60 Q90 60 90 70 L90 100 L30 100 Z" fill="#6B7FCC"/>
-              <rect x="55" y="60" width="10" height="30" fill="#4B5CC4"/>
-              <circle cx="58" cy="75" r="3" fill="#fff"/>
-            </svg>
-          </div>
-          <button class="view-details-btn">查看详情</button>
+      <!-- Activity Cards -->
+      <section class="activity-cards-section">
+        <div class="activity-card">
+          <img src="../assets/images/activity-1.png" alt="活动1" class="activity-image" />
         </div>
-
-        <!-- 运动嘉年华 -->
-        <div class="category-card sports-carnival">
-          <div class="card-header">
-            <h3 class="card-title">运动嘉年华</h3>
-            <p class="card-subtitle">同济大学 ｜ 上海交通大学</p>
-          </div>
-          <div class="card-illustration">
-            <svg class="sports-icon" width="120" height="120" viewBox="0 0 120 120">
-              <circle cx="40" cy="60" r="25" fill="#FFE0F0" opacity="0.8"/>
-              <circle cx="80" cy="60" r="25" fill="#E8D5FF" opacity="0.8"/>
-              <path d="M30 85 Q60 70 90 85" stroke="#9B59B6" stroke-width="3" fill="none"/>
-            </svg>
-          </div>
-          <button class="view-details-btn">查看详情</button>
+        <div class="activity-card">
+          <img src="../assets/images/activity-2.png" alt="活动2" class="activity-image" />
+        </div>
+        <div class="activity-card">
+          <img src="../assets/images/activity-3.png" alt="活动3" class="activity-image" />
         </div>
       </section>
 
@@ -302,99 +279,34 @@ export default {
   background: #DA291C;
 }
 
-/* Category Cards */
-.categories-section {
+/* Activity Cards */
+.activity-cards-section {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 30px;
+  margin-top: 20px;
 }
 
-.category-card {
+.activity-card {
   flex: 1;
   background: white;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.campus-tour {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.sports-carnival {
-  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-}
-
-.card-header {
-  margin-bottom: 20px;
-}
-
-.card-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 8px 0;
-}
-
-.campus-tour .card-title {
-  color: white;
-}
-
-.sports-carnival .card-title {
-  color: #333;
-}
-
-.card-subtitle {
-  font-size: 13px;
-  margin: 0;
-  opacity: 0.9;
-}
-
-.campus-tour .card-subtitle {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.sports-carnival .card-subtitle {
-  color: #666;
-}
-
-.card-illustration {
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.view-details-btn {
-  background: white;
-  color: #333;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: all 0.3s;
 }
 
-.campus-tour .view-details-btn {
-  background: white;
-  color: #667eea;
+.activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-.sports-carnival .view-details-btn {
-  background: white;
-  color: #fc8c69;
-}
-
-.view-details-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.activity-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Bottom Navigation */
@@ -520,12 +432,14 @@ export default {
     padding: 15px;
   }
 
-  .categories-section {
+  .activity-cards-section {
     flex-direction: column;
+    gap: 16px;
   }
 
-  .category-card {
+  .activity-card {
     width: 100%;
+    height: 200px;
   }
 }
 
@@ -554,8 +468,12 @@ export default {
     height: 300px;
   }
 
-  .categories-section {
-    gap: 30px;
+  .activity-cards-section {
+    gap: 20px;
+  }
+
+  .activity-card {
+    height: 250px;
   }
 
   .bottom-nav {

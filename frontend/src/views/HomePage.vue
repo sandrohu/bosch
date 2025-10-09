@@ -83,7 +83,6 @@
           <div class="feature-card card-news" @click="toggleNewsDetail">
             <div class="card-content">
               <h3 class="card-title">热文追踪，来个博世</h3>
-              <p class="card-subtitle">博世新闻事件</p>
             </div>
             <button class="card-button">
               查看详情
@@ -144,7 +143,6 @@
             <div class="feature-card card-news" @click="toggleNewsDetail">
               <div class="card-content">
                 <h3 class="card-title">热文追踪，来个博世</h3>
-                <p class="card-subtitle">博世新闻事件</p>
               </div>
               <button class="card-button">
                 查看详情
@@ -303,7 +301,6 @@
             <div class="feature-card card-news" @click="toggleNewsDetail">
               <div class="card-content">
                 <h3 class="card-title">热文追踪，来个博世</h3>
-                <p class="card-subtitle">博世新闻事件</p>
               </div>
               <button class="card-button">
                 查看详情
@@ -344,7 +341,6 @@
                         <span class="news-date">{{ newsSlides[currentNewsSlide].date }}</span>
                       </div>
                       <h3 class="news-title">{{ newsSlides[currentNewsSlide].title }}</h3>
-                      <p class="news-description" v-if="newsSlides[currentNewsSlide].content">{{ newsSlides[currentNewsSlide].content }}</p>
                       <button class="read-more-btn" @click="readNewsDetail(currentNewsSlide)">
                         了解详情
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
@@ -479,106 +475,106 @@ const newsSlides = ref([
 ])
 // 所有100个理由数据
 const allReasons = ref([
-  { id: 1, title: '"为生活而发明"理念', description: '博世始终秉持 "Invented for life" 的品牌主张，为人类创造更美好的生活。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 2, title: '全球化布局', description: '博世业务覆盖 60 多个国家，是真正的全球化公司。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 3, title: '中国深耕力度', description: '博世在中国有多年历史，深耕本地市场，致力于本土化发展。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 4, title: '多元业务领域', description: '博世涵盖汽车技术、工业技术、消费品与能源技术等多个业务板块。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 5, title: '可持续发展承诺', description: '博世致力于以可持续科技为核心，推动环保与社会责任。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 6, title: '责任与伦理', description: '在商业决策中坚持责任与伦理，是博世企业文化的基石。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 7, title: '公正与尊重', description: '公正对待员工与合作方，倡导尊重，是博世内在的价值观。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 8, title: '开放与信任', description: '博世鼓励在组织内部建立开放沟通与相互信任的氛围。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 9, title: '主动与担当', description: '每个人都被鼓励主动承担责任、追求目标。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 10, title: '结果导向', description: '博世重视实效，追求行动带来结果与价值。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 11, title: '多样性与包容性', description: '博世重视员工多样性，倡导包容互补的团队文化。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 12, title: '企业传承基因', description: '博世的价值观可追溯至创始人罗伯特·博世的初心。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 13, title: '强大的研发实力', description: '博世在全球拥有大量研发机构，不断投入技术创新。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 14, title: '技术驱动企业', description: '博世的产品与方案背后，都是先进的技术驱动。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 15, title: '智能互联解决方案', description: '博世在物联网、智能互联产品上不断深耕。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 16, title: '汽车事业的核心角色', description: '博世在全球汽车技术领域是关键供应商。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 17, title: '移动出行未来愿景', description: '博世致力于安全、可持续、智能的未来出行解决方案。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 18, title: '工业自动化领先者', description: '博世（例如力士乐部门）在传动与控制技术具领先地位。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 19, title: '家电与消费品链条', description: '博世在家电、厨房、热能设备等消费品领域拥有较高影响力。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 20, title: '节能与环境科技', description: '博世在能源利用、热泵、节能系统等领域持续投入。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 21, title: '智能传感器技术', description: '博世子公司 Sensortec 在 MEMS 传感器方面具影响力。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 22, title: '跨界整合能力', description: '博世能够整合硬件、软件、云服务等跨领域能力。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 23, title: '强大的产业链掌控', description: '从元器件到系统方案，博世在产业链上具备控制能力。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 24, title: '长期视野与投资', description: '博世注重中长期发展而不仅短期利益。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 25, title: '本地化策略', description: '在中国市场，博世注重本地化设计与服务。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 26, title: '创投与未来投入', description: '博世设立创投基金，不断探索未来技术。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 27, title: '科技与社会责任融合', description: '博世强调科技创新必须兼顾社会责任。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 28, title: '慈善实践根植中国', description: '博世在中国有自己的慈善中心，积极参与教育扶贫项目。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 29, title: '员工志愿者文化', description: '博世鼓励员工以志愿者身份参与社会公益。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 30, title: '高度透明的公益机制', description: '在中国的慈善中心强调项目透明性与可持续性。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 31, title: '持续教育投入', description: '博世在教育、人才培养方面持续投入。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 32, title: '因地制宜的公益方案', description: '博世的公益项目结合当地实际需求设计。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 33, title: '本地员工成长机会', description: '本地团队能获得参与全球项目的机会。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 34, title: '跨国导师机制', description: '博世内部可能设有跨国导师或技能传承机制。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 35, title: '技术交流平台', description: '员工可参与跨区域、跨业务的技术交流与分享。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 36, title: '内部创新孵化', description: '博世鼓励内部创新、创业项目孵化。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 37, title: '国际派遣计划', description: '博世提供海外派遣、轮岗机会，让人国际化成长。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 38, title: '多元职业路径', description: '在博世，无论你是技术、管理、市场方向，都有路径。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 39, title: '跨部门协作体验', description: '不同业务线之间协作，为员工提供跨界视角。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 40, title: '系统培训体系', description: '博世通常会提供系统化的入职与在职培训体系。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 41, title: '学习型组织氛围', description: '员工被鼓励不断学习、挑战自我、拥抱新知识。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 42, title: '成果认可机制', description: '优秀成果能得到公司或团队认可、奖励。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 43, title: '创意表达机会', description: '在项目中有机会提出创意、进行实践。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 44, title: '职能轮岗制度', description: '轮岗制度帮助员工拓展视野与能力。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 45, title: '透明的绩效考核', description: '公正、透明的绩效体系让员工清楚自己的定位。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 46, title: '灵活工作机制', description: '在不同岗位可能享有一定的弹性工作制度。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 47, title: '国际文化交流', description: '与来自不同国家同事合作，拓展文化视野。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 48, title: '丰富的内部活动', description: '团队建设、年度活动、兴趣小组丰富员工生活。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 49, title: '健康与福利保障', description: '员工可以享受系统的健康、保险等福利机制。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 50, title: '家庭友好政策', description: '对有家庭责任的员工可能提供亲子支持或弹性安排。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 51, title: '工作环境优越', description: '办公场地、设备通常现代化、舒适。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 52, title: '安全第一思维', description: '在工业、制造、实验环境，博世强调安全标准。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 53, title: '标准化流程', description: '规范流程与制度帮助效率与质量保障。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 54, title: '品牌背书加分', description: '来自博世这个品牌对个人简历也有加分效应。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 55, title: '高质量合作伙伴', description: '与一流高校、企业、研究机构合作，从项目中受益。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 56, title: '参与未来前沿领域', description: '博世在 AI、自动驾驶、能源科技等前沿领域布局。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 57, title: '积极响应全球趋势', description: '博世紧跟工业4.0、绿色发展、数字化趋势。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 58, title: '强大的品牌认知度', description: '博世是公众熟知、值得信赖的高科技品牌。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 59, title: '产品覆盖日常生活', description: '博世产品涉及日常家庭、出行、生活多数场景。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 60, title: '科技与人性结合', description: '博世强调科技应服务于人的幸福，而非冷冰工具。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 61, title: '客户导向文化', description: '博世重视客户反馈，将其视为产品优化关键。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 62, title: '高标准质量管理', description: '在产品和服务上保持高标准的质量认证和控制。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 63, title: '快速响应机制', description: '在市场、客户或技术变化中，博世具备快速响应能力。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 64, title: '持续改进文化', description: '不断反思、优化、精进，是博世文化的一部分。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 65, title: '跨文化团队合作', description: '国际团队协作让你习得跨文化沟通能力。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 66, title: '职业稳定性', description: '在大企业体系下，具有相对稳定的职业保障。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 67, title: '与行业顶尖竞争', description: '博世经常参与或引领行业技术标准与竞争。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 68, title: '可见的社会影响力', description: '博世的很多产品与项目直接影响社会发展。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 69, title: '实践可持续技术项目', description: '你可能参与减碳、能源效率提升等项目。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 70, title: '长寿命产品价值观', description: '博世的产品设计注重耐用性与可维护性。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 71, title: '本地化制造能力', description: '在中国设有生产基地，更贴近市场与用户。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 72, title: '全球采购网络', description: '博世具备全球采购与供应链能力，资源整合强。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 73, title: '绿色制造推进', description: '制造过程中推行节能减排与绿色标准。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 74, title: '智能制造与自动化', description: '博世内部也在使用智能制造技术进行自我升级。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 75, title: '工业 4.0 实践者', description: '在智能工厂、数字化车间上有真实落地经验。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 76, title: '精益生产理念', description: '博世推行精益、六西格玛等管理理念以提升效率。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 77, title: '客户定制化能力', description: '能为客户提供定制化方案，而非一刀切产品。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 78, title: '开放平台生态', description: '在 IoT、平台生态上愿与合作伙伴共建。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 79, title: '强调知识产权', description: '在专利、技术保护方面严格，尊重创新。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 80, title: '国际项目经验积累', description: '能参与跨国项目，获得国际视野。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 81, title: '员工荣誉传承', description: '博世内部有优秀员工、团队表彰机制。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 82, title: '成就感可视化', description: '项目成果直观可见，可以看到"自己做的东西在世界上被用到"。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 83, title: '参与标准制定', description: '在行业标准、技术标准制定中有代表性声音。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 84, title: '行业先锋角色', description: '在许多业务领域，博世都是技术与市场的先锋。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 85, title: '自主决策空间', description: '虽在大公司架构中，仍赋予项目或团队一定自主权。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 86, title: '透明晋升通道', description: '晋升、发展路径在公司内部较为透明。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 87, title: '国际交流机会', description: '有机会到德国或其他国家交流、学习。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 88, title: '多语种环境', description: '英语、德语或其他语种成为工作环境的一部分。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 89, title: '高标准安全保障', description: '企业对员工的安全保护制度严格，减少风险。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 90, title: '品牌自豪感', description: '身为博世人，背后有强大品牌支持与认同感。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 91, title: '公信力企业形象', description: '博世在大众、行业中具有良好口碑与信任度。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 92, title: '营造创新文化', description: '鼓励试错、创新，让员工敢于挑战。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 93, title: '多学科交叉机会', description: '你可能跨机械、电子、软件、控制等多个学科协作。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 94, title: '国际化视野塑造', description: '在博世工作自然塑造你具备国际化思维。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 95, title: '全球客户互动', description: '与全球客户、合作伙伴互动交流经验。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 96, title: '卓越科技影响力', description: '博世的科技、解决方案在世界许多地方落地。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 97, title: '面向未来的业务布局', description: '博世在新能源、自动驾驶、智慧家居等未来方向持续投入。', logo: '/src/assets/images/100-reasons/logo1.png' },
-  { id: 98, title: '长期信任背后资本结构', description: '博世大部分股份由基金会持有，以社会责任为导向。', logo: '/src/assets/images/100-reasons/logo2.png' },
-  { id: 99, title: '历史底蕴与品牌传承', description: '博世有悠久历史，从 1886 年创业至今，是百年科技公司。', logo: '/src/assets/images/100-reasons/logo3.png' },
-  { id: 100, title: '与优秀人为伍', description: '在博世，你将与国内外顶尖人才合作、成长、成就未来。', logo: '/src/assets/images/100-reasons/logo1.png' }
+  { id: 1, title: '"为生活而发明"理念', description: '博世始终秉持 "Invented for life" 的品牌主张，为人类创造更美好的生活。', logo: logo1 },
+  { id: 2, title: '全球化布局', description: '博世业务覆盖 60 多个国家，是真正的全球化公司。', logo: logo2 },
+  { id: 3, title: '中国深耕力度', description: '博世在中国有多年历史，深耕本地市场，致力于本土化发展。', logo: logo3 },
+  { id: 4, title: '多元业务领域', description: '博世涵盖汽车技术、工业技术、消费品与能源技术等多个业务板块。', logo: logo1 },
+  { id: 5, title: '可持续发展承诺', description: '博世致力于以可持续科技为核心，推动环保与社会责任。', logo: logo2 },
+  { id: 6, title: '责任与伦理', description: '在商业决策中坚持责任与伦理，是博世企业文化的基石。', logo: logo3 },
+  { id: 7, title: '公正与尊重', description: '公正对待员工与合作方，倡导尊重，是博世内在的价值观。', logo: logo1 },
+  { id: 8, title: '开放与信任', description: '博世鼓励在组织内部建立开放沟通与相互信任的氛围。', logo: logo2 },
+  { id: 9, title: '主动与担当', description: '每个人都被鼓励主动承担责任、追求目标。', logo: logo3 },
+  { id: 10, title: '结果导向', description: '博世重视实效，追求行动带来结果与价值。', logo: logo1 },
+  { id: 11, title: '多样性与包容性', description: '博世重视员工多样性，倡导包容互补的团队文化。', logo: logo2 },
+  { id: 12, title: '企业传承基因', description: '博世的价值观可追溯至创始人罗伯特·博世的初心。', logo: logo3 },
+  { id: 13, title: '强大的研发实力', description: '博世在全球拥有大量研发机构，不断投入技术创新。', logo: logo1 },
+  { id: 14, title: '技术驱动企业', description: '博世的产品与方案背后，都是先进的技术驱动。', logo: logo2 },
+  { id: 15, title: '智能互联解决方案', description: '博世在物联网、智能互联产品上不断深耕。', logo: logo3 },
+  { id: 16, title: '汽车事业的核心角色', description: '博世在全球汽车技术领域是关键供应商。', logo: logo1 },
+  { id: 17, title: '移动出行未来愿景', description: '博世致力于安全、可持续、智能的未来出行解决方案。', logo: logo2 },
+  { id: 18, title: '工业自动化领先者', description: '博世（例如力士乐部门）在传动与控制技术具领先地位。', logo: logo3 },
+  { id: 19, title: '家电与消费品链条', description: '博世在家电、厨房、热能设备等消费品领域拥有较高影响力。', logo: logo1 },
+  { id: 20, title: '节能与环境科技', description: '博世在能源利用、热泵、节能系统等领域持续投入。', logo: logo2 },
+  { id: 21, title: '智能传感器技术', description: '博世子公司 Sensortec 在 MEMS 传感器方面具影响力。', logo: logo3 },
+  { id: 22, title: '跨界整合能力', description: '博世能够整合硬件、软件、云服务等跨领域能力。', logo: logo1 },
+  { id: 23, title: '强大的产业链掌控', description: '从元器件到系统方案，博世在产业链上具备控制能力。', logo: logo2 },
+  { id: 24, title: '长期视野与投资', description: '博世注重中长期发展而不仅短期利益。', logo: logo3 },
+  { id: 25, title: '本地化策略', description: '在中国市场，博世注重本地化设计与服务。', logo: logo1 },
+  { id: 26, title: '创投与未来投入', description: '博世设立创投基金，不断探索未来技术。', logo: logo2 },
+  { id: 27, title: '科技与社会责任融合', description: '博世强调科技创新必须兼顾社会责任。', logo: logo3 },
+  { id: 28, title: '慈善实践根植中国', description: '博世在中国有自己的慈善中心，积极参与教育扶贫项目。', logo: logo1 },
+  { id: 29, title: '员工志愿者文化', description: '博世鼓励员工以志愿者身份参与社会公益。', logo: logo2 },
+  { id: 30, title: '高度透明的公益机制', description: '在中国的慈善中心强调项目透明性与可持续性。', logo: logo3 },
+  { id: 31, title: '持续教育投入', description: '博世在教育、人才培养方面持续投入。', logo: logo1 },
+  { id: 32, title: '因地制宜的公益方案', description: '博世的公益项目结合当地实际需求设计。', logo: logo2 },
+  { id: 33, title: '本地员工成长机会', description: '本地团队能获得参与全球项目的机会。', logo: logo3 },
+  { id: 34, title: '跨国导师机制', description: '博世内部可能设有跨国导师或技能传承机制。', logo: logo1 },
+  { id: 35, title: '技术交流平台', description: '员工可参与跨区域、跨业务的技术交流与分享。', logo: logo2 },
+  { id: 36, title: '内部创新孵化', description: '博世鼓励内部创新、创业项目孵化。', logo: logo3 },
+  { id: 37, title: '国际派遣计划', description: '博世提供海外派遣、轮岗机会，让人国际化成长。', logo: logo1 },
+  { id: 38, title: '多元职业路径', description: '在博世，无论你是技术、管理、市场方向，都有路径。', logo: logo2 },
+  { id: 39, title: '跨部门协作体验', description: '不同业务线之间协作，为员工提供跨界视角。', logo: logo3 },
+  { id: 40, title: '系统培训体系', description: '博世通常会提供系统化的入职与在职培训体系。', logo: logo1 },
+  { id: 41, title: '学习型组织氛围', description: '员工被鼓励不断学习、挑战自我、拥抱新知识。', logo: logo2 },
+  { id: 42, title: '成果认可机制', description: '优秀成果能得到公司或团队认可、奖励。', logo: logo3 },
+  { id: 43, title: '创意表达机会', description: '在项目中有机会提出创意、进行实践。', logo: logo1 },
+  { id: 44, title: '职能轮岗制度', description: '轮岗制度帮助员工拓展视野与能力。', logo: logo2 },
+  { id: 45, title: '透明的绩效考核', description: '公正、透明的绩效体系让员工清楚自己的定位。', logo: logo3 },
+  { id: 46, title: '灵活工作机制', description: '在不同岗位可能享有一定的弹性工作制度。', logo: logo1 },
+  { id: 47, title: '国际文化交流', description: '与来自不同国家同事合作，拓展文化视野。', logo: logo2 },
+  { id: 48, title: '丰富的内部活动', description: '团队建设、年度活动、兴趣小组丰富员工生活。', logo: logo3 },
+  { id: 49, title: '健康与福利保障', description: '员工可以享受系统的健康、保险等福利机制。', logo: logo1 },
+  { id: 50, title: '家庭友好政策', description: '对有家庭责任的员工可能提供亲子支持或弹性安排。', logo: logo2 },
+  { id: 51, title: '工作环境优越', description: '办公场地、设备通常现代化、舒适。', logo: logo3 },
+  { id: 52, title: '安全第一思维', description: '在工业、制造、实验环境，博世强调安全标准。', logo: logo1 },
+  { id: 53, title: '标准化流程', description: '规范流程与制度帮助效率与质量保障。', logo: logo2 },
+  { id: 54, title: '品牌背书加分', description: '来自博世这个品牌对个人简历也有加分效应。', logo: logo3 },
+  { id: 55, title: '高质量合作伙伴', description: '与一流高校、企业、研究机构合作，从项目中受益。', logo: logo1 },
+  { id: 56, title: '参与未来前沿领域', description: '博世在 AI、自动驾驶、能源科技等前沿领域布局。', logo: logo2 },
+  { id: 57, title: '积极响应全球趋势', description: '博世紧跟工业4.0、绿色发展、数字化趋势。', logo: logo3 },
+  { id: 58, title: '强大的品牌认知度', description: '博世是公众熟知、值得信赖的高科技品牌。', logo: logo1 },
+  { id: 59, title: '产品覆盖日常生活', description: '博世产品涉及日常家庭、出行、生活多数场景。', logo: logo2 },
+  { id: 60, title: '科技与人性结合', description: '博世强调科技应服务于人的幸福，而非冷冰工具。', logo: logo3 },
+  { id: 61, title: '客户导向文化', description: '博世重视客户反馈，将其视为产品优化关键。', logo: logo1 },
+  { id: 62, title: '高标准质量管理', description: '在产品和服务上保持高标准的质量认证和控制。', logo: logo2 },
+  { id: 63, title: '快速响应机制', description: '在市场、客户或技术变化中，博世具备快速响应能力。', logo: logo3 },
+  { id: 64, title: '持续改进文化', description: '不断反思、优化、精进，是博世文化的一部分。', logo: logo1 },
+  { id: 65, title: '跨文化团队合作', description: '国际团队协作让你习得跨文化沟通能力。', logo: logo2 },
+  { id: 66, title: '职业稳定性', description: '在大企业体系下，具有相对稳定的职业保障。', logo: logo3 },
+  { id: 67, title: '与行业顶尖竞争', description: '博世经常参与或引领行业技术标准与竞争。', logo: logo1 },
+  { id: 68, title: '可见的社会影响力', description: '博世的很多产品与项目直接影响社会发展。', logo: logo2 },
+  { id: 69, title: '实践可持续技术项目', description: '你可能参与减碳、能源效率提升等项目。', logo: logo3 },
+  { id: 70, title: '长寿命产品价值观', description: '博世的产品设计注重耐用性与可维护性。', logo: logo1 },
+  { id: 71, title: '本地化制造能力', description: '在中国设有生产基地，更贴近市场与用户。', logo: logo2 },
+  { id: 72, title: '全球采购网络', description: '博世具备全球采购与供应链能力，资源整合强。', logo: logo3 },
+  { id: 73, title: '绿色制造推进', description: '制造过程中推行节能减排与绿色标准。', logo: logo1 },
+  { id: 74, title: '智能制造与自动化', description: '博世内部也在使用智能制造技术进行自我升级。', logo: logo2 },
+  { id: 75, title: '工业 4.0 实践者', description: '在智能工厂、数字化车间上有真实落地经验。', logo: logo3 },
+  { id: 76, title: '精益生产理念', description: '博世推行精益、六西格玛等管理理念以提升效率。', logo: logo1 },
+  { id: 77, title: '客户定制化能力', description: '能为客户提供定制化方案，而非一刀切产品。', logo: logo2 },
+  { id: 78, title: '开放平台生态', description: '在 IoT、平台生态上愿与合作伙伴共建。', logo: logo3 },
+  { id: 79, title: '强调知识产权', description: '在专利、技术保护方面严格，尊重创新。', logo: logo1 },
+  { id: 80, title: '国际项目经验积累', description: '能参与跨国项目，获得国际视野。', logo: logo2 },
+  { id: 81, title: '员工荣誉传承', description: '博世内部有优秀员工、团队表彰机制。', logo: logo3 },
+  { id: 82, title: '成就感可视化', description: '项目成果直观可见，可以看到"自己做的东西在世界上被用到"。', logo: logo1 },
+  { id: 83, title: '参与标准制定', description: '在行业标准、技术标准制定中有代表性声音。', logo: logo2 },
+  { id: 84, title: '行业先锋角色', description: '在许多业务领域，博世都是技术与市场的先锋。', logo: logo3 },
+  { id: 85, title: '自主决策空间', description: '虽在大公司架构中，仍赋予项目或团队一定自主权。', logo: logo1 },
+  { id: 86, title: '透明晋升通道', description: '晋升、发展路径在公司内部较为透明。', logo: logo2 },
+  { id: 87, title: '国际交流机会', description: '有机会到德国或其他国家交流、学习。', logo: logo3 },
+  { id: 88, title: '多语种环境', description: '英语、德语或其他语种成为工作环境的一部分。', logo: logo1 },
+  { id: 89, title: '高标准安全保障', description: '企业对员工的安全保护制度严格，减少风险。', logo: logo2 },
+  { id: 90, title: '品牌自豪感', description: '身为博世人，背后有强大品牌支持与认同感。', logo: logo3 },
+  { id: 91, title: '公信力企业形象', description: '博世在大众、行业中具有良好口碑与信任度。', logo: logo1 },
+  { id: 92, title: '营造创新文化', description: '鼓励试错、创新，让员工敢于挑战。', logo: logo2 },
+  { id: 93, title: '多学科交叉机会', description: '你可能跨机械、电子、软件、控制等多个学科协作。', logo: logo3 },
+  { id: 94, title: '国际化视野塑造', description: '在博世工作自然塑造你具备国际化思维。', logo: logo1 },
+  { id: 95, title: '全球客户互动', description: '与全球客户、合作伙伴互动交流经验。', logo: logo2 },
+  { id: 96, title: '卓越科技影响力', description: '博世的科技、解决方案在世界许多地方落地。', logo: logo3 },
+  { id: 97, title: '面向未来的业务布局', description: '博世在新能源、自动驾驶、智慧家居等未来方向持续投入。', logo: logo1 },
+  { id: 98, title: '长期信任背后资本结构', description: '博世大部分股份由基金会持有，以社会责任为导向。', logo: logo2 },
+  { id: 99, title: '历史底蕴与品牌传承', description: '博世有悠久历史，从 1886 年创业至今，是百年科技公司。', logo: logo3 },
+  { id: 100, title: '与优秀人为伍', description: '在博世，你将与国内外顶尖人才合作、成长、成就未来。', logo: logo1 }
 ])
 
 // 随机选择显示在滚动条中的项目
@@ -593,6 +589,11 @@ const scrollItemsRow2 = ref(getRandomReasons(6))
 import lunbo1 from '../assets/images/lunbo1.jpg'
 import lunbo2 from '../assets/images/lunbo2.jpg'
 import lunbo3 from '../assets/images/lunbo3.jpg'
+
+// 导入100个理由的logo图片
+import logo1 from '../assets/images/100-reasons/logo1.png'
+import logo2 from '../assets/images/100-reasons/logo2.png'
+import logo3 from '../assets/images/100-reasons/logo3.png'
 
 const slides = ref([
   {
