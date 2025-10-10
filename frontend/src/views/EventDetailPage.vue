@@ -35,6 +35,13 @@
             <span class="meta-date">{{ eventDetail.date }}</span>
             <span class="meta-time">{{ eventDetail.time }}</span>
           </div>
+          <!-- Register Button -->
+          <button class="register-button" @click="showQRCode = true">
+            <span>立即报名</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
         </div>
         <div class="event-location">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -58,15 +65,6 @@
         </div>
       </div>
 
-      <!-- Register Button -->
-      <div class="register-button-container">
-        <button class="register-button" @click="showQRCode = true">
-          <span>立即报名</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </button>
-      </div>
     </div>
 
     <!-- QR Code Modal -->
@@ -79,23 +77,16 @@
           </svg>
         </button>
 
-        <!-- Event Info in Modal -->
-        <div class="modal-event-info">
-          <h3>{{ eventDetail.title }}</h3>
-          <p class="modal-date">{{ eventDetail.date }} {{ eventDetail.time }}</p>
-          <p class="modal-location">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            {{ eventDetail.location }}
-          </p>
-        </div>
-
-        <!-- QR Code Image -->
-        <div class="qr-code-container">
-          <img src="../assets/images/erweima.png" alt="报名二维码" class="qr-code-image" />
-          <p class="qr-code-hint">长按保存二维码，填写报名信息</p>
+        <!-- QR Code with Event Info Overlay -->
+        <div class="qr-code-wrapper">
+          <!-- Event Info Overlay on Image -->
+          <div class="event-info-overlay">
+            <h3>{{ eventDetail.title }}</h3>
+            <p class="overlay-date">{{ eventDetail.date }} {{ eventDetail.time }}</p>
+            <p class="overlay-location">{{ eventDetail.location }}</p>
+          </div>
+          <!-- QR Code Image -->
+          <img src="../assets/images/erweima.png" alt="报名二维码" class="qr-code-full-image" />
         </div>
       </div>
     </div>
@@ -162,12 +153,12 @@ const allEvents = [
   {
     id: 1,
     type: 'lecture',
-    title: '中国科学技术大学 宣讲会',
-    date: '08-12-2025',
-    time: '09:00-12:00',
-    location: '中国科学技术大学·西区学生活动中心一楼报告厅',
+    title: '上海交通大学 宣讲会',
+    date: '18-12-2025',
+    time: '13:30-16:30',
+    location: '闵行校区陈瑞球楼100号',
     image: boschHeadquarterImage,
-    description: '博世携手同济大学，共同打造了一场充满青春与活力的运动嘉年华。活动面向全体在校学生开放，旨在通过轻松有趣的体育项目，传递"健康生活、团队合作、激情挑战"的理念，展现博世年轻化、多元化的企业形象。',
+    description: '博世集团上海交通大学校园宣讲会，诚邀优秀学子参加。',
     highlights: [
       '博世集团将详细介绍公司的发展历程、业务领域和企业文化',
       '分享最新的技术创新成果和行业发展趋势',
@@ -178,12 +169,12 @@ const allEvents = [
   {
     id: 2,
     type: 'lecture',
-    title: '清华大学 宣讲会',
-    date: '10-12-2025',
+    title: '同济大学 宣讲会',
+    date: '20-12-2025',
     time: '14:00-17:00',
-    location: '经管学院伟伦楼报告厅',
+    location: '四平路校区大礼堂',
     image: boschHeadquarterImage,
-    description: '博世集团清华大学专场宣讲会，期待与你相遇。',
+    description: '博世集团同济大学专场招聘宣讲会，期待与你相遇。',
     highlights: [
       '深入了解博世的企业文化和价值观',
       '探讨行业前沿技术和创新方向',
@@ -208,19 +199,99 @@ const allEvents = [
     ]
   },
   {
-    id: 9,
+    id: 4,
+    type: 'forum',
+    title: '博士生论坛 - 智能制造',
+    date: '22-12-2025',
+    time: '10:00-16:00',
+    location: '博世苏州工厂',
+    image: boschHeadquarterImage,
+    description: '智能制造技术创新与实践分享。',
+    highlights: [
+      '智能制造技术的最新进展',
+      '博世工业4.0实践案例',
+      '数字化转型的挑战与机遇',
+      '未来工厂的发展趋势'
+    ]
+  },
+  {
+    id: 5,
+    type: 'forum',
+    title: '博士生论坛 - 新能源技术',
+    date: '25-12-2025',
+    time: '09:30-16:30',
+    location: '博世中国创新中心',
+    image: boschHeadquarterImage,
+    description: '新能源汽车技术发展趋势与挑战。',
+    highlights: [
+      '新能源汽车关键技术突破',
+      '电池技术与充电基础设施',
+      '智能网联汽车发展前景',
+      '碳中和目标下的机遇'
+    ]
+  },
+  {
+    id: 6,
     type: 'sports',
-    title: '博世运动嘉年华',
+    title: '博世篮球友谊赛',
     date: '05-01-2026',
     time: '14:00-17:00',
     location: '博世上海体育中心',
     image: boschHeadquarterImage,
-    description: '博世运动嘉年华，展现活力与激情。',
+    description: '博世员工篮球友谊赛，增进团队凝聚力。',
     highlights: [
-      '篮球友谊赛',
-      '羽毛球公开赛',
-      '团队拓展活动',
-      '健康生活分享'
+      '跨部门篮球对抗赛',
+      '专业教练技术指导',
+      '团队协作能力提升',
+      '健康生活理念推广'
+    ]
+  },
+  {
+    id: 7,
+    type: 'sports',
+    title: '博世羽毛球公开赛',
+    date: '12-01-2026',
+    time: '09:00-18:00',
+    location: '博世苏州体育馆',
+    image: boschHeadquarterImage,
+    description: '博世羽毛球公开赛，欢迎所有爱好者参加。',
+    highlights: [
+      '单打双打多项赛事',
+      '专业裁判现场执裁',
+      '丰厚奖品等你来拿',
+      '运动社交两不误'
+    ]
+  },
+  {
+    id: 8,
+    type: 'sports',
+    title: '博世马拉松健康跑',
+    date: '19-01-2026',
+    time: '07:00-11:00',
+    location: '世纪公园',
+    image: boschHeadquarterImage,
+    description: '5公里健康跑活动，倡导健康生活方式。',
+    highlights: [
+      '5公里轻松健康跑',
+      '专业跑步装备赞助',
+      '运动营养知识分享',
+      '完赛证书及纪念品'
+    ]
+  },
+  {
+    id: 9,
+    type: 'sports',
+    title: '博世足球联赛',
+    date: '26-01-2026',
+    time: '15:00-17:00',
+    location: '博世长沙工厂球场',
+    image: boschHeadquarterImage,
+    description: '跨部门足球联赛，促进团队交流合作。',
+    highlights: [
+      '11人制标准足球赛',
+      '部门间友谊竞技',
+      '专业场地设施',
+      '赛后交流聚餐'
     ]
   }
 ]
@@ -360,7 +431,7 @@ const closeModal = () => {
   background: white;
   margin-top: -62px; /* 250px * 0.25 = ~62px */
   padding: 20px 16px;
-  padding-bottom: 100px;
+  padding-bottom: 72px; /* Account for bottom nav */
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
   z-index: 10;
@@ -383,7 +454,7 @@ const closeModal = () => {
 .event-meta {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 
@@ -455,41 +526,35 @@ const closeModal = () => {
   color: #4A90E2;
 }
 
-/* Register Button */
-.register-button-container {
-  position: fixed;
-  bottom: 72px;
-  left: 16px;
-  right: 16px;
-  z-index: 90;
-}
-
-.register-button {
-  width: 100%;
-  padding: 16px;
+/* Register Button - Inline with time */
+.event-meta .register-button {
+  padding: 6px 14px;
   background: #4A90E2;
   color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+  gap: 4px;
+  flex-shrink: 0;
 }
 
-.register-button:hover {
+.event-meta .register-button:hover {
   background: #3a7bc8;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.4);
+  transform: translateY(-1px);
 }
 
-.register-button:active {
+.event-meta .register-button:active {
   transform: translateY(0);
+}
+
+.event-meta .register-button svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* Modal Overlay */
@@ -510,11 +575,12 @@ const closeModal = () => {
 .modal-content {
   background: white;
   border-radius: 20px;
-  padding: 30px 20px;
+  padding: 15px;
   max-width: 400px;
   width: 100%;
   position: relative;
   animation: slideUp 0.3s ease;
+  text-align: center;
 }
 
 @keyframes slideUp {
@@ -530,71 +596,81 @@ const closeModal = () => {
 
 .close-button {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: transparent;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
   border: none;
-  padding: 5px;
+  padding: 8px;
   cursor: pointer;
-  color: #999;
-  transition: color 0.2s;
+  color: white;
+  transition: all 0.2s;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
 }
 
 .close-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.close-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* QR Code Wrapper */
+.qr-code-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Event Info Overlay on Image */
+.event-info-overlay {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  text-align: left;
+  z-index: 10;
+  width: calc(100% - 60px);
   color: #333;
 }
 
-/* Modal Event Info */
-.modal-event-info {
-  margin-bottom: 25px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
-}
-
-.modal-event-info h3 {
-  font-size: 18px;
+.event-info-overlay h3 {
+  font-size: 16px;
   font-weight: 600;
-  color: #333;
-  margin: 0 0 10px 0;
-  padding-right: 30px;
-}
-
-.modal-date {
-  font-size: 14px;
-  color: #666;
   margin: 0 0 8px 0;
+  color: #333;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-align: left;
 }
 
-.modal-location {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+.overlay-date {
   font-size: 13px;
-  color: #999;
+  color: #555;
+  margin: 0 0 6px 0;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-align: left;
+}
+
+.overlay-location {
+  font-size: 12px;
+  color: #666;
   margin: 0;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-align: left;
 }
 
-.modal-location svg {
-  flex-shrink: 0;
-}
-
-/* QR Code Container */
-.qr-code-container {
-  text-align: center;
-  padding: 20px 0;
-}
-
-.qr-code-image {
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 15px;
+/* QR Code Full Image */
+.qr-code-full-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
   display: block;
-}
-
-.qr-code-hint {
-  font-size: 13px;
-  color: #999;
-  margin: 0;
 }
 
 /* Bottom Navigation */
@@ -725,12 +801,6 @@ const closeModal = () => {
 
   .event-title {
     font-size: 28px;
-  }
-
-  .register-button-container {
-    position: static;
-    max-width: 400px;
-    margin: 40px auto 0;
   }
 }
 

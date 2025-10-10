@@ -145,24 +145,24 @@ const events = ref([
   {
     id: 1,
     type: 'lecture',
-    title: '中国科学技术大学 宣讲会',
-    location: '西区学生活动中心一楼报告厅',
-    time: '09:00-12:00',
-    dateDay: '08',
+    title: '上海交通大学 宣讲会',
+    location: '闵行校区陈瑞球楼100号',
+    time: '13:30-16:30',
+    dateDay: '18',
     dateMonth: '12-2025',
     image: boschHeadquarterImage,
-    description: '博世中国2025秋季校园招聘宣讲会，诚邀优秀学子参加。'
+    description: '博世集团上海交通大学校园宣讲会。'
   },
   {
     id: 2,
     type: 'lecture',
-    title: '清华大学 宣讲会',
-    location: '经管学院伟伦楼报告厅',
+    title: '同济大学 宣讲会',
+    location: '四平路校区大礼堂',
     time: '14:00-17:00',
-    dateDay: '10',
+    dateDay: '20',
     dateMonth: '12-2025',
     image: boschHeadquarterImage,
-    description: '博世集团清华大学专场宣讲会，期待与你相遇。'
+    description: '博世集团同济大学专场招聘宣讲会。'
   },
   {
     id: 3,
@@ -177,39 +177,17 @@ const events = ref([
   },
   {
     id: 4,
-    type: 'lecture',
-    title: '上海交通大学 宣讲会',
-    location: '闵行校区陈瑞球楼100号',
-    time: '13:30-16:30',
-    dateDay: '18',
-    dateMonth: '12-2025',
-    image: boschHeadquarterImage,
-    description: '博世集团上海交通大学校园宣讲会。'
-  },
-  {
-    id: 5,
     type: 'forum',
     title: '博士生论坛 - 智能制造',
     location: '博世苏州工厂',
     time: '10:00-16:00',
-    dateDay: '20',
+    dateDay: '22',
     dateMonth: '12-2025',
     image: boschHeadquarterImage,
     description: '智能制造技术创新与实践分享。'
   },
   {
-    id: 6,
-    type: 'lecture',
-    title: '浙江大学 宣讲会',
-    location: '紫金港校区国际会议中心',
-    time: '14:00-17:00',
-    dateDay: '22',
-    dateMonth: '12-2025',
-    image: boschHeadquarterImage,
-    description: '博世集团浙江大学专场招聘宣讲会。'
-  },
-  {
-    id: 7,
+    id: 5,
     type: 'forum',
     title: '博士生论坛 - 新能源技术',
     location: '博世中国创新中心',
@@ -220,26 +198,48 @@ const events = ref([
     description: '新能源汽车技术发展趋势与挑战。'
   },
   {
-    id: 8,
-    type: 'lecture',
-    title: '北京大学 宣讲会',
-    location: '英杰交流中心阳光大厅',
-    time: '15:00-18:00',
-    dateDay: '28',
-    dateMonth: '12-2025',
-    image: boschHeadquarterImage,
-    description: '博世集团北京大学校园招聘宣讲会。'
-  },
-  {
-    id: 9,
+    id: 6,
     type: 'sports',
-    title: '博世运动嘉年华',
+    title: '博世篮球友谊赛',
     location: '博世上海体育中心',
     time: '14:00-17:00',
     dateDay: '05',
     dateMonth: '01-2026',
     image: boschHeadquarterImage,
-    description: '博世运动嘉年华。'
+    description: '博世员工篮球友谊赛，增进团队凝聚力。'
+  },
+  {
+    id: 7,
+    type: 'sports',
+    title: '博世羽毛球公开赛',
+    location: '博世苏州体育馆',
+    time: '09:00-18:00',
+    dateDay: '12',
+    dateMonth: '01-2026',
+    image: boschHeadquarterImage,
+    description: '博世羽毛球公开赛，欢迎所有爱好者参加。'
+  },
+  {
+    id: 8,
+    type: 'sports',
+    title: '博世马拉松健康跑',
+    location: '世纪公园',
+    time: '07:00-11:00',
+    dateDay: '19',
+    dateMonth: '01-2026',
+    image: boschHeadquarterImage,
+    description: '5公里健康跑活动，倡导健康生活方式。'
+  },
+  {
+    id: 9,
+    type: 'sports',
+    title: '博世足球联赛',
+    location: '博世长沙工厂球场',
+    time: '15:00-17:00',
+    dateDay: '26',
+    dateMonth: '01-2026',
+    image: boschHeadquarterImage,
+    description: '跨部门足球联赛，促进团队交流合作。'
   }
 ])
 
