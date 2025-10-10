@@ -68,10 +68,10 @@
           <img src="../assets/images/activity-1.png" alt="校园宣讲会" class="activity-image" />
         </div>
         <div class="activity-card" @click="goToEventsListWithTab('forum')">
-          <img src="../assets/images/activity-2.png" alt="博士生论坛" class="activity-image" />
+          <img src="../assets/images/activity-3.png" alt="博士生论坛" class="activity-image" />
         </div>
         <div class="activity-card" @click="goToEventsListWithTab('sports')">
-          <img src="../assets/images/activity-3.png" alt="运动嘉年华" class="activity-image" />
+          <img src="../assets/images/activity-2.png" alt="运动嘉年华" class="activity-image" />
         </div>
       </section>
 

@@ -263,9 +263,7 @@ const goBack = () => {
 
 // 跳转到活动详情
 const goToDetail = (event) => {
-  console.log('Go to event detail:', event)
-  // 这里可以跳转到活动详情页
-  // router.push(`/event-detail/${event.id}`)
+  router.push(`/event-detail/${event.id}`)
 }
 
 // 注册活动
