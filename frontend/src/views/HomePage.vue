@@ -59,7 +59,7 @@
           <div class="feature-card card-explore" @click="toggleExploreDetail">
             <div class="card-content">
               <h3 class="card-title">全景探索，来个博世</h3>
-              <p class="card-subtitle">博世全景 了解博士</p>
+              <p class="card-subtitle">博世全景 了解博世</p>
             </div>
             <button class="card-button">
               查看详情
@@ -290,7 +290,7 @@
             <div class="feature-card card-explore" @click="toggleExploreDetail">
               <div class="card-content">
                 <h3 class="card-title">全景探索，来个博世</h3>
-                <p class="card-subtitle">博世全景 了解博士</p>
+                <p class="card-subtitle">博世全景 了解博世</p>
               </div>
               <button class="card-button">
                 查看详情
@@ -376,7 +376,7 @@
             <div class="feature-card card-explore" @click="toggleExploreDetail">
               <div class="card-content">
                 <h3 class="card-title">全景探索，来个博世</h3>
-                <p class="card-subtitle">博世全景 了解博士</p>
+                <p class="card-subtitle">博世全景 了解博世</p>
               </div>
               <button class="card-button">
                 查看详情

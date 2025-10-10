@@ -131,11 +131,10 @@ onMounted(() => {
   letter-spacing: 1px;
 }
 
-/* Rainbow Strip - same as other pages */
+/* Rainbow Strip - positioned at the bottom */
 .rainbow-strip {
-  position: absolute;
-  /* 背景图高度是42.94rem，精确定位在背景图底部 */
-  top: calc(42.94rem - 4px);  /* 减去线条本身的高度 */
+  position: fixed;
+  bottom: 0;
   left: 0;
   right: 0;
   height: 4px;
@@ -214,11 +213,6 @@ onMounted(() => {
     font-size: 28px;
   }
 
-  .rainbow-strip {
-    /* 移动端：背景图高度114.51vw */
-    top: calc(114.51vw - 4px);  /* 精确对齐背景图底部 */
-  }
-
   .bottom-section {
     /* Mobile positioning - 简单固定定位 */
     position: fixed;
@@ -263,11 +257,6 @@ onMounted(() => {
 
   .chinese-title {
     font-size: 42px;
-  }
-
-  .rainbow-strip {
-    /* 桌面端：背景图高度687px */
-    top: calc(687px - 4px);  /* 精确对齐背景图底部 */
   }
 
   .bottom-section {

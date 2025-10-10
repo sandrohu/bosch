@@ -21,8 +21,10 @@ const totalPages = ref(34)
 
 // 动态获取图片URL
 const getImageUrl = (page) => {
-  return new URL(`../assets/boshijieshao/boshijieshao_Page${page}.png`, import.meta.url).href
-}
+  // 格式化页码为两位数，从00开始
+  const pageNumber = String(page - 1).padStart(2, '0')
+  return new URL(`../assets/boshijieshao/bosch2024-1/bosch2024-1_${pageNumber}.png`, import.meta.url).href
+ }
 </script>
 
 <style scoped>
