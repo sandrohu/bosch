@@ -75,40 +75,45 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import article1Image from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._0.png'
+import article2Image from '../assets/file/article2/image_博世投入25亿欧元发力AI，事关..._0.png'
+import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
+import mobilityImage from '../assets/images/mobility-solutions-web-portal_res_1280x720.webp'
+import jumpImage from '../assets/images/jump.jpg'
 
 const router = useRouter()
 
 const newsList = ref([
   {
-    image: '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._0.png',
+    image: article1Image,
     category: '企业荣誉',
     date: '2025-09-28',
     title: '2025福布斯中国最佳雇主，我们上榜啦！',
     content: '博世荣获福布斯2025「中国年度最佳雇主」及「年度最佳ESG实践雇主」，这份荣誉属于每一位敢拼敢闯的博世人。'
   },
   {
-    image: '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._0.png',
+    image: article2Image,
     category: '技术创新',
     date: '2025-09-25',
     title: '博世投入25亿欧元发力AI，事关你我未来生活',
     content: '博世投入25亿欧元发力AI，1500+欧洲专利加持，让自动驾驶更安全、制造质量更可靠、日常生活更便利。'
   },
   {
-    image: '/src/assets/images/bosch-cn-headquarter_res_1600x900.webp',
+    image: boschHeadquarterImage,
     category: '可持续发展',
     date: '2025-09-20',
     title: '博世中国区实现碳中和目标，引领行业绿色转型',
     content: '博世在中国的所有工厂已全面实现碳中和，成为行业绿色转型的典范，推动可持续发展。'
   },
   {
-    image: '/src/assets/images/mobility-solutions-web-portal_res_1280x720.webp',
+    image: mobilityImage,
     category: '产品发布',
     date: '2025-09-15',
     title: '博世推出新一代智能驾驶辅助系统',
     content: '全新智能驾驶辅助系统搭载先进传感器技术，为用户提供更安全、更智能的驾驶体验。'
   },
   {
-    image: '/src/assets/images/jump.jpg',
+    image: jumpImage,
     category: '校园招聘',
     date: '2025-09-10',
     title: '2025博世中国秋季校园招聘全面启动',

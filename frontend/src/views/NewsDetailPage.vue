@@ -181,6 +181,28 @@
 import { ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+// Article 1 images
+import article1Image0 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._0.png'
+import article1Image1 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._1.png'
+import article1Image2 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._2.png'
+import article1Image3 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._3.png'
+import article1Image4 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._4.png'
+import article1Image5 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._5.png'
+import article1Image6 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._6.png'
+import article1Image7 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._7.png'
+
+// Article 2 images
+import article2Image0 from '../assets/file/article2/image_博世投入25亿欧元发力AI，事关..._0.png'
+import article2Image1 from '../assets/file/article2/image_博世投入25亿欧元发力AI，事关..._1.png'
+import article2Image2 from '../assets/file/article2/image_博世投入25亿欧元发力AI，事关..._2.png'
+import article2Image3 from '../assets/file/article2/image_博世投入25亿欧元发力AI，事关..._3.png'
+import article2Image4 from '../assets/file/article2/image_博世投入25亿欧元发力AI，事关..._4.png'
+
+// Other images
+import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
+import mobilityImage from '../assets/images/mobility-solutions-web-portal_res_1280x720.webp'
+import jumpImage from '../assets/images/jump.jpg'
+
 const route = useRoute()
 const router = useRouter()
 
@@ -191,36 +213,36 @@ const likeCount = ref(0)
 
 const newsData = ref([
   {
-    image: '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._0.png',
+    image: article1Image0,
     category: '企业荣誉',
     date: '2025-09-28',
     title: '2025福布斯中国最佳雇主，我们上榜啦！',
     content: '博世荣获福布斯2025「中国年度最佳雇主」及「年度最佳ESG实践雇主」',
     detailImages: [
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._1.png',
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._2.png',
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._3.png',
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._4.png',
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._5.png',
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._6.png',
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._7.png'
+      article1Image1,
+      article1Image2,
+      article1Image3,
+      article1Image4,
+      article1Image5,
+      article1Image6,
+      article1Image7
     ]
   },
   {
-    image: '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._0.png',
+    image: article2Image0,
     category: '技术创新',
     date: '2025-09-25',
     title: '博世投入25亿欧元发力AI，事关你我未来生活',
     content: '博世投入25亿欧元发力AI，1500+欧洲专利加持，改变你我生活！',
     detailImages: [
-      '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._1.png',
-      '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._2.png',
-      '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._3.png',
-      '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._4.png'
+      article2Image1,
+      article2Image2,
+      article2Image3,
+      article2Image4
     ]
   },
   {
-    image: '/src/assets/images/bosch-cn-headquarter_res_1600x900.webp',
+    image: boschHeadquarterImage,
     category: '可持续发展',
     date: '2025-09-20',
     title: '博世中国区实现碳中和目标，引领行业绿色转型',
@@ -228,7 +250,7 @@ const newsData = ref([
     fullContent: '博世集团在中国的所有工厂已经全面实现碳中和目标，这标志着博世在可持续发展道路上迈出了重要一步。通过采用可再生能源、提高能源效率、实施创新的环保技术，博世不仅减少了自身的碳足迹，还为整个行业树立了绿色转型的典范。这一成就体现了博世"科技成就生活之美"的理念，以及对环境保护的坚定承诺。'
   },
   {
-    image: '/src/assets/images/mobility-solutions-web-portal_res_1280x720.webp',
+    image: mobilityImage,
     category: '产品发布',
     date: '2025-09-15',
     title: '博世推出新一代智能驾驶辅助系统',
@@ -236,7 +258,7 @@ const newsData = ref([
     fullContent: '博世最新推出的智能驾驶辅助系统集成了毫米波雷达、摄像头和超声波传感器等多种先进技术，能够实现L2+级别的自动驾驶功能。系统包括自适应巡航控制、车道保持辅助、自动紧急制动、盲点监测等多项功能，大大提升了驾驶的安全性和舒适性。这套系统已经在多家主流汽车制造商的新车型上得到应用。'
   },
   {
-    image: '/src/assets/images/jump.jpg',
+    image: jumpImage,
     category: '校园招聘',
     date: '2025-09-10',
     title: '2025博世中国秋季校园招聘全面启动',

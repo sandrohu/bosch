@@ -266,10 +266,9 @@ const goToDetail = (event) => {
   router.push(`/event-detail/${event.id}`)
 }
 
-// 注册活动
+// 注册活动 - 点击查看详情按钮也跳转到详情页
 const registerEvent = (event) => {
-  console.log('Register for event:', event)
-  // 这里可以处理活动注册逻辑
+  router.push(`/event-detail/${event.id}`)
 }
 
 // 导航功能
