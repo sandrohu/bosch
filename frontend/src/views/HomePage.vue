@@ -443,30 +443,30 @@ const scrollPosition2 = ref(0)
 const currentNewsSlide = ref(0)
 const newsSlides = ref([
   {
-    image: '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._0.png',
+    image: article1Image0,
     category: '企业荣誉',
     date: '2025-09-28',
     title: '2025福布斯中国最佳雇主，我们上榜啦！',
     content: '博世荣获福布斯2025「中国年度最佳雇主」及「年度最佳ESG实践雇主」',
     detailImages: [
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._1.png',
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._2.png',
-      '/src/assets/file/article1/image_2025福布斯中国最佳雇主，我们..._3.png'
+      article1Image1,
+      article1Image2,
+      article1Image3
     ]
   },
   {
-    image: '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._0.png',
+    image: article2Image0,
     category: '技术创新',
     date: '2025-09-25',
     title: '博世投入25亿欧元发力AI，事关你我未来生活',
     content: '博世投入25亿欧元发力AI，1500+欧洲专利加持，改变你我生活！',
     detailImages: [
-      '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._1.png',
-      '/src/assets/file/article2/image_博世投入25亿欧元发力AI，事关..._2.png'
+      article2Image1,
+      article2Image2
     ]
   },
   {
-    image: '/src/assets/images/bosch-cn-headquarter_res_1600x900.webp',
+    image: boschHeadquarter,
     category: '可持续发展',
     date: '2025-09-20',
     title: '博世中国区实现碳中和目标，引领行业绿色转型',
@@ -594,6 +594,16 @@ import lunbo3 from '../assets/images/lunbo3.jpg'
 import logo1 from '../assets/images/100-reasons/logo1.png'
 import logo2 from '../assets/images/100-reasons/logo2.png'
 import logo3 from '../assets/images/100-reasons/logo3.png'
+
+// 导入新闻文章图片
+import article1Image0 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._0.png'
+import article1Image1 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._1.png'
+import article1Image2 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._2.png'
+import article1Image3 from '../assets/file/article1/image_2025福布斯中国最佳雇主，我们..._3.png'
+import article2Image0 from '../assets/file/article2/image_博世投入25亿欧元发力AI，事关..._0.png'
+import article2Image1 from '../assets/file/article2/image_博世投入25亿欧元发力AI，事关..._1.png'
+import article2Image2 from '../assets/file/article2/image_博世投入25亿欧元发力AI，事关..._2.png'
+import boschHeadquarter from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
 
 const slides = ref([
   {

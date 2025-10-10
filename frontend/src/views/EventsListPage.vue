@@ -122,7 +122,8 @@ const router = useRouter()
 const tabs = ref([
   { key: 'all', label: '全部' },
   { key: 'lecture', label: '校园宣讲会' },
-  { key: 'forum', label: '博士生论坛' }
+  { key: 'forum', label: '博士生论坛' },
+  { key: 'sports', label: '运动嘉年华' }
 ])
 
 // 当前激活的tab
@@ -217,6 +218,50 @@ const events = ref([
     dateMonth: '12-2025',
     image: boschHeadquarterImage,
     description: '博世集团北京大学校园招聘宣讲会。'
+  },
+  {
+    id: 9,
+    type: 'sports',
+    title: '博世篮球友谊赛',
+    location: '博世上海体育中心',
+    time: '14:00-17:00',
+    dateDay: '05',
+    dateMonth: '01-2026',
+    image: boschHeadquarterImage,
+    description: '博世员工篮球友谊赛，展现团队精神和运动活力。'
+  },
+  {
+    id: 10,
+    type: 'sports',
+    title: '博世羽毛球公开赛',
+    location: '博世苏州运动馆',
+    time: '09:00-18:00',
+    dateDay: '12',
+    dateMonth: '01-2026',
+    image: boschHeadquarterImage,
+    description: '年度羽毛球公开赛，欢迎所有博世员工参与。'
+  },
+  {
+    id: 11,
+    type: 'sports',
+    title: '博世马拉松健康跑',
+    location: '世纪公园',
+    time: '07:00-12:00',
+    dateDay: '20',
+    dateMonth: '01-2026',
+    image: boschHeadquarterImage,
+    description: '5公里健康跑活动，倡导健康生活方式。'
+  },
+  {
+    id: 12,
+    type: 'sports',
+    title: '博世足球联赛',
+    location: '博世北京体育场',
+    time: '15:00-18:00',
+    dateDay: '25',
+    dateMonth: '01-2026',
+    image: boschHeadquarterImage,
+    description: '部门间足球联赛，增进团队协作与友谊。'
   }
 ])
 
