@@ -112,11 +112,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
 
 const router = useRouter()
+const route = useRoute()
 
 // Tab配置
 const tabs = ref([
@@ -126,8 +127,18 @@ const tabs = ref([
   { key: 'sports', label: '运动嘉年华' }
 ])
 
-// 当前激活的tab
+// 当前激活的tab - 从URL参数初始化
 const activeTab = ref('all')
+
+// 页面挂载时，从URL参数初始化tab
+onMounted(() => {
+  if (route.query.tab) {
+    const validTabs = tabs.value.map(t => t.key)
+    if (validTabs.includes(route.query.tab)) {
+      activeTab.value = route.query.tab
+    }
+  }
+})
 
 // 所有活动数据
 const events = ref([
@@ -222,46 +233,13 @@ const events = ref([
   {
     id: 9,
     type: 'sports',
-    title: '博世篮球友谊赛',
+    title: '博世运动嘉年华',
     location: '博世上海体育中心',
     time: '14:00-17:00',
     dateDay: '05',
     dateMonth: '01-2026',
     image: boschHeadquarterImage,
-    description: '博世员工篮球友谊赛，展现团队精神和运动活力。'
-  },
-  {
-    id: 10,
-    type: 'sports',
-    title: '博世羽毛球公开赛',
-    location: '博世苏州运动馆',
-    time: '09:00-18:00',
-    dateDay: '12',
-    dateMonth: '01-2026',
-    image: boschHeadquarterImage,
-    description: '年度羽毛球公开赛，欢迎所有博世员工参与。'
-  },
-  {
-    id: 11,
-    type: 'sports',
-    title: '博世马拉松健康跑',
-    location: '世纪公园',
-    time: '07:00-12:00',
-    dateDay: '20',
-    dateMonth: '01-2026',
-    image: boschHeadquarterImage,
-    description: '5公里健康跑活动，倡导健康生活方式。'
-  },
-  {
-    id: 12,
-    type: 'sports',
-    title: '博世足球联赛',
-    location: '博世北京体育场',
-    time: '15:00-18:00',
-    dateDay: '25',
-    dateMonth: '01-2026',
-    image: boschHeadquarterImage,
-    description: '部门间足球联赛，增进团队协作与友谊。'
+    description: '博世运动嘉年华。'
   }
 ])
 

@@ -17,7 +17,7 @@
         </div>
 
         <!-- Hero Image Card -->
-        <div class="hero-card">
+        <div class="hero-card" @click="goToEventsListWithTab(slides[currentSlide].tab)">
           <img :src="slides[currentSlide].image" :alt="slides[currentSlide].title" class="hero-image" />
           <div class="hero-overlay">
             <div class="hero-content">
@@ -25,7 +25,7 @@
                 <h3 class="hero-title">{{ slides[currentSlide].title }}</h3>
                 <p class="hero-date">{{ slides[currentSlide].date }}</p>
               </div>
-              <a href="#" class="view-details-link">查看详情 →</a>
+              <a @click.stop="goToEventsListWithTab(slides[currentSlide].tab)" class="view-details-link">查看详情 →</a>
             </div>
             <p class="hero-description">
               {{ slides[currentSlide].description }}
@@ -64,14 +64,14 @@
 
       <!-- Activity Cards -->
       <section class="activity-cards-section">
-        <div class="activity-card">
-          <img src="../assets/images/activity-1.png" alt="活动1" class="activity-image" />
+        <div class="activity-card" @click="goToEventsListWithTab('lecture')">
+          <img src="../assets/images/activity-1.png" alt="校园宣讲会" class="activity-image" />
         </div>
-        <div class="activity-card">
-          <img src="../assets/images/activity-2.png" alt="活动2" class="activity-image" />
+        <div class="activity-card" @click="goToEventsListWithTab('forum')">
+          <img src="../assets/images/activity-2.png" alt="博士生论坛" class="activity-image" />
         </div>
-        <div class="activity-card">
-          <img src="../assets/images/activity-3.png" alt="活动3" class="activity-image" />
+        <div class="activity-card" @click="goToEventsListWithTab('sports')">
+          <img src="../assets/images/activity-3.png" alt="运动嘉年华" class="activity-image" />
         </div>
       </section>
 
@@ -118,21 +118,24 @@ export default {
           title: '博士生论坛',
           date: '07-09-2025',
           image: xunhuiImage,
-          description: '人工智能领域的突破开启了技术发展的新篇章，加速创新及其商业转化。博世集团董事会主席哈通博士表示...'
+          description: '人工智能领域的突破开启了技术发展的新篇章，加速创新及其商业转化。博世集团董事会主席哈通博士表示...',
+          tab: 'forum'
         },
         {
           id: 2,
           title: '校园巡回宣讲会',
           date: '15-09-2025',
           image: xunhuiImage,
-          description: '博世2025秋季校园巡回宣讲会即将开启，走进全国重点高校，为同学们带来最新的职业发展机会和行业前沿资讯...'
+          description: '博世2025秋季校园巡回宣讲会即将开启，走进全国重点高校，为同学们带来最新的职业发展机会和行业前沿资讯...',
+          tab: 'lecture'
         },
         {
           id: 3,
           title: '运动嘉年华',
           date: '20-10-2025',
           image: boschHeadquarterImage,
-          description: '博世运动嘉年华活动，汇聚各类体育项目，展现博世员工的活力与激情，促进团队协作与健康生活方式...'
+          description: '博世运动嘉年华活动，汇聚各类体育项目，展现博世员工的活力与激情，促进团队协作与健康生活方式...',
+          tab: 'sports'
         }
       ],
       autoPlayTimer: null
@@ -161,6 +164,13 @@ export default {
     // 跳转到活动列表页
     goToEventsList() {
       this.$router.push('/events-list')
+    },
+    // 跳转到活动列表页并指定tab
+    goToEventsListWithTab(tab) {
+      this.$router.push({
+        path: '/events-list',
+        query: { tab: tab }
+      })
     },
     // 切换到指定轮播图
     goToSlide(index) {
