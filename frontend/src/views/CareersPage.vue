@@ -16,67 +16,34 @@
             :alt="slides[0].alt"
             class="hero-image"
           />
-          <!-- White overlay with rounded top corners -->
-          <div class="bottom-overlay">
-            <img
-              src="../assets/images/zhitongweilai.png"
-              alt="职通未来"
-              class="overlay-logo"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Career Cards Section -->
-      <div class="career-cards">
-        <!-- 校园招聘 Card -->
-        <div class="career-card campus-card">
-          <div class="card-header">
-            <h2 class="card-title">校园招聘</h2>
-            <h3 class="card-subtitle">2026应届生招聘</h3>
-          </div>
-          <div class="card-content">
-            <p class="card-description">
-              毕业时间在2025年1月-2026年12月<br>
-              期间的同学
-            </p>
-          </div>
-          <button class="card-button" @click="viewDetails('campus')">
-            查看详情
-          </button>
-        </div>
-
-        <!-- 社会招聘 Card -->
-        <div class="career-card social-card">
-          <div class="card-header">
-            <h2 class="card-title">社会招聘</h2>
-          </div>
-          <div class="card-content">
-            <p class="card-description">
-              主要面向有一定工作经验的优秀人才
-            </p>
-          </div>
-          <button class="card-button" @click="viewDetails('social')">
-            查看详情
-          </button>
-        </div>
-
-        <!-- 日常实习生 Card -->
-        <div class="career-card intern-card">
-          <div class="card-header">
-            <h2 class="card-title">日常实习生</h2>
-          </div>
-          <div class="card-content">
-            <p class="card-description">
-              全部在校大学生
-            </p>
-          </div>
-          <button class="card-button" @click="viewDetails('intern')">
-            查看详情
-          </button>
         </div>
       </div>
     </main>
+
+    <!-- White Overlay Section that extends to bottom nav -->
+    <div class="white-overlay-section">
+      <!-- Zhitongweilai Logo -->
+      <div class="logo-container">
+        <img
+          src="../assets/images/zhitongweilai.png"
+          alt="职通未来"
+          class="overlay-logo"
+        />
+      </div>
+
+      <!-- Career Images Section -->
+      <div class="career-images">
+        <div class="career-image-item" @click="viewDetails('campus')">
+          <img src="../assets/images/zhitong-1.png" alt="校园招聘" />
+        </div>
+        <div class="career-image-item" @click="viewDetails('social')">
+          <img src="../assets/images/zhitong-2.png" alt="社会招聘" />
+        </div>
+        <div class="career-image-item" @click="viewDetails('intern')">
+          <img src="../assets/images/zhitong-3.png" alt="日常实习生" />
+        </div>
+      </div>
+    </div>
 
     <!-- Bottom Navigation (only shown on mobile) -->
     <nav class="bottom-nav mobile-only">
@@ -137,15 +104,15 @@ const viewDetails = (type) => {
   switch(type) {
     case 'campus':
       // 校园招聘详情
-      window.open('https://www.bosch.com.cn/careers/students-and-graduates/', '_blank')
+      window.open('https://app.mokahr.com/campus-recruitment/bosch/73873#/', '_blank')
       break
     case 'social':
       // 社会招聘详情
-      window.open('https://www.bosch.com.cn/careers/professionals/', '_blank')
+      window.open('https://www.bosch.com.cn/careers/job-offers/professionals-recruitment/', '_blank')
       break
     case 'intern':
       // 实习生招聘详情
-      window.open('https://www.bosch.com.cn/careers/students-and-graduates/internships/', '_blank')
+      window.open('https://www.bosch.com.cn/careers/job-offers/internship/', '_blank')
       break
   }
 }
@@ -188,15 +155,16 @@ const viewDetails = (type) => {
 /* Main Content */
 .main-content {
   padding: 16px;
-  padding-bottom: 72px; /* 56px + some margin */
+  padding-bottom: 0; /* Remove bottom padding as white overlay extends to bottom */
 }
 
 /* Hero Banner */
 .hero-banner {
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 0; /* Remove margin as white overlay connects directly */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
 }
 
 .image-wrapper {
@@ -213,140 +181,61 @@ const viewDetails = (type) => {
   display: block;
 }
 
-/* Bottom overlay with rounded top corners */
-.bottom-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 20%; /* 覆盖图片底部1/5的高度 */
+/* White Overlay Section that covers 1/4 of image and extends to bottom */
+.white-overlay-section {
+  position: relative;
   background: white;
+  margin-top: -88px; /* 351px * 0.25 = ~88px to overlap 1/4 of image */
+  padding-top: 20px;
+  padding-bottom: 72px; /* Account for bottom nav */
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
+  z-index: 10;
+}
+
+.logo-container {
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 10px;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .overlay-logo {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 200px;
+  height: auto;
   object-fit: contain;
 }
 
-/* Career Cards */
-.career-cards {
+/* Career Images Section */
+.career-images {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding: 0 16px;
 }
 
-.career-card {
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
+/* Career Image Items */
+.career-image-item {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  min-height: 160px;
+  cursor: pointer;
+  background: white;
 }
 
-.career-card:hover {
-  transform: translateY(-2px);
+.career-image-item:hover {
+  transform: translateY(-4px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* Campus Card - Blue Theme */
-.campus-card {
-  background: linear-gradient(135deg, #7FA8D8 0%, #A5C4E7 100%);
-}
-
-.campus-card .card-title,
-.campus-card .card-subtitle,
-.campus-card .card-description {
-  color: white;
-}
-
-.campus-card .card-button {
-  background: rgba(255, 255, 255, 0.9);
-  color: #7FA8D8;
-}
-
-/* Social Card - Purple Theme */
-.social-card {
-  background: linear-gradient(135deg, #B799D9 0%, #D4B9EC 100%);
-}
-
-.social-card .card-title,
-.social-card .card-description {
-  color: white;
-}
-
-.social-card .card-button {
-  background: rgba(255, 255, 255, 0.9);
-  color: #B799D9;
-}
-
-/* Intern Card - Teal Theme */
-.intern-card {
-  background: linear-gradient(135deg, #7ABDB3 0%, #A5D5CE 100%);
-}
-
-.intern-card .card-title,
-.intern-card .card-description {
-  color: white;
-}
-
-.intern-card .card-button {
-  background: rgba(255, 255, 255, 0.9);
-  color: #7ABDB3;
-}
-
-/* Card Content */
-.card-header {
-  margin-bottom: 12px;
-}
-
-.card-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.card-subtitle {
-  font-size: 16px;
-  font-weight: 500;
-  opacity: 0.95;
-}
-
-.card-content {
-  margin-bottom: 16px;
-}
-
-.card-description {
-  font-size: 14px;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-.card-button {
-  padding: 10px 24px;
-  border: none;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  float: right;
-}
-
-.card-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.card-button:active {
-  transform: scale(0.98);
+.career-image-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 /* Bottom Navigation */
@@ -482,22 +371,18 @@ const viewDetails = (type) => {
   }
 
   .hero-banner {
-    margin-bottom: 24px;
+    margin-bottom: 0;
   }
 
-  .career-cards {
+  .white-overlay-section {
+    margin-top: -100px; /* 400px * 0.25 = 100px */
+  }
+
+  .career-images {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-  }
-
-  .career-card {
-    padding: 24px;
-    min-height: 180px;
-  }
-
-  .card-title {
-    font-size: 24px;
+    padding: 0 24px;
   }
 }
 
@@ -522,36 +407,26 @@ const viewDetails = (type) => {
   }
 
   .hero-banner {
-    margin-bottom: 40px;
+    margin-bottom: 0;
     border-radius: 20px;
   }
 
-  .career-cards {
+  .white-overlay-section {
+    margin-top: -112px; /* 450px * 0.25 = ~112px */
+    padding-bottom: 40px; /* No bottom nav on desktop */
+  }
+
+  .career-images {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    padding: 0 40px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .career-card {
-    padding: 28px;
-    min-height: 200px;
-  }
-
-  .card-title {
-    font-size: 26px;
-  }
-
-  .card-subtitle {
-    font-size: 20px;
-  }
-
-  .card-description {
-    font-size: 16px;
-  }
-
-  .card-button {
-    padding: 14px 32px;
-    font-size: 16px;
+  .overlay-logo {
+    max-width: 300px;
   }
 }
 </style>

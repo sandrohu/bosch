@@ -344,34 +344,30 @@ const navigateToCareers = () => {
 /* Tab Navigation */
 .tab-navigation {
   display: flex;
-  gap: 8px;
+  gap: 20px;
   margin-bottom: 20px;
-  background: white;
-  padding: 12px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 0;
 }
 
 .tab-item {
-  flex: 1;
-  padding: 10px 16px;
+  padding: 8px 0;
   background: transparent;
   border: none;
-  border-radius: 8px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: normal;
   color: #666;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .tab-item:hover {
-  background: #f5f5f5;
+  color: #333;
 }
 
 .tab-item.active {
-  background: #DA291C;
-  color: white;
+  color: #000;
+  font-weight: bold;
 }
 
 /* Events List */
@@ -460,7 +456,7 @@ const navigateToCareers = () => {
   display: block;
   font-size: 20px;
   font-weight: bold;
-  color: #DA291C;
+  color: #333;
   line-height: 1;
 }
 
@@ -475,9 +471,9 @@ const navigateToCareers = () => {
 .event-register-btn {
   width: 100%;
   padding: 10px 16px;
-  background: #DA291C;
-  color: white;
-  border: none;
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
@@ -490,12 +486,14 @@ const navigateToCareers = () => {
 }
 
 .event-register-btn:hover {
-  background: #c02318;
+  background: #e8e8e8;
+  border-color: #d0d0d0;
   transform: translateY(-1px);
 }
 
 .event-register-btn:active {
   transform: translateY(0);
+  background: #e0e0e0;
 }
 
 /* Empty State */
