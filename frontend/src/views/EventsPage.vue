@@ -18,17 +18,17 @@
 
         <!-- Hero Image Card -->
         <div class="hero-card">
-          <img src="../assets/images/bosch-cn-headquarter_res_1600x900.webp" alt="博世园区" class="hero-image" />
+          <img :src="slides[currentSlide].image" :alt="slides[currentSlide].title" class="hero-image" />
           <div class="hero-overlay">
             <div class="hero-content">
               <div class="hero-info">
-                <h3 class="hero-title">博士生论坛</h3>
-                <p class="hero-date">07-09-2025</p>
+                <h3 class="hero-title">{{ slides[currentSlide].title }}</h3>
+                <p class="hero-date">{{ slides[currentSlide].date }}</p>
               </div>
               <a href="#" class="view-details-link">查看详情 →</a>
             </div>
             <p class="hero-description">
-              人工智能领域的突破开启了技术发展的新篇章，加速创新及其商业转化。博世集团董事会主席哈通博士表示...
+              {{ slides[currentSlide].description }}
             </p>
             <div class="engagement-stats">
               <span class="stat-item">
@@ -55,9 +55,10 @@
 
         <!-- Carousel Dots -->
         <div class="carousel-dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
+          <span v-for="(slide, index) in slides"
+                :key="slide.id"
+                :class="['dot', { active: currentSlide === index }]"
+                @click="goToSlide(index)"></span>
         </div>
       </section>
 
@@ -76,48 +77,113 @@
 
       <!-- Bottom Navigation -->
       <nav class="bottom-nav">
-        <a href="/" class="nav-item">
+        <button class="nav-item" @click="navigateToHome">
           <div class="nav-icon-wrapper">
             <img src="../assets/images/daohang-1-click.png" alt="首页" class="nav-icon-active" />
             <img src="../assets/images/daohang-1.png" alt="首页" class="nav-icon-default" />
           </div>
           <span>首页</span>
-        </a>
-        <a href="/events" class="nav-item active">
+        </button>
+        <button class="nav-item active">
           <div class="nav-icon-wrapper">
             <img src="../assets/images/daohang-2-click.png" alt="博世活动" class="nav-icon-active" />
             <img src="../assets/images/daohang-2.png" alt="博世活动" class="nav-icon-default" />
           </div>
           <span>博世活动</span>
-        </a>
-        <a href="/careers" class="nav-item">
+        </button>
+        <button class="nav-item" @click="navigateToCareers">
           <div class="nav-icon-wrapper">
             <img src="../assets/images/daohang-3-click.png" alt="职通博世" class="nav-icon-active" />
             <img src="../assets/images/daohang-3.png" alt="职通博世" class="nav-icon-default" />
           </div>
           <span>职通博世</span>
-        </a>
+        </button>
       </nav>
     </main>
   </div>
 </template>
 
 <script>
+import xunhuiImage from '../assets/images/xunhuixuanjiang.jpg'
+import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
+
 export default {
   name: 'EventsPage',
   data() {
     return {
       currentSlide: 0,
       slides: [
-        { id: 1, title: '博士生论坛' },
-        { id: 2, title: '技术创新大会' },
-        { id: 3, title: '校园招聘会' }
-      ]
+        {
+          id: 1,
+          title: '博士生论坛',
+          date: '07-09-2025',
+          image: xunhuiImage,
+          description: '人工智能领域的突破开启了技术发展的新篇章，加速创新及其商业转化。博世集团董事会主席哈通博士表示...'
+        },
+        {
+          id: 2,
+          title: '校园巡回宣讲会',
+          date: '15-09-2025',
+          image: xunhuiImage,
+          description: '博世2025秋季校园巡回宣讲会即将开启，走进全国重点高校，为同学们带来最新的职业发展机会和行业前沿资讯...'
+        },
+        {
+          id: 3,
+          title: '运动嘉年华',
+          date: '20-10-2025',
+          image: boschHeadquarterImage,
+          description: '博世运动嘉年华活动，汇聚各类体育项目，展现博世员工的活力与激情，促进团队协作与健康生活方式...'
+        }
+      ],
+      autoPlayTimer: null
+    }
+  },
+  mounted() {
+    // 启动自动轮播
+    this.startAutoPlay()
+  },
+  beforeUnmount() {
+    // 清理定时器
+    if (this.autoPlayTimer) {
+      clearInterval(this.autoPlayTimer)
     }
   },
   methods: {
     viewDetails(type) {
       console.log('View details for:', type)
+    },
+    navigateToHome() {
+      this.$router.push('/home')
+    },
+    navigateToCareers() {
+      this.$router.push('/careers')
+    },
+    // 切换到指定轮播图
+    goToSlide(index) {
+      this.currentSlide = index
+      // 重置自动播放
+      this.resetAutoPlay()
+    },
+    // 切换到下一张
+    nextSlide() {
+      this.currentSlide = (this.currentSlide + 1) % this.slides.length
+    },
+    // 切换到上一张
+    prevSlide() {
+      this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length
+    },
+    // 启动自动播放
+    startAutoPlay() {
+      this.autoPlayTimer = setInterval(() => {
+        this.nextSlide()
+      }, 5000) // 每5秒切换一次
+    },
+    // 重置自动播放
+    resetAutoPlay() {
+      if (this.autoPlayTimer) {
+        clearInterval(this.autoPlayTimer)
+      }
+      this.startAutoPlay()
     }
   }
 }
@@ -285,28 +351,32 @@ export default {
   gap: 12px;
   margin-bottom: 30px;
   margin-top: 20px;
+  width: 100%;
 }
 
 .activity-card {
   flex: 1;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  min-width: 0; /* 允许flex子项缩小到内容以下 */
+  background: transparent; /* 去掉白色背景 */
+  border-radius: 0; /* 去掉圆角边框 */
+  overflow: visible; /* 允许内容完整显示 */
+  box-shadow: none; /* 去掉阴影边框 */
   transition: all 0.3s ease;
   cursor: pointer;
+  /* 移除 aspect-ratio 以允许图片自适应 */
 }
 
 .activity-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  /* 保持hover效果但不添加阴影 */
 }
 
 .activity-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* 改为auto让高度自适应 */
+  object-fit: contain; /* 确保图片完整显示 */
   display: block;
+  /* 去掉白色背景 */
 }
 
 /* Bottom Navigation */
@@ -433,13 +503,30 @@ export default {
   }
 
   .activity-cards-section {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .activity-card {
+    flex: 1;
+    width: auto;
+    height: auto;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .activity-cards-section {
+    display: flex;
     flex-direction: column;
     gap: 16px;
   }
 
   .activity-card {
     width: 100%;
-    height: 200px;
+    height: auto;
   }
 }
 
@@ -473,7 +560,7 @@ export default {
   }
 
   .activity-card {
-    height: 250px;
+    height: auto; /* 改为auto让高度自适应 */
   }
 
   .bottom-nav {

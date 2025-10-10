@@ -78,27 +78,27 @@
 
     <!-- Bottom Navigation (Mobile Only) -->
     <nav class="bottom-nav mobile-only">
-      <a href="/home" class="nav-item">
+      <button class="nav-item" @click="navigateToHome">
         <div class="nav-icon-wrapper">
           <img src="../assets/images/daohang-1-click.png" alt="首页" class="nav-icon-active" />
           <img src="../assets/images/daohang-1.png" alt="首页" class="nav-icon-default" />
         </div>
         <span>首页</span>
-      </a>
-      <a href="/events" class="nav-item active">
+      </button>
+      <button class="nav-item active">
         <div class="nav-icon-wrapper">
           <img src="../assets/images/daohang-2-click.png" alt="博世活动" class="nav-icon-active" />
           <img src="../assets/images/daohang-2.png" alt="博世活动" class="nav-icon-default" />
         </div>
         <span>博世活动</span>
-      </a>
-      <a href="/careers" class="nav-item">
+      </button>
+      <button class="nav-item" @click="navigateToCareers">
         <div class="nav-icon-wrapper">
           <img src="../assets/images/daohang-3-click.png" alt="职通博世" class="nav-icon-active" />
           <img src="../assets/images/daohang-3.png" alt="职通博世" class="nav-icon-default" />
         </div>
         <span>职通博世</span>
-      </a>
+      </button>
     </nav>
   </div>
 </template>
@@ -109,16 +109,29 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-// Navigation function
+// Navigation functions
 const goBack = () => {
   router.back()
 }
 
+const navigateToHome = () => {
+  router.push('/home')
+}
+
+const navigateToCareers = () => {
+  router.push('/careers')
+}
+
+// Import logo images
+import logo1 from '../assets/images/100-reasons/rdl-logo-1.png'
+import logo2 from '../assets/images/100-reasons/rdl-logo-2.png'
+import logo3 from '../assets/images/100-reasons/rdl-logo-3.png'
+
 // Logo and tag options
 const logos = [
-  '/src/assets/images/100-reasons/rdl-logo-1.png',
-  '/src/assets/images/100-reasons/rdl-logo-2.png',
-  '/src/assets/images/100-reasons/rdl-logo-3.png'
+  logo1,
+  logo2,
+  logo3
 ]
 
 const tags = ['GROW', 'INSPIRE', 'ENJOY']

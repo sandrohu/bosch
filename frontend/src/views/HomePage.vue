@@ -1341,6 +1341,7 @@ onUnmounted(() => {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
   white-space: normal;
   text-align: left;
@@ -1497,6 +1498,7 @@ onUnmounted(() => {
   margin-bottom: 12px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -1508,6 +1510,7 @@ onUnmounted(() => {
   margin-bottom: 16px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -1615,6 +1618,7 @@ onUnmounted(() => {
   .news-title {
     font-size: 22px;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 
   .news-carousel {
