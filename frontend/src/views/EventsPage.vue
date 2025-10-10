@@ -13,7 +13,7 @@
       <section class="recommendation-section">
         <div class="section-header">
           <h2 class="section-title">博世推荐</h2>
-          <a href="#" class="view-all-link">查看全部 →</a>
+          <a @click="goToEventsList" class="view-all-link">查看全部 →</a>
         </div>
 
         <!-- Hero Image Card -->
@@ -157,6 +157,10 @@ export default {
     },
     navigateToCareers() {
       this.$router.push('/careers')
+    },
+    // 跳转到活动列表页
+    goToEventsList() {
+      this.$router.push('/events-list')
     },
     // 切换到指定轮播图
     goToSlide(index) {

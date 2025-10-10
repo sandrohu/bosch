@@ -8,44 +8,22 @@
 
     <!-- Main Content -->
     <main class="main-content">
-      <!-- Hero Banner with Carousel -->
+      <!-- Hero Banner with Fixed Image and Overlay -->
       <div class="hero-banner">
-        <div class="carousel-wrapper">
-          <transition-group name="slide-fade" tag="div">
-            <div
-              class="carousel-slide"
-              v-for="(slide, index) in slides"
-              :key="index"
-              v-show="currentSlide === index"
-            >
-              <img
-                :src="slide.image"
-                :alt="slide.alt"
-                class="carousel-image"
-              />
-            </div>
-          </transition-group>
-          <!-- Navigation Arrows -->
-          <button class="carousel-prev" @click="prevSlide" aria-label="Previous slide">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-            </svg>
-          </button>
-          <button class="carousel-next" @click="nextSlide" aria-label="Next slide">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Carousel Dots -->
-        <div class="carousel-dots">
-          <span
-            v-for="(slide, index) in slides"
-            :key="index"
-            :class="['dot', { active: currentSlide === index }]"
-            @click="currentSlide = index"
-          ></span>
+        <div class="image-wrapper">
+          <img
+            :src="slides[0].image"
+            :alt="slides[0].alt"
+            class="hero-image"
+          />
+          <!-- White overlay with rounded top corners -->
+          <div class="bottom-overlay">
+            <img
+              src="../assets/images/zhitongweilai.png"
+              alt="职通未来"
+              class="overlay-logo"
+            />
+          </div>
         </div>
       </div>
 
@@ -130,56 +108,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const currentSlide = ref(0)
 
 // 导入轮播图图片
 import lunbo1 from '../assets/images/lunbo1.jpg'
-import lunbo2 from '../assets/images/lunbo2.jpg'
-import lunbo3 from '../assets/images/lunbo3.jpg'
 
-// 轮播图数据 - 使用与首页相同的图片
+// 只使用第一张图片
 const slides = ref([
   {
     image: lunbo1,
     alt: 'BOSCH 招聘 - 科技成就生活之美'
-  },
-  {
-    image: lunbo2,
-    alt: 'BOSCH 招聘 - 创新引领未来'
-  },
-  {
-    image: lunbo3,
-    alt: 'BOSCH 招聘 - 加入我们'
   }
 ])
-
-let intervalId = null
-
-// Navigation functions
-const nextSlide = () => {
-  currentSlide.value = (currentSlide.value + 1) % slides.value.length
-}
-
-const prevSlide = () => {
-  currentSlide.value = currentSlide.value === 0
-    ? slides.value.length - 1
-    : currentSlide.value - 1
-}
-
-// Auto-play carousel
-onMounted(() => {
-  intervalId = setInterval(nextSlide, 5000)
-})
-
-onUnmounted(() => {
-  if (intervalId) {
-    clearInterval(intervalId)
-  }
-})
 
 const goHome = () => {
   router.push('/home')
@@ -250,98 +193,46 @@ const viewDetails = (type) => {
 
 /* Hero Banner */
 .hero-banner {
-  background: white;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.carousel-wrapper {
-  height: 351px;
+.image-wrapper {
   position: relative;
+  height: 351px;
   overflow: hidden;
   background: #f5f5f5;
 }
 
-.carousel-slide {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.carousel-image {
+.hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* Carousel Navigation Arrows */
-.carousel-prev,
-.carousel-next {
+/* Bottom overlay with rounded top corners */
+.bottom-overlay {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20%; /* 覆盖图片底部1/5的高度 */
+  background: white;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 2;
+  padding: 10px;
 }
 
-.carousel-prev:hover,
-.carousel-next:hover {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.carousel-prev {
-  left: 10px;
-}
-
-.carousel-next {
-  right: 10px;
-}
-
-/* Slide transition */
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  opacity: 0;
-}
-
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px;
-  background: white;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #D0D0D0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  width: 20px;
-  border-radius: 4px;
-  background: #333;
+.overlay-logo {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
 }
 
 /* Career Cards */
@@ -586,14 +477,8 @@ const viewDetails = (type) => {
     margin: 0 auto;
   }
 
-  .carousel-wrapper {
+  .image-wrapper {
     height: 400px;
-  }
-
-  .carousel-prev,
-  .carousel-next {
-    width: 48px;
-    height: 48px;
   }
 
   .hero-banner {
@@ -632,22 +517,8 @@ const viewDetails = (type) => {
     max-width: 1200px;
   }
 
-  .carousel-wrapper {
+  .image-wrapper {
     height: 450px;
-  }
-
-  .carousel-prev,
-  .carousel-next {
-    width: 56px;
-    height: 56px;
-  }
-
-  .carousel-prev {
-    left: 20px;
-  }
-
-  .carousel-next {
-    right: 20px;
   }
 
   .hero-banner {

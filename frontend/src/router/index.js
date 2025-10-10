@@ -7,6 +7,7 @@ import VideoSeriesPage from '../views/VideoSeriesPage.vue'
 import NewsListPage from '../views/NewsListPage.vue'
 import NewsDetailPage from '../views/NewsDetailPage.vue'
 import EventsPage from '../views/EventsPage.vue'
+import EventsListPage from '../views/EventsListPage.vue'
 import CareersPage from '../views/CareersPage.vue'
 import ReasonsDetailPage from '../views/ReasonsDetailPage.vue'
 
@@ -58,6 +59,12 @@ const routes = [
     name: 'Events',
     component: EventsPage,
     meta: { title: '博世活动 - BOSCH 招聘' }
+  },
+  {
+    path: '/events-list',
+    name: 'EventsList',
+    component: EventsListPage,
+    meta: { title: '活动列表 - BOSCH 招聘' }
   },
   {
     path: '/careers',
