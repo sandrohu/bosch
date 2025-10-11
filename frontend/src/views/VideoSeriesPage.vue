@@ -324,11 +324,22 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import meaningfulJob1 from '../assets/file/meaningful job-1.mp4'
-import meaningfulJob2 from '../assets/file/meaningful job-2.mp4'
-import meaningfulJob3 from '../assets/file/meaningful job-3.mp4'
-import meaningfulJob4 from '../assets/file/meaningful job-4.mp4'
-import meaningfulJob5 from '../assets/file/meaningful job-5.mp4'
+// 开发环境使用静态import
+import meaningfulJob1Local from '../assets/file/meaningful job-1.mp4'
+import meaningfulJob2Local from '../assets/file/meaningful job-2.mp4'
+import meaningfulJob3Local from '../assets/file/meaningful job-3.mp4'
+import meaningfulJob4Local from '../assets/file/meaningful job-4.mp4'
+import meaningfulJob5Local from '../assets/file/meaningful job-5.mp4'
+
+// 判断是否为开发环境
+const isDev = import.meta.env.DEV
+
+// 根据环境选择视频路径
+const meaningfulJob1 = isDev ? meaningfulJob1Local : '/videos/meaningful-job-1.mp4'
+const meaningfulJob2 = isDev ? meaningfulJob2Local : '/videos/meaningful-job-2.mp4'
+const meaningfulJob3 = isDev ? meaningfulJob3Local : '/videos/meaningful-job-3.mp4'
+const meaningfulJob4 = isDev ? meaningfulJob4Local : '/videos/meaningful-job-4.mp4'
+const meaningfulJob5 = isDev ? meaningfulJob5Local : '/videos/meaningful-job-5.mp4'
 
 const router = useRouter()
 const activeTab = ref('why')
