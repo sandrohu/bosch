@@ -94,15 +94,17 @@
             </div>
             <div class="video-info">
               <h3 class="video-title">博世研发科学家老王的无图之旅</h3>
-              <p :class="['video-description', { expanded: isExpanded('meaning-1') }]">
-                博世研发科学家老王享受着无图之旅，带领团队研发出无图驾驶技术，在CVPR国际赛事中跻身前列，并将前沿科技落地量产项目，在迷雾中点亮未来。
-              </p>
-              <button
-                class="expand-btn"
-                @click="toggleExpand('meaning-1')"
-              >
-                {{ isExpanded('meaning-1') ? '收起' : '查看更多' }}
-              </button>
+              <div class="video-description-wrapper">
+                <p :class="['video-description', { expanded: isExpanded('meaning-1') }]">
+                  博世研发科学家老王享受着无图之旅，带领团队研发出无图驾驶技术，在CVPR国际赛事中跻身前列，并将前沿科技落地量产项目，在迷雾中点亮未来。
+                </p>
+                <span
+                  class="expand-btn-inline"
+                  @click="toggleExpand('meaning-1')"
+                >
+                  {{ isExpanded('meaning-1') ? ' 收起' : '...' }}
+                </span>
+              </div>
               <div class="video-meta">
                 <span class="video-date">时间：2025/03/15 10:00-11:30</span>
               </div>
@@ -124,15 +126,17 @@
             </div>
             <div class="video-info">
               <h3 class="video-title">博世48V电池背后的故事</h3>
-              <p :class="['video-description', { expanded: isExpanded('meaning-2') }]">
-                仅用半年时间，我代领团队完成全球第四条48V二代电池产线的设计、安装与量产，报废率从5%降至0.3%，赢得德国总部赞誉，落地中国，我们使命必达。
-              </p>
-              <button
-                class="expand-btn"
-                @click="toggleExpand('meaning-2')"
-              >
-                {{ isExpanded('meaning-2') ? '收起' : '查看更多' }}
-              </button>
+              <div class="video-description-wrapper">
+                <p :class="['video-description', { expanded: isExpanded('meaning-2') }]">
+                  仅用半年时间，我代领团队完成全球第四条48V二代电池产线的设计、安装与量产，报废率从5%降至0.3%，赢得德国总部赞誉，落地中国，我们使命必达。
+                </p>
+                <span
+                  class="expand-btn-inline"
+                  @click="toggleExpand('meaning-2')"
+                >
+                  {{ isExpanded('meaning-2') ? ' 收起' : '...' }}
+                </span>
+              </div>
               <div class="video-meta">
                 <span class="video-date">时间：2025/04/20 14:00-15:30</span>
               </div>
@@ -154,15 +158,17 @@
             </div>
             <div class="video-info">
               <h3 class="video-title">博世销售先锋的挑战之路</h3>
-              <p :class="['video-description', { expanded: isExpanded('meaning-3') }]">
-                从项目经理转型销售，在芯片涨价、客户降量的困境中，带领团队快速优化合同，并拿下中国首个8255智能座舱项目。
-              </p>
-              <button
-                class="expand-btn"
-                @click="toggleExpand('meaning-3')"
-              >
-                {{ isExpanded('meaning-3') ? '收起' : '查看更多' }}
-              </button>
+              <div class="video-description-wrapper">
+                <p :class="['video-description', { expanded: isExpanded('meaning-3') }]">
+                  从项目经理转型销售，在芯片涨价、客户降量的困境中，带领团队快速优化合同，并拿下中国首个8255智能座舱项目。
+                </p>
+                <span
+                  class="expand-btn-inline"
+                  @click="toggleExpand('meaning-3')"
+                >
+                  {{ isExpanded('meaning-3') ? ' 收起' : '...' }}
+                </span>
+              </div>
               <div class="video-meta">
                 <span class="video-date">时间：2025/05/10 09:00-10:30</span>
               </div>
@@ -184,15 +190,17 @@
             </div>
             <div class="video-info">
               <h3 class="video-title">氢动力模块的开发之路</h3>
-              <p :class="['video-description', { expanded: isExpanded('meaning-4') }]">
-                面对氢燃料电池的高安全要求，我们搭建首个清洁度测试台架，用本土化策略降低成本，为博世抢占清洁能源技术高地奠定基石。博世氢燃料电池系统，必将点亮新能源未来。
-              </p>
-              <button
-                class="expand-btn"
-                @click="toggleExpand('meaning-4')"
-              >
-                {{ isExpanded('meaning-4') ? '收起' : '查看更多' }}
-              </button>
+              <div class="video-description-wrapper">
+                <p :class="['video-description', { expanded: isExpanded('meaning-4') }]">
+                  面对氢燃料电池的高安全要求，我们搭建首个清洁度测试台架，用本土化策略降低成本，为博世抢占清洁能源技术高地奠定基石。博世氢燃料电池系统，必将点亮新能源未来。
+                </p>
+                <span
+                  class="expand-btn-inline"
+                  @click="toggleExpand('meaning-4')"
+                >
+                  {{ isExpanded('meaning-4') ? ' 收起' : '...' }}
+                </span>
+              </div>
               <div class="video-meta">
                 <span class="video-date">时间：2025/06/05 15:00-16:30</span>
               </div>
@@ -214,15 +222,17 @@
             </div>
             <div class="video-info">
               <h3 class="video-title">从CustomenTPM至Innovation TPM 的蜕变之路</h3>
-              <p :class="['video-description', { expanded: isExpanded('meaning-5') }]">
-                创新，就是不断突破边界。我搭建 ITASfamily 推动 ITAS 功能量产，带领团队荣获博世发明家大奖，并将中国方案推向全球。走无人走过的路，更需要勇气与远见。
-              </p>
-              <button
-                class="expand-btn"
-                @click="toggleExpand('meaning-5')"
-              >
-                {{ isExpanded('meaning-5') ? '收起' : '查看更多' }}
-              </button>
+              <div class="video-description-wrapper">
+                <p :class="['video-description', { expanded: isExpanded('meaning-5') }]">
+                  创新，就是不断突破边界。我搭建 ITASfamily 推动 ITAS 功能量产，带领团队荣获博世发明家大奖，并将中国方案推向全球。走无人走过的路，更需要勇气与远见。
+                </p>
+                <span
+                  class="expand-btn-inline"
+                  @click="toggleExpand('meaning-5')"
+                >
+                  {{ isExpanded('meaning-5') ? ' 收起' : '...' }}
+                </span>
+              </div>
               <div class="video-meta">
                 <span class="video-date">时间：2025/07/12 13:00-14:30</span>
               </div>
@@ -578,11 +588,17 @@ const navigateToCareers = () => {
   line-height: 1.4;
 }
 
+/* 描述文本容器 */
+.video-description-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+}
+
 .video-description {
   font-size: 14px;
   color: #666;
   line-height: 1.6;
-  margin: 0 0 8px 0;
+  margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -596,28 +612,21 @@ const navigateToCareers = () => {
   -webkit-line-clamp: unset;
   line-clamp: unset;
   overflow: visible;
+  display: block;
 }
 
-/* 查看更多/收起按钮 */
-.expand-btn {
-  background: none;
-  border: none;
-  color: #007BC0;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 4px 0;
-  margin-bottom: 12px;
+/* 内联的省略号/收起按钮 */
+.expand-btn-inline {
+  color: #666;
+  font-size: 14px;
   cursor: pointer;
   transition: opacity 0.2s ease;
-  text-align: left;
+  margin-left: 2px;
+  font-weight: 500;
 }
 
-.expand-btn:hover {
-  opacity: 0.7;
-}
-
-.expand-btn:active {
-  opacity: 0.5;
+.expand-btn-inline:hover {
+  opacity: 0.6;
 }
 
 .video-meta {
@@ -913,8 +922,8 @@ const navigateToCareers = () => {
     line-clamp: unset;
   }
 
-  .expand-btn {
-    font-size: 14px;
+  .expand-btn-inline {
+    font-size: 15px;
   }
 
   .video-date {
