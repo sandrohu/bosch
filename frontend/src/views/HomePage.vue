@@ -250,10 +250,10 @@
                   <img v-else
                        src="../assets/images/jump.jpg"
                        alt="跳一跳"
-                       class="carousel-image" />
+                       class="carousel-image jump-image" />
 
                   <div class="carousel-overlay">
-                    <h3 class="carousel-title">{{ gravitySlide === 0 ? '爱上博世的100个理由' : '跳一跳' }}</h3>
+                    <h3 class="carousel-title">{{ gravitySlide === 0 ? '爱上博世的100个理由' : '爱上博世的100个理由互动小游戏' }}</h3>
                   </div>
 
                   <!-- Carousel Controls -->
@@ -1376,6 +1376,11 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* 跳一跳游戏图片特殊样式 - 向下移动 */
+.carousel-container .jump-image {
+  object-position: center 70%; /* 图片垂直位置向下移动，显示下方70%的位置 */
 }
 
 .carousel-overlay {
