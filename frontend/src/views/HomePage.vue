@@ -1378,9 +1378,9 @@ onUnmounted(() => {
   object-fit: cover;
 }
 
-/* 跳一跳游戏图片特殊样式 - 向下移动 */
+/* 跳一跳游戏图片特殊样式 - 调整位置避免人物头部被截断 */
 .carousel-container .jump-image {
-  object-position: center 70%; /* 图片垂直位置向下移动，显示下方70%的位置 */
+  object-position: center 30%; /* 将图片向上移动，显示上方30%的位置，确保人物头部完整显示 */
 }
 
 .carousel-overlay {
