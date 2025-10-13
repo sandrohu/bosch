@@ -117,6 +117,8 @@ import { useRouter, useRoute } from 'vue-router'
 import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
 import xunhuiImage from '../assets/images/xunhuixuanjiang.jpg'
 import boshishengluntanImage from '../assets/images/boshishengluntan.jpg'
+import kongxuan1Image from '../assets/images/kongxuan-1.jpg'
+import kongxuan2Image from '../assets/images/kongxuan-2.jpg'
 
 const router = useRouter()
 const route = useRoute()
@@ -126,7 +128,7 @@ const tabs = ref([
   { key: 'all', label: '全部' },
   { key: 'forum', label: '博士生论坛' },
   { key: 'sports', label: '青春不凡#来个博世' },
-  // { key: 'lecture', label: '校园宣讲会' }
+  { key: 'lecture', label: '校园宣讲会' }
 ])
 
 // 当前激活的tab - 从URL参数初始化
@@ -198,6 +200,28 @@ const events = ref([
     dateMonth: '10-2025',
     image: xunhuiImage,
     description: '博世 X 东南大学'
+  },
+  {
+    id: 6,
+    type: 'lecture',
+    title: '看直播，拿世界500强校招offer',
+    location: '小红书-博世中国招聘',
+    time: '18:00-19:00',
+    dateDay: '25',
+    dateMonth: '09-2025',
+    image: kongxuan1Image,
+    description: '相约@博世中国招聘 直播间，为你带来精彩内容！'
+  },
+  {
+    id: 7,
+    type: 'lecture',
+    title: '博世秋招秘籍即将上线，速来',
+    location: '小红书-博世中国招聘',
+    time: '18:00-19:00',
+    dateDay: '09',
+    dateMonth: '09-2025',
+    image: kongxuan2Image,
+    description: '还在准备秋招的宝子们，博世中国秋招直播来啦！'
   }
 ])
 

@@ -36,7 +36,7 @@
             <span class="meta-time">{{ eventDetail.time }}</span>
           </div>
           <!-- Register Button (only for certain events) -->
-          <button v-if="eventDetail.id !== 1" class="register-button" @click="showQRCode = true">
+          <button v-if="eventDetail.type === 'lecture' && eventDetail.id > 5" class="register-button" @click="showQRCode = true">
             <span>立即报名</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="9 18 15 12 9 6"/>
@@ -126,6 +126,8 @@ import { useRouter, useRoute } from 'vue-router'
 import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
 import boshishengluntanImage from '../assets/images/boshishengluntan.jpg'
 import xunhuiImage from '../assets/images/xunhuixuanjiang.jpg'
+import kongxuan1Image from '../assets/images/kongxuan-1.jpg'
+import kongxuan2Image from '../assets/images/kongxuan-2.jpg'
 
 const router = useRouter()
 const route = useRoute()
@@ -228,6 +230,40 @@ const allEvents = [
       '分享最新的技术创新成果和行业发展趋势',
       '提供丰富的职业发展机会和校园招聘信息',
       '现场答疑环节，解答同学们关心的问题'
+    ]
+  },
+  {
+    id: 6,
+    type: 'lecture',
+    title: '看直播，拿世界500强校招offer',
+    date: '2025年9月25日',
+    time: '18:00-19:00',
+    location: '小红书-博世中国招聘',
+    image: kongxuan1Image,
+    description: '相约@博世中国招聘 直播间，为你带来精彩内容！',
+    highlights: [
+      '多元视角：不同背景、不同岗位的同事，分享他们眼中的博世',
+      '趣闻分享：揭秘不同行业的"好玩"日常，打破你的认知壁垒',
+      '在线答疑：关于求职、面试、职业发展的任何问题，现场为你解答',
+      '初见故事：分享他们"第一次听说博世"和最终选择博世的暖心故事',
+      '直播多轮抽奖，博世好礼送不停！更有直通面试机会等你来拿！'
+    ]
+  },
+  {
+    id: 7,
+    type: 'lecture',
+    title: '博世秋招秘籍即将上线，速来',
+    date: '2025年9月9日',
+    time: '18:00-19:00',
+    location: '小红书-博世中国招聘',
+    image: kongxuan2Image,
+    description: '还在准备秋招的宝子们，博世中国秋招直播来啦！',
+    highlights: [
+      '✔️博世员工解析面试技巧',
+      '✔️2026博世校招岗位揭秘',
+      '✔️在线答疑，聊聊职场那些事',
+      '✔️三轮抽奖，博世喊你接好运',
+      '一边冲浪一边拿offer，治好你的求职迷茫！'
     ]
   }
 ]

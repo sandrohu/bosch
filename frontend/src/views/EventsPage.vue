@@ -65,9 +65,9 @@
       <!-- Activity Cards -->
       <section class="activity-cards-section">
         <!-- 先隐藏校园宣讲会 -->
-        <!-- <div class="activity-card" @click="goToEventsListWithTab('lecture')">
+        <div class="activity-card" @click="goToEventsListWithTab('lecture')">
           <img src="../assets/images/activity-1.png" alt="校园宣讲会" class="activity-image" />
-        </div> -->
+        </div>
         <div class="activity-card" @click="goToEventsListWithTab('forum')">
           <img src="../assets/images/activity-3.png" alt="博士生论坛" class="activity-image" />
         </div>
