@@ -35,8 +35,8 @@
             <span class="meta-date">{{ eventDetail.date }}</span>
             <span class="meta-time">{{ eventDetail.time }}</span>
           </div>
-          <!-- Register Button -->
-          <button class="register-button" @click="showQRCode = true">
+          <!-- Register Button (only for certain events) -->
+          <button v-if="eventDetail.id !== 1" class="register-button" @click="showQRCode = true">
             <span>立即报名</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="9 18 15 12 9 6"/>
