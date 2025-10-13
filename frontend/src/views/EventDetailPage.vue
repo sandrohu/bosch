@@ -35,8 +35,14 @@
             <span class="meta-date">{{ eventDetail.date }}</span>
             <span class="meta-time">{{ eventDetail.time }}</span>
           </div>
-          <!-- Register Button (only for certain events) -->
-          <button v-if="eventDetail.type === 'lecture' && eventDetail.id > 5" class="register-button" @click="showQRCode = true">
+          <!-- Register/Replay Button (only for certain events) -->
+          <button v-if="eventDetail.id === 6 || eventDetail.id === 7" class="register-button" @click="handleReplayClick">
+            <span>查看回放</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+          <button v-else-if="eventDetail.type === 'lecture' && eventDetail.id > 7" class="register-button" @click="showQRCode = true">
             <span>立即报名</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="9 18 15 12 9 6"/>
@@ -241,6 +247,7 @@ const allEvents = [
     location: '小红书-博世中国招聘',
     image: kongxuan1Image,
     description: '相约@博世中国招聘 直播间，为你带来精彩内容！',
+    replayUrl: 'https://www.xiaohongshu.com/fe/live-h5/page/live_replay/569939621870932425?share_source=live_dynamic&share_source_id=137594152571704932&host_id=60c37ff40000000001005f41&xhsshare=WeixinSession&appuid=68b7ae6800000000190194be&apptime=1760167753&share_id=14a9937c91614d32b5afa5006fdd18bc&share_channel=wechat',
     highlights: [
       '多元视角：不同背景、不同岗位的同事，分享他们眼中的博世',
       '趣闻分享：揭秘不同行业的"好玩"日常，打破你的认知壁垒',
@@ -258,6 +265,7 @@ const allEvents = [
     location: '小红书-博世中国招聘',
     image: kongxuan2Image,
     description: '还在准备秋招的宝子们，博世中国秋招直播来啦！',
+    replayUrl: 'https://www.xiaohongshu.com/fe/live-h5/page/live_replay/569916433896234740?share_source=live_dynamic&share_source_id=137570961291913841&host_id=60c37ff40000000001005f41&xhsshare=WeixinSession&appuid=68b7ae6800000000190194be&apptime=1760167768&share_id=c4a9ecadc37b46a5928e8528a3505982&share_channel=wechat',
     highlights: [
       '✔️博世员工解析面试技巧',
       '✔️2026博世校招岗位揭秘',
@@ -298,6 +306,13 @@ const goCareers = () => {
 // 关闭弹窗
 const closeModal = () => {
   showQRCode.value = false
+}
+
+// 处理查看回放按钮点击
+const handleReplayClick = () => {
+  if (eventDetail.value.replayUrl) {
+    window.open(eventDetail.value.replayUrl, '_blank')
+  }
 }
 </script>
 
