@@ -126,7 +126,7 @@ const tabs = ref([
   { key: 'all', label: '全部' },
   { key: 'forum', label: '博士生论坛' },
   { key: 'sports', label: '青春不凡#来个博世' },
-  { key: 'lecture', label: '校园宣讲会' }
+  // { key: 'lecture', label: '校园宣讲会' }
 ])
 
 // 当前激活的tab - 从URL参数初始化
