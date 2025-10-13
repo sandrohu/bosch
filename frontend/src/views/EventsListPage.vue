@@ -115,6 +115,8 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
+import xunhuiImage from '../assets/images/xunhuixuanjiang.jpg'
+import boshishengluntanImage from '../assets/images/boshishengluntan.jpg'
 
 const router = useRouter()
 const route = useRoute()
@@ -122,9 +124,9 @@ const route = useRoute()
 // Tab配置
 const tabs = ref([
   { key: 'all', label: '全部' },
-  { key: 'lecture', label: '校园宣讲会' },
   { key: 'forum', label: '博士生论坛' },
-  { key: 'sports', label: '运动嘉年华' }
+  { key: 'sports', label: '青春不凡#来个博世' },
+  { key: 'lecture', label: '校园宣讲会' }
 ])
 
 // 当前激活的tab - 从URL参数初始化
@@ -144,102 +146,58 @@ onMounted(() => {
 const events = ref([
   {
     id: 1,
-    type: 'lecture',
-    title: '上海交通大学 宣讲会',
-    location: '闵行校区陈瑞球楼100号',
-    time: '13:30-16:30',
-    dateDay: '18',
-    dateMonth: '12-2025',
-    image: boschHeadquarterImage,
-    description: '博世集团上海交通大学校园宣讲会。'
+    type: 'forum',
+    title: '第三届中国博士生学术论坛',
+    location: '中国·上海',
+    time: '10:00-16:30',
+    dateDay: '5-6',
+    dateMonth: '07-2025',
+    image: boshishengluntanImage,
+    description: '本次论坛将围绕整车、能源动力、底盘、车身、智能化技术、电动化技术、轻量化技术、网联化技术、新材料与新工艺、智能制造等研究方向，邀请海内外相关领域博士生就博士生学位论文及阶段性研究成果展开交流汇报'
   },
   {
     id: 2,
-    type: 'lecture',
-    title: '同济大学 宣讲会',
-    location: '四平路校区大礼堂',
-    time: '14:00-17:00',
-    dateDay: '20',
-    dateMonth: '12-2025',
-    image: boschHeadquarterImage,
-    description: '博世集团同济大学专场招聘宣讲会。'
+    type: 'sports',
+    title: '博世 X 同济大学',
+    location: '同济大学汽车学院',
+    time: '14：00-17：00',
+    dateDay: '17',
+    dateMonth: '10-2025',
+    image: xunhuiImage,
+    description: '博世 X 同济大学'
   },
   {
     id: 3,
-    type: 'forum',
-    title: '博士生论坛 - AI与未来',
-    location: '博世中国研发中心',
-    time: '09:00-17:00',
-    dateDay: '15',
-    dateMonth: '12-2025',
-    image: boschHeadquarterImage,
-    description: '探讨人工智能在工业4.0中的应用与发展前景。'
+    type: 'sports',
+    title: '博世 X 上海交通大学',
+    location: '上海交通大学自动化与感知学院',
+    time: '13：00-17：00',
+    dateDay: '26',
+    dateMonth: '10-2025',
+    image: xunhuiImage,
+    description: '博世 X 上海交通大学'
   },
   {
     id: 4,
-    type: 'forum',
-    title: '博士生论坛 - 智能制造',
-    location: '博世苏州工厂',
-    time: '10:00-16:00',
-    dateDay: '22',
-    dateMonth: '12-2025',
-    image: boschHeadquarterImage,
-    description: '智能制造技术创新与实践分享。'
+    type: 'sports',
+    title: '博世 X 南京大学',
+    location: '南京大学人工智能学院',
+    time: '南京大学人工智能学院',
+    dateDay: '20',
+    dateMonth: '10-2025',
+    image: xunhuiImage,
+    description: '博世 X 南京大学'
   },
   {
     id: 5,
-    type: 'forum',
-    title: '博士生论坛 - 新能源技术',
-    location: '博世中国创新中心',
-    time: '09:30-16:30',
+    type: 'sports',
+    title: '博世 X 东南大学',
+    location: '东南大学计软智学院',
+    time: '10：00-17：00',
     dateDay: '25',
-    dateMonth: '12-2025',
-    image: boschHeadquarterImage,
-    description: '新能源汽车技术发展趋势与挑战。'
-  },
-  {
-    id: 6,
-    type: 'sports',
-    title: '博世篮球友谊赛',
-    location: '博世上海体育中心',
-    time: '14:00-17:00',
-    dateDay: '05',
-    dateMonth: '01-2026',
-    image: boschHeadquarterImage,
-    description: '博世员工篮球友谊赛，增进团队凝聚力。'
-  },
-  {
-    id: 7,
-    type: 'sports',
-    title: '博世羽毛球公开赛',
-    location: '博世苏州体育馆',
-    time: '09:00-18:00',
-    dateDay: '12',
-    dateMonth: '01-2026',
-    image: boschHeadquarterImage,
-    description: '博世羽毛球公开赛，欢迎所有爱好者参加。'
-  },
-  {
-    id: 8,
-    type: 'sports',
-    title: '博世马拉松健康跑',
-    location: '世纪公园',
-    time: '07:00-11:00',
-    dateDay: '19',
-    dateMonth: '01-2026',
-    image: boschHeadquarterImage,
-    description: '5公里健康跑活动，倡导健康生活方式。'
-  },
-  {
-    id: 9,
-    type: 'sports',
-    title: '博世足球联赛',
-    location: '博世长沙工厂球场',
-    time: '15:00-17:00',
-    dateDay: '26',
-    dateMonth: '01-2026',
-    image: boschHeadquarterImage,
-    description: '跨部门足球联赛，促进团队交流合作。'
+    dateMonth: '10-2025',
+    image: xunhuiImage,
+    description: '博世 X 东南大学'
   }
 ])
 

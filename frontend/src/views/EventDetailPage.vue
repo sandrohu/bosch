@@ -124,6 +124,8 @@
 import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
+import boshishengluntanImage from '../assets/images/boshishengluntan.jpg'
+import xunhuiImage from '../assets/images/xunhuixuanjiang.jpg'
 
 const router = useRouter()
 const route = useRoute()
@@ -138,7 +140,7 @@ const eventDetail = ref({
   date: '08-12-2025',
   time: '09:00-12:00',
   location: '中国科学技术大学·西区学生活动中心一楼报告厅',
-  image: boschHeadquarterImage,
+  image: boshishengluntanImage,
   description: '博世携手同济大学，共同打造了一场充满青春与活力的运动嘉年华。活动面向全体在校学生开放，旨在通过轻松有趣的体育项目，传递"健康生活、团队合作、激情挑战"的理念，展现博世年轻化、多元化的企业形象。',
   highlights: [
     '博世集团将详细介绍公司的发展历程、业务领域和企业文化',
@@ -153,12 +155,26 @@ const allEvents = [
   {
     id: 1,
     type: 'lecture',
-    title: '上海交通大学 宣讲会',
-    date: '18-12-2025',
-    time: '13:30-16:30',
-    location: '闵行校区陈瑞球楼100号',
-    image: boschHeadquarterImage,
-    description: '博世集团上海交通大学校园宣讲会，诚邀优秀学子参加。',
+    title: '第三届中国博士生学术论坛',
+    date: '2025年7月5日-6日',
+    time: '10:00-16:30',
+    location: '中国上海',
+    image: boshishengluntanImage,
+    description: '本次论坛将围绕整车、能源动力、底盘、车身、智能化技术、电动化技术、轻量化技术、网联化技术、新材料与新工艺、智能制造等研究方向，邀请海内外相关领域博士生就博士生学位论文及阶段性研究成果展开交流汇报。',
+    highlights: [
+      '本次论坛有50余位汽车领域顶尖高校及企业的院士、院长、专家出席。150多位全国有论文发表的PHD来参加。博世共出席20多位专家参与论文答辩，并在现场设立了博世智能驾驶技术展位。与院长及10位业务匹配的教授建立深度链接，展位超150位博士及20位教授体验了解。',
+      '活动详情：（1）论坛4个技术方向共计64场博士论文报告会 （2）车辆系统动力学与控制技术（底盘相关等） （3）智能网联汽车技术（所有智驾话题） （4）车用电源技术（电力电子话题） （5）车用动力系统技术（能源类）',
+    ]
+  },
+  {
+    id: 2,
+    type: 'sports',
+    title: '博世 X 同济大学',
+    date: '2025年10月17日',
+    time: '14:00-17:00',
+    location: '同济大学汽车学院',
+    image: xunhuiImage,
+    description: '博世 X 同济大学',
     highlights: [
       '博世集团将详细介绍公司的发展历程、业务领域和企业文化',
       '分享最新的技术创新成果和行业发展趋势',
@@ -167,131 +183,51 @@ const allEvents = [
     ]
   },
   {
-    id: 2,
-    type: 'lecture',
-    title: '同济大学 宣讲会',
-    date: '20-12-2025',
-    time: '14:00-17:00',
-    location: '四平路校区大礼堂',
-    image: boschHeadquarterImage,
-    description: '博世集团同济大学专场招聘宣讲会，期待与你相遇。',
-    highlights: [
-      '深入了解博世的企业文化和价值观',
-      '探讨行业前沿技术和创新方向',
-      '分享职业发展路径和成长机会',
-      '与博世员工面对面交流'
-    ]
-  },
-  {
     id: 3,
-    type: 'forum',
-    title: '博士生论坛 - AI与未来',
-    date: '15-12-2025',
-    time: '09:00-17:00',
-    location: '博世中国研发中心',
-    image: boschHeadquarterImage,
-    description: '探讨人工智能在工业4.0中的应用与发展前景。',
+    type: 'sports',
+    title: '博世 X 上海交通大学',
+    date: '2025年10月26日',
+    time: '13:00-17:00',
+    location: '上海交通大学自动化与感知学院',
+    image: xunhuiImage,
+    description: '博世 X 上海交通大学',
     highlights: [
-      'AI技术在智能制造中的应用',
-      '机器学习与深度学习的最新进展',
-      '博世在AI领域的创新实践',
-      '产学研合作机会探讨'
+      '博世集团将详细介绍公司的发展历程、业务领域和企业文化',
+      '分享最新的技术创新成果和行业发展趋势',
+      '提供丰富的职业发展机会和校园招聘信息',
+      '现场答疑环节，解答同学们关心的问题'
     ]
   },
   {
     id: 4,
-    type: 'forum',
-    title: '博士生论坛 - 智能制造',
-    date: '22-12-2025',
-    time: '10:00-16:00',
-    location: '博世苏州工厂',
-    image: boschHeadquarterImage,
-    description: '智能制造技术创新与实践分享。',
+    type: 'sports',
+    title: '博世 X 南京大学',
+    date: '2025年10月20日',
+    time: '14:00-17:00',
+    location: '南京大学人工智能学院',
+    image: xunhuiImage,
+    description: '博世 X 南京大学',
     highlights: [
-      '智能制造技术的最新进展',
-      '博世工业4.0实践案例',
-      '数字化转型的挑战与机遇',
-      '未来工厂的发展趋势'
+      '博世集团将详细介绍公司的发展历程、业务领域和企业文化',
+      '分享最新的技术创新成果和行业发展趋势',
+      '提供丰富的职业发展机会和校园招聘信息',
+      '现场答疑环节，解答同学们关心的问题'
     ]
   },
   {
     id: 5,
-    type: 'forum',
-    title: '博士生论坛 - 新能源技术',
-    date: '25-12-2025',
-    time: '09:30-16:30',
-    location: '博世中国创新中心',
-    image: boschHeadquarterImage,
-    description: '新能源汽车技术发展趋势与挑战。',
-    highlights: [
-      '新能源汽车关键技术突破',
-      '电池技术与充电基础设施',
-      '智能网联汽车发展前景',
-      '碳中和目标下的机遇'
-    ]
-  },
-  {
-    id: 6,
     type: 'sports',
-    title: '博世篮球友谊赛',
-    date: '05-01-2026',
-    time: '14:00-17:00',
-    location: '博世上海体育中心',
-    image: boschHeadquarterImage,
-    description: '博世员工篮球友谊赛，增进团队凝聚力。',
+    title: '博世 X 东南大学',
+    date: '2025年10月25日',
+    time: '10:00-17:00',
+    location: '东南大学计软智学院',
+    image: xunhuiImage,
+    description: '博世 X 东南大学',
     highlights: [
-      '跨部门篮球对抗赛',
-      '专业教练技术指导',
-      '团队协作能力提升',
-      '健康生活理念推广'
-    ]
-  },
-  {
-    id: 7,
-    type: 'sports',
-    title: '博世羽毛球公开赛',
-    date: '12-01-2026',
-    time: '09:00-18:00',
-    location: '博世苏州体育馆',
-    image: boschHeadquarterImage,
-    description: '博世羽毛球公开赛，欢迎所有爱好者参加。',
-    highlights: [
-      '单打双打多项赛事',
-      '专业裁判现场执裁',
-      '丰厚奖品等你来拿',
-      '运动社交两不误'
-    ]
-  },
-  {
-    id: 8,
-    type: 'sports',
-    title: '博世马拉松健康跑',
-    date: '19-01-2026',
-    time: '07:00-11:00',
-    location: '世纪公园',
-    image: boschHeadquarterImage,
-    description: '5公里健康跑活动，倡导健康生活方式。',
-    highlights: [
-      '5公里轻松健康跑',
-      '专业跑步装备赞助',
-      '运动营养知识分享',
-      '完赛证书及纪念品'
-    ]
-  },
-  {
-    id: 9,
-    type: 'sports',
-    title: '博世足球联赛',
-    date: '26-01-2026',
-    time: '15:00-17:00',
-    location: '博世长沙工厂球场',
-    image: boschHeadquarterImage,
-    description: '跨部门足球联赛，促进团队交流合作。',
-    highlights: [
-      '11人制标准足球赛',
-      '部门间友谊竞技',
-      '专业场地设施',
-      '赛后交流聚餐'
+      '博世集团将详细介绍公司的发展历程、业务领域和企业文化',
+      '分享最新的技术创新成果和行业发展趋势',
+      '提供丰富的职业发展机会和校园招聘信息',
+      '现场答疑环节，解答同学们关心的问题'
     ]
   }
 ]

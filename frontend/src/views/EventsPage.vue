@@ -64,9 +64,10 @@
 
       <!-- Activity Cards -->
       <section class="activity-cards-section">
-        <div class="activity-card" @click="goToEventsListWithTab('lecture')">
+        <!-- 先隐藏校园宣讲会 -->
+        <!-- <div class="activity-card" @click="goToEventsListWithTab('lecture')">
           <img src="../assets/images/activity-1.png" alt="校园宣讲会" class="activity-image" />
-        </div>
+        </div> -->
         <div class="activity-card" @click="goToEventsListWithTab('forum')">
           <img src="../assets/images/activity-3.png" alt="博士生论坛" class="activity-image" />
         </div>
@@ -106,6 +107,7 @@
 <script>
 import xunhuiImage from '../assets/images/xunhuixuanjiang.jpg'
 import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
+import boshishengluntanImage from '../assets/images/boshishengluntan.jpg'
 
 export default {
   name: 'EventsPage',
@@ -115,26 +117,26 @@ export default {
       slides: [
         {
           id: 1,
-          title: '博士生论坛',
-          date: '07-09-2025',
-          image: xunhuiImage,
-          description: '人工智能领域的突破开启了技术发展的新篇章，加速创新及其商业转化。博世集团董事会主席哈通博士表示...',
+          title: '第三届中国博士生学术论坛',
+          date: '2025年7月5日-6日',
+          image: boshishengluntanImage,
+          description: '本次论坛将围绕整车、能源动力、底盘、车身、智能化技术、电动化技术、轻量化技术、网联化技术、新材料与新工艺、智能制造等研究方向，邀请海内外相关领域博士生就博士生学位论文及阶段性研究成果展开交流汇报。',
           tab: 'forum'
         },
+        // {
+        //   id: 2,
+        //   title: '校园巡回宣讲会',
+        //   date: '15-09-2025',
+        //   image: xunhuiImage,
+        //   description: '博世2025秋季校园巡回宣讲会即将开启，走进全国重点高校，为同学们带来最新的职业发展机会和行业前沿资讯...',
+        //   tab: 'lecture'
+        // },
         {
           id: 2,
-          title: '校园巡回宣讲会',
-          date: '15-09-2025',
+          title: '青春不凡#来个博世',
+          date: '2025',
           image: xunhuiImage,
-          description: '博世2025秋季校园巡回宣讲会即将开启，走进全国重点高校，为同学们带来最新的职业发展机会和行业前沿资讯...',
-          tab: 'lecture'
-        },
-        {
-          id: 3,
-          title: '运动嘉年华',
-          date: '20-10-2025',
-          image: boschHeadquarterImage,
-          description: '博世运动嘉年华活动，汇聚各类体育项目，展现博世员工的活力与激情，促进团队协作与健康生活方式...',
+          description: '博世 X 各高校运动嘉年华 以运动之名，汇聚敢拼敢赢的青年。博世联合同济大学、上海交通大学、浙江大学、东南大学、南京大学、华中科技大学等，与同学们建立敢拼敢闯的情感共鸣​',
           tab: 'sports'
         }
       ],

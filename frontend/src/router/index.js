@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import SplashScreen from '../views/SplashScreen.vue'
 import HomePage from '../views/HomePage.vue'
 import ExplorePage from '../views/ExplorePage.vue'
 import PdfViewerPage from '../views/PdfViewerPage.vue'
@@ -15,15 +14,13 @@ import ReasonsDetailPage from '../views/ReasonsDetailPage.vue'
 const routes = [
   {
     path: '/',
-    name: 'Splash',
-    component: SplashScreen,
-    meta: { title: 'BOSCH 招聘' }
-  },
-  {
-    path: '/home',
     name: 'Home',
     component: HomePage,
     meta: { title: '首页 - BOSCH 招聘' }
+  },
+  {
+    path: '/home',
+    redirect: '/' // 将/home重定向到根路径
   },
   {
     path: '/explore',
