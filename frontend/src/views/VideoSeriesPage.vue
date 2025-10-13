@@ -250,41 +250,17 @@
                 preload="metadata"
                 controlsList="nodownload"
               >
-                <source src="/videos/whybosch.mp4" type="video/mp4">
+                <source :src="boshichezhan" type="video/mp4">
                 <p>您的浏览器不支持HTML5视频。</p>
               </video>
             </div>
             <div class="video-info">
-              <h3 class="video-title">2024年度回顾：博世在中国</h3>
+              <h3 class="video-title">博世车展精彩瞬间</h3>
               <p class="video-description">
-                回顾博世在过去一年中的重要里程碑，展望未来发展方向，见证科技成就生活之美...
+                博世在车展上展示最新的汽车技术创新，包括智能驾驶、电动化解决方案等前沿科技...
               </p>
               <div class="video-meta">
-                <span class="video-date">时间：2024/12/28 10:00-12:00</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 可以添加第二个视频卡片 -->
-          <div class="video-card">
-            <div class="video-player-wrapper">
-              <video
-                controls
-                class="video-player"
-                preload="metadata"
-                controlsList="nodownload"
-              >
-                <source src="/videos/whybosch.mp4" type="video/mp4">
-                <p>您的浏览器不支持HTML5视频。</p>
-              </video>
-            </div>
-            <div class="video-info">
-              <h3 class="video-title">博世智能制造峰会精彩回顾</h3>
-              <p class="video-description">
-                汇聚行业精英，共同探讨智能制造的未来趋势，分享博世在工业4.0领域的创新实践...
-              </p>
-              <div class="video-meta">
-                <span class="video-date">时间：2024/10/15 09:00-18:00</span>
+                <span class="video-date">时间：2024/11/20 09:00-17:00</span>
               </div>
             </div>
           </div>
@@ -331,6 +307,7 @@ const meaningfulJob2 = '/videos/meaningful-job-2.mp4'
 const meaningfulJob3 = '/videos/meaningful-job-3.mp4'
 const meaningfulJob4 = '/videos/meaningful-job-4.mp4'
 const meaningfulJob5 = '/videos/meaningful-job-5.mp4'
+const boshichezhan = '/videos/boshichezhan.mp4'
 
 const router = useRouter()
 const activeTab = ref('why')
