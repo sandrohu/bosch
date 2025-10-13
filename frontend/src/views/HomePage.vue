@@ -1380,7 +1380,7 @@ onUnmounted(() => {
 
 /* 跳一跳游戏图片特殊样式 - 调整位置避免人物头部被截断 */
 .carousel-container .jump-image {
-  object-position: center 30%; /* 将图片向上移动，显示上方30%的位置，确保人物头部完整显示 */
+  object-position: center top; /* 将图片移到最顶部，完全显示人物头部 */
 }
 
 .carousel-overlay {
