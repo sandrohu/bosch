@@ -117,6 +117,14 @@ export default {
       slides: [
         {
           id: 1,
+          title: '青春不凡#来个博世',
+          date: '2025',
+          image: xunhuiImage,
+          description: '博世 X 各高校运动嘉年华 以运动之名，汇聚敢拼敢赢的青年。博世联合同济大学、上海交通大学、浙江大学、东南大学、南京大学、华中科技大学等，与同学们建立敢拼敢闯的情感共鸣​',
+          tab: 'sports'
+        },
+        {
+          id: 2,
           title: '第三届中国博士生学术论坛',
           date: '2025年7月5日-6日',
           image: boshishengluntanImage,
@@ -131,14 +139,14 @@ export default {
         //   description: '博世2025秋季校园巡回宣讲会即将开启，走进全国重点高校，为同学们带来最新的职业发展机会和行业前沿资讯...',
         //   tab: 'lecture'
         // },
-        {
-          id: 2,
-          title: '青春不凡#来个博世',
-          date: '2025',
-          image: xunhuiImage,
-          description: '博世 X 各高校运动嘉年华 以运动之名，汇聚敢拼敢赢的青年。博世联合同济大学、上海交通大学、浙江大学、东南大学、南京大学、华中科技大学等，与同学们建立敢拼敢闯的情感共鸣​',
-          tab: 'sports'
-        }
+        // {
+        //   id: 1,
+        //   title: '青春不凡#来个博世',
+        //   date: '2025',
+        //   image: xunhuiImage,
+        //   description: '博世 X 各高校运动嘉年华 以运动之名，汇聚敢拼敢赢的青年。博世联合同济大学、上海交通大学、浙江大学、东南大学、南京大学、华中科技大学等，与同学们建立敢拼敢闯的情感共鸣​',
+        //   tab: 'sports'
+        // }
       ],
       autoPlayTimer: null
     }
