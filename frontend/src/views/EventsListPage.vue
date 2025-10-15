@@ -184,7 +184,7 @@ const events = ref([
     type: 'sports',
     title: '博世 X 南京大学',
     location: '南京大学人工智能学院',
-    time: '南京大学人工智能学院',
+    time: '14：00-17：00',
     dateDay: '20',
     dateMonth: '10-2025',
     image: xunhuiImage,
