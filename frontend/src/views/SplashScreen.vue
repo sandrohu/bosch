@@ -11,14 +11,6 @@
 
         <!-- 主图片 -->
         <img src="../assets/images/kaiping.png" alt="Bosch Career" class="splash-image" />
-
-        <!-- 跳过提示 -->
-        <div class="skip-hint">点击跳过</div>
-
-        <!-- 进度条 -->
-        <div class="progress-bar">
-          <div class="progress-fill"></div>
-        </div>
       </div>
     </div>
   </transition>
@@ -130,50 +122,8 @@ const skipToHome = () => {
   height: 100%;
   object-fit: contain;
   z-index: 2;
-  animation: imageEntrance 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
-             imagePulse 2s ease-in-out 1.2s infinite;
-}
-
-/* 跳过提示 */
-.skip-hint {
-  position: absolute;
-  bottom: 100px;
-  right: 30px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
-  padding: 8px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  z-index: 3;
-  animation: fadeInUp 0.8s ease-out 0.5s both;
-  transition: all 0.3s ease;
-}
-
-.skip-hint:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/* 进度条 */
-.progress-bar {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
-  overflow: hidden;
-  z-index: 3;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #fff 0%, #fff 100%);
-  border-radius: 3px;
-  animation: progressAnimation 3s linear forwards;
+  animation: imageEntrance 1.5s ease-out forwards,
+             imagePulse 3s ease-in-out 1.5s infinite;
 }
 
 /* 淡出过渡 */
@@ -190,15 +140,11 @@ const skipToHome = () => {
 @keyframes imageEntrance {
   0% {
     opacity: 0;
-    transform: scale(0.8) translateY(20px);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.05) translateY(-5px);
+    transform: scale(0.95);
   }
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1);
   }
 }
 
@@ -207,18 +153,7 @@ const skipToHome = () => {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.02);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: scale(1.01);
   }
 }
 
@@ -227,19 +162,10 @@ const skipToHome = () => {
     transform: translate(0, 0) rotate(0deg);
   }
   33% {
-    transform: translate(30px, -30px) rotate(120deg);
+    transform: translate(20px, -20px) rotate(120deg);
   }
   66% {
-    transform: translate(-20px, 20px) rotate(240deg);
-  }
-}
-
-@keyframes progressAnimation {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
+    transform: translate(-15px, 15px) rotate(240deg);
   }
 }
 
