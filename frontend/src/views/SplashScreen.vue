@@ -45,7 +45,7 @@ const skipToHome = () => {
 .splash-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -58,24 +58,57 @@ const skipToHome = () => {
   }
 }
 
-/* Mobile optimization */
-@media (max-width: 768px) {
+/* 手机屏幕优化 - 竖屏 */
+@media (max-width: 768px) and (orientation: portrait) {
+  .splash-screen {
+    background: linear-gradient(135deg, #007BC0 0%, #9E2896 50%, #37B19D 100%);
+  }
+
   .splash-image {
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     object-position: center;
   }
 }
 
-/* Desktop optimization */
+/* 手机屏幕优化 - 横屏 */
+@media (max-width: 768px) and (orientation: landscape) {
+  .splash-screen {
+    background: linear-gradient(135deg, #007BC0 0%, #9E2896 50%, #37B19D 100%);
+  }
+
+  .splash-image {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+/* 平板优化 */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .splash-screen {
+    background: linear-gradient(135deg, #007BC0 0%, #9E2896 50%, #37B19D 100%);
+  }
+
+  .splash-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+}
+
+/* 桌面优化 */
 @media (min-width: 1024px) {
+  .splash-screen {
+    background: linear-gradient(135deg, #007BC0 0%, #9E2896 50%, #37B19D 100%);
+  }
+
   .splash-image {
     max-width: 1200px;
     max-height: 90vh;
     object-fit: contain;
-  }
-
-  .splash-screen {
-    background: linear-gradient(135deg, #007BC0 0%, #9E2896 50%, #37B19D 100%);
   }
 }
 </style>
