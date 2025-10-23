@@ -62,7 +62,8 @@
       "Bash(git commit -m \"添加运动嘉年华Tab和相关活动数据\n\n- 在活动列表页面添加第四个Tab：运动嘉年华\n- 添加4个运动嘉年华类型的活动数据\n- 包括篮球友谊赛、羽毛球公开赛、马拉松健康跑、足球联赛\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
       "Bash(git commit -m \"实现EventsPage轮播和图片跳转到活动列表页对应Tab\n\n- 轮播图点击跳转到对应Tab（博士生论坛、校园宣讲会、运动嘉年华）\n- 底部三张图片分别跳转到对应的Tab\n- EventsListPage支持通过URL参数初始化选中的Tab\n- 使用query参数传递tab信息，实现精准跳转\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
       "Bash(git commit -m \"创建活动详情页面并实现报名功能\n\n- 创建EventDetailPage页面，与CareersPage保持一致的设计风格\n- 实现活动详情展示，包括标题、时间、地点和活动内容\n- 添加立即报名按钮，固定在底部\n- 实现二维码弹窗功能，显示活动信息和报名二维码\n- 配置路由/event-detail/:id，支持从活动列表页跳转\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
-      "Bash(git commit -m \"优化开屏页动画效果：去掉模糊效果，添加主流动画\n\n- 移除渐变遮罩的模糊效果(backdrop-filter)\n- 添加优雅的入场动画：缩放+淡入+微弹跳效果\n- 添加轻微的呼吸动画让页面更有生命力\n- 添加浮动的装饰性圆形元素增加层次感\n- 添加进度条显示加载进度\n- 添加''点击跳过''提示按钮\n- 实现平滑的淡出过渡效果\n- 整体动画更加流畅自然，符合现代App开屏页设计\")"
+      "Bash(git commit -m \"优化开屏页动画效果：去掉模糊效果，添加主流动画\n\n- 移除渐变遮罩的模糊效果(backdrop-filter)\n- 添加优雅的入场动画：缩放+淡入+微弹跳效果\n- 添加轻微的呼吸动画让页面更有生命力\n- 添加浮动的装饰性圆形元素增加层次感\n- 添加进度条显示加载进度\n- 添加''点击跳过''提示按钮\n- 实现平滑的淡出过渡效果\n- 整体动画更加流畅自然，符合现代App开屏页设计\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\n实现100个理由互动小游戏跳转到智联招聘页面\n\n- 在HomePage.vue中添加goToInteractiveGame函数\n- 点击\"爱上博世的100个理由互动小游戏\"轮播图时跳转到智联招聘活动页\n- 跳转链接：https://webapp.zhaopin.com/2025/hd/bszgt1011ZL68537/\n- 使用window.open在新标签页打开，保持原页面不变\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []
