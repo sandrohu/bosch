@@ -242,7 +242,7 @@
 
               <!-- Carousel Image Section -->
               <div class="gravity-carousel">
-                <div class="carousel-container" @click="gravitySlide === 0 ? goToReasonsDetail() : null">
+                <div class="carousel-container" @click="gravitySlide === 0 ? goToReasonsDetail() : goToInteractiveGame()">
                   <img v-if="gravitySlide === 0"
                        src="../assets/images/mobility-solutions-web-portal_res_1280x720.webp"
                        alt="爱上博世的100个理由"
@@ -706,6 +706,11 @@ const navigateToCareers = () => {
 // Navigate to reasons detail page
 const goToReasonsDetail = () => {
   router.push('/reasons-detail')
+}
+
+// Navigate to interactive game (external link)
+const goToInteractiveGame = () => {
+  window.open('https://webapp.zhaopin.com/2025/hd/bszgt1011ZL68537/', '_blank')
 }
 
 // Auto-scroll animation
