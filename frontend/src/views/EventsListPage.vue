@@ -119,6 +119,7 @@ import xunhuiImage from '../assets/images/xunhuixuanjiang.jpg'
 import boshishengluntanImage from '../assets/images/boshishengluntan.jpg'
 import kongxuan1Image from '../assets/images/kongxuan-1.jpg'
 import kongxuan2Image from '../assets/images/kongxuan-2.jpg'
+import tongjiImage from '../assets/images/tongji.jpg'
 
 const router = useRouter()
 const route = useRoute()
@@ -165,8 +166,19 @@ const events = ref([
     time: '14：00-17：00',
     dateDay: '17',
     dateMonth: '10-2025',
-    image: xunhuiImage,
+    image: tongjiImage,
     description: '博世 X 同济大学'
+  },
+  {
+    id: 8,
+    type: 'sports',
+    title: '博世 X 浙江大学',
+    location: '浙江大学',
+    time: '09:00-17:00',
+    dateDay: '26',
+    dateMonth: '10-2025',
+    image: xunhuiImage,
+    description: '博世 X 浙江大学'
   },
   {
     id: 3,
