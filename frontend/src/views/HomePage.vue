@@ -735,8 +735,60 @@ const startAutoScroll = () => {
   }, 30)
 }
 
+// 更新页面的meta标签
+const updateMetaTags = () => {
+  // 更新标题
+  document.title = '博世中国雇主品牌主页'
+
+  // 更新或创建meta标签的辅助函数
+  const setMetaTag = (property, content, isProperty = true) => {
+    const attrName = isProperty ? 'property' : 'name'
+    let metaTag = document.querySelector(`meta[${attrName}="${property}"]`)
+
+    if (!metaTag) {
+      metaTag = document.createElement('meta')
+      metaTag.setAttribute(attrName, property)
+      document.head.appendChild(metaTag)
+    }
+    metaTag.setAttribute('content', content)
+  }
+
+  // 更新Open Graph标签
+  setMetaTag('og:title', '博世中国雇主品牌主页')
+  setMetaTag('og:description', '博世集团是世界领先的技术及服务供应商，致力于以科技成就生活之美')
+  setMetaTag('og:url', 'http://www.boschcareer.com/home')
+  setMetaTag('og:image', 'http://www.boschcareer.com/share-image.jpg')
+
+  // 更新微信分享标签
+  const setItemprop = (itemprop, content) => {
+    let metaTag = document.querySelector(`meta[itemprop="${itemprop}"]`)
+
+    if (!metaTag) {
+      metaTag = document.createElement('meta')
+      metaTag.setAttribute('itemprop', itemprop)
+      document.head.appendChild(metaTag)
+    }
+    metaTag.setAttribute('content', content)
+  }
+
+  setItemprop('name', '博世中国雇主品牌主页')
+  setItemprop('description', '博世集团是世界领先的技术及服务供应商，致力于以科技成就生活之美')
+  setItemprop('image', 'http://www.boschcareer.com/share-image.jpg')
+
+  // 更新Twitter Card标签
+  setMetaTag('twitter:title', '博世中国雇主品牌主页', false)
+  setMetaTag('twitter:description', '博世集团是世界领先的技术及服务供应商，致力于以科技成就生活之美', false)
+  setMetaTag('twitter:image', 'http://www.boschcareer.com/share-image.jpg', false)
+
+  // 更新描述
+  setMetaTag('description', '博世集团是世界领先的技术及服务供应商，致力于以科技成就生活之美', false)
+}
+
 // Auto-play carousel
 onMounted(() => {
+  // 更新meta标签
+  updateMetaTags()
+
   intervalId = setInterval(nextSlide, 5000)
   startAutoScroll()
   // Auto-play news carousel
