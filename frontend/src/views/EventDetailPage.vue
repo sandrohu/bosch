@@ -194,7 +194,7 @@ const allEvents = [
     id: 3,
     type: 'sports',
     title: '博世 X 上海交通大学',
-    date: '2025年10月26日',
+    date: '2025年11月15日',
     time: '13:00-17:00',
     location: '上海交通大学自动化与感知学院',
     image: xunhuiImage,

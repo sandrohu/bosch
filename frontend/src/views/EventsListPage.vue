@@ -186,8 +186,8 @@ const events = ref([
     title: '博世 X 上海交通大学',
     location: '上海交通大学自动化与感知学院',
     time: '13：00-17：00',
-    dateDay: '26',
-    dateMonth: '10-2025',
+    dateDay: '15',
+    dateMonth: '11-2025',
     image: xunhuiImage,
     description: '博世 X 上海交通大学'
   },
