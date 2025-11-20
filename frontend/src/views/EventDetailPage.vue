@@ -42,6 +42,12 @@
               <polyline points="9 18 15 12 9 6"/>
             </svg>
           </button>
+          <button v-else-if="eventDetail.registrationUrl" class="register-button" @click="handleRegistrationClick">
+            <span>立即报名</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
           <button v-else-if="eventDetail.type === 'lecture' && eventDetail.id > 7" class="register-button" @click="showQRCode = true">
             <span>立即报名</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -134,6 +140,8 @@ import boshishengluntanImage from '../assets/images/boshishengluntan.jpg'
 import xunhuiImage from '../assets/images/xunhuixuanjiang.jpg'
 import kongxuan1Image from '../assets/images/kongxuan-1.jpg'
 import kongxuan2Image from '../assets/images/kongxuan-2.jpg'
+import tongjiImage from '../assets/images/tongji.jpg'
+import formulaStudentImage from '../assets/images/formula-student.jpg'
 
 const router = useRouter()
 const route = useRoute()
@@ -273,6 +281,40 @@ const allEvents = [
       '✔️三轮抽奖，博世喊你接好运',
       '一边冲浪一边拿offer，治好你的求职迷茫！'
     ]
+  },
+  {
+    id: 8,
+    type: 'sports',
+    title: '博世 X 浙江大学',
+    date: '2025年10月26日',
+    time: '09:00-17:00',
+    location: '浙江大学',
+    image: xunhuiImage,
+    description: '博世 X 浙江大学',
+    highlights: [
+      '博世集团将详细介绍公司的发展历程、业务领域和企业文化',
+      '分享最新的技术创新成果和行业发展趋势',
+      '提供丰富的职业发展机会和校园招聘信息',
+      '现场答疑环节，解答同学们关心的问题'
+    ]
+  },
+  {
+    id: 9,
+    type: 'forum',
+    title: '博士·2025大学生方程式大赛',
+    date: '2025年11月19日',
+    time: '全天',
+    location: '全国',
+    image: formulaStudentImage,
+    description: '博士·2025大学生方程式大赛正式启动！这是一场汇集全国高校精英的工程技术竞赛，旨在培养大学生的创新设计能力、工程实践能力和团队协作精神。参赛队伍将设计、制造并驾驶赛车，在赛道上展现技术与速度的完美结合。',
+    registrationUrl: 'https://v.wjx.cn/vm/t64DL8q.aspx',
+    highlights: [
+      '🏎️ 培养大学生的创新设计能力、工程实践能力和团队协作精神',
+      '🏁 参赛队伍将设计、制造并驾驶自己的方程式赛车',
+      '🏆 在赛道上展现技术与速度的完美结合',
+      '💡 提供与行业专家交流学习的机会',
+      '🎯 优秀团队将获得博世实习和就业机会'
+    ]
   }
 ]
 
@@ -312,6 +354,13 @@ const closeModal = () => {
 const handleReplayClick = () => {
   if (eventDetail.value.replayUrl) {
     window.open(eventDetail.value.replayUrl, '_blank')
+  }
+}
+
+// 处理报名按钮点击
+const handleRegistrationClick = () => {
+  if (eventDetail.value.registrationUrl) {
+    window.open(eventDetail.value.registrationUrl, '_blank')
   }
 }
 </script>

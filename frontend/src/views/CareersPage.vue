@@ -108,7 +108,7 @@ const viewDetails = (type) => {
       break
     case 'social':
       // 社会招聘详情
-      window.open('https://jobs.bosch.com/zh-cn/?country=cn/', '_blank')
+      window.open('https://app.mokahr.com/m/campus-recruitment/bosch/150946?hash=%23%2Fjobs#/jobs', '_blank')
       break
     case 'intern':
       // 实习生招聘详情

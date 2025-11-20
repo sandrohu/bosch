@@ -120,6 +120,7 @@ import boshishengluntanImage from '../assets/images/boshishengluntan.jpg'
 import kongxuan1Image from '../assets/images/kongxuan-1.jpg'
 import kongxuan2Image from '../assets/images/kongxuan-2.jpg'
 import tongjiImage from '../assets/images/tongji.jpg'
+import formulaStudentImage from '../assets/images/formula-student.jpg'
 
 const router = useRouter()
 const route = useRoute()
@@ -147,6 +148,18 @@ onMounted(() => {
 
 // 所有活动数据
 const events = ref([
+  {
+    id: 9,
+    type: 'forum',
+    title: '博士·2025大学生方程式大赛',
+    location: '全国',
+    time: '全天',
+    dateDay: '19',
+    dateMonth: '11-2025',
+    image: formulaStudentImage,
+    description: '博士·2025大学生方程式大赛正式启动！这是一场汇集全国高校精英的工程技术竞赛，旨在培养大学生的创新设计能力、工程实践能力和团队协作精神。参赛队伍将设计、制造并驾驶赛车，在赛道上展现技术与速度的完美结合。',
+    registrationUrl: 'https://v.wjx.cn/vm/t64DL8q.aspx'
+  },
   {
     id: 1,
     type: 'forum',
