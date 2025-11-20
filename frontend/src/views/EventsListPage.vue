@@ -151,13 +151,13 @@ const events = ref([
   {
     id: 9,
     type: 'forum',
-    title: '博士·2025大学生方程式大赛',
+    title: '博世·2025大学生方程式大赛',
     location: '全国',
     time: '全天',
     dateDay: '19',
     dateMonth: '11-2025',
     image: formulaStudentImage,
-    description: '博士·2025大学生方程式大赛正式启动！这是一场汇集全国高校精英的工程技术竞赛，旨在培养大学生的创新设计能力、工程实践能力和团队协作精神。参赛队伍将设计、制造并驾驶赛车，在赛道上展现技术与速度的完美结合。',
+    description: '博世·2025大学生方程式大赛正式启动！这是一场汇集全国高校精英的工程技术竞赛，旨在培养大学生的创新设计能力、工程实践能力和团队协作精神。参赛队伍将设计、制造并驾驶赛车，在赛道上展现技术与速度的完美结合。',
     registrationUrl: 'https://v.wjx.cn/vm/t64DL8q.aspx'
   },
   {
