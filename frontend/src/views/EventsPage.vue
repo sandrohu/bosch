@@ -17,7 +17,7 @@
         </div>
 
         <!-- Hero Image Card -->
-        <div class="hero-card" @click="goToEventsListWithTab(slides[currentSlide].tab)">
+        <div class="hero-card" @click="handleSlideClick(slides[currentSlide])">
           <img :src="slides[currentSlide].image" :alt="slides[currentSlide].title" class="hero-image" />
           <div class="hero-overlay">
             <div class="hero-content">
@@ -25,7 +25,7 @@
                 <h3 class="hero-title">{{ slides[currentSlide].title }}</h3>
                 <p class="hero-date">{{ slides[currentSlide].date }}</p>
               </div>
-              <a @click.stop="goToEventsListWithTab(slides[currentSlide].tab)" class="view-details-link">查看详情 →</a>
+              <a @click.stop="handleSlideClick(slides[currentSlide])" class="view-details-link">查看详情 →</a>
             </div>
             <p class="hero-description">
               {{ slides[currentSlide].description }}
@@ -35,7 +35,7 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path d="M1 21h22L12 2 1 21z" stroke-width="2"/>
                 </svg>
-                1.5w
+                1w
               </span>
               <span class="stat-item">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -47,7 +47,7 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-width="2"/>
                 </svg>
-                1.5w
+                1w
               </span>
             </div>
           </div>
@@ -108,6 +108,7 @@
 import xunhuiImage from '../assets/images/xunhuixuanjiang.jpg'
 import boschHeadquarterImage from '../assets/images/bosch-cn-headquarter_res_1600x900.webp'
 import boshishengluntanImage from '../assets/images/boshishengluntan.jpg'
+import formulaStudentImage from '../assets/images/formula-student.jpg'
 
 export default {
   name: 'EventsPage',
@@ -117,19 +118,20 @@ export default {
       slides: [
         {
           id: 1,
+          title: '博士·2025大学生方程式大赛',
+          date: '2025年11月19日',
+          image: formulaStudentImage,
+          description: '博士·2025大学生方程式大赛正式启动！这是一场汇集全国高校精英的工程技术竞赛，旨在培养大学生的创新设计能力、工程实践能力和团队协作精神。',
+          tab: 'forum',
+          eventId: 9  // 对应活动详情的ID
+        },
+        {
+          id: 2,
           title: '青春不凡#来个博世',
           date: '2025',
           image: xunhuiImage,
           description: '博世 X 各高校运动嘉年华 以运动之名，汇聚敢拼敢赢的青年。博世联合同济大学、上海交通大学、浙江大学、东南大学、南京大学、华中科技大学等，与同学们建立敢拼敢闯的情感共鸣​',
           tab: 'sports'
-        },
-        {
-          id: 2,
-          title: '第三届中国博士生学术论坛',
-          date: '2025年7月5日-6日',
-          image: boshishengluntanImage,
-          description: '本次论坛将围绕整车、能源动力、底盘、车身、智能化技术、电动化技术、轻量化技术、网联化技术、新材料与新工艺、智能制造等研究方向，邀请海内外相关领域博士生就博士生学位论文及阶段性研究成果展开交流汇报。',
-          tab: 'forum'
         },
         // {
         //   id: 2,
@@ -181,6 +183,16 @@ export default {
         path: '/events-list',
         query: { tab: tab }
       })
+    },
+    // 处理轮播图点击
+    handleSlideClick(slide) {
+      if (slide.eventId) {
+        // 如果有具体的eventId，直接跳转到活动详情页
+        this.$router.push(`/event-detail/${slide.eventId}`)
+      } else {
+        // 否则跳转到活动列表对应的tab
+        this.goToEventsListWithTab(slide.tab)
+      }
     },
     // 切换到指定轮播图
     goToSlide(index) {
